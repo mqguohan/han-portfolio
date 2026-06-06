@@ -1,0 +1,519 @@
+/* ══════════════════════════════════════════════════════════════
+   KANANA — PROJECT PAGE STYLESHEET
+   Self-contained. Does not depend on style.css.
+
+   Sections:
+   1.  Variables & Reset
+   2.  Navigation
+   3.  Project Hero (with undergraduate label)
+   4.  Project Sections — shared structure
+   5.  Body Text
+   6.  Presentation Archive — lead + 3-col grid
+   7.  Workshop — lead + 4-col row
+   8.  Market Booth — lead + 3-col grid
+   9.  Shared gallery image wrapper + hover
+   10. Lightbox
+   11. Footer
+   12. Scroll Reveal
+   13. Responsive — Tablet
+   14. Responsive — Mobile
+══════════════════════════════════════════════════════════════ */
+
+
+/* ──────────────────────────────────────────────────────────
+   1. VARIABLES & RESET
+────────────────────────────────────────────────────────── */
+
+:root {
+  --pink:        #FF3F7F;
+  --rule:        rgba(255, 63, 127, 0.14);
+  --pad-h:       clamp(2rem, 5vw, 5rem);
+  --section-gap: clamp(5rem, 9vh, 9rem);
+  --img-gap:     clamp(0.4rem, 1vw, 0.8rem);
+  --font:        'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: #fff;
+  color: var(--pink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a  { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; height: auto; }
+
+
+/* ──────────────────────────────────────────────────────────
+   2. NAVIGATION — sticky frosted bar
+────────────────────────────────────────────────────────── */
+
+.project-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem var(--pad-h);
+  background: rgba(255, 255, 255, 0.93);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.project-nav-brand {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--pink);
+  letter-spacing: -0.01em;
+  transition: opacity 0.2s ease;
+}
+
+.project-nav-brand:hover { opacity: 0.5; }
+
+.project-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.project-nav-links a {
+  font-size: 0.74rem;
+  font-weight: 300;
+  color: var(--pink);
+  transition: opacity 0.2s ease;
+}
+
+.project-nav-links a:hover { opacity: 0.5; }
+
+
+/* ──────────────────────────────────────────────────────────
+   3. PROJECT HERO
+   Large title with small "Undergraduate Project" label below.
+────────────────────────────────────────────────────────── */
+
+.project-hero {
+  padding: clamp(4rem, 8vh, 8rem) var(--pad-h) clamp(3rem, 5vh, 5rem);
+  border-bottom: 1px solid var(--rule);
+}
+
+/* KANANA is short — allow a larger font for impact */
+.project-hero-title {
+  font-size: clamp(4rem, 11vw, 9rem);
+  font-weight: 300;
+  color: var(--pink);
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+/* Small undergraduate tag sits below the title */
+.hero-label {
+  display: inline-block;
+  margin-top: 1.2rem;
+  font-size: 0.66rem;
+  font-weight: 300;
+  color: var(--pink);
+  opacity: 0.38;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   4. PROJECT SECTIONS — shared structure
+   .ps = "project section"
+────────────────────────────────────────────────────────── */
+
+.project-main { padding-bottom: clamp(6rem, 10vh, 10rem); }
+
+.ps {
+  padding-top: var(--section-gap);
+  padding-left: var(--pad-h);
+  padding-right: var(--pad-h);
+}
+
+.ps-header { margin-bottom: clamp(1.4rem, 2.5vh, 2rem); }
+
+/* Section number */
+.ps-num {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: var(--pink);
+  opacity: 0.38;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.45rem;
+}
+
+.ps-title {
+  font-size: clamp(0.88rem, 1.2vw, 1.02rem);
+  font-weight: 400;
+  color: var(--pink);
+  letter-spacing: 0.035em;
+}
+
+/* Overview — unnumbered */
+.ps--overview .ps-title {
+  font-size: clamp(0.92rem, 1.3vw, 1.08rem);
+}
+
+/* Reflection — extra top space */
+.ps--reflection { padding-top: calc(var(--section-gap) * 1.1); }
+
+
+/* ──────────────────────────────────────────────────────────
+   5. BODY TEXT
+────────────────────────────────────────────────────────── */
+
+.ps-text {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1em;
+}
+
+.ps-text p {
+  font-size: clamp(0.875rem, 1.12vw, 0.975rem);
+  font-weight: 300;
+  color: var(--pink);
+  line-height: 1.88;
+}
+
+.ps--reflection .ps-text p {
+  font-size: clamp(0.9rem, 1.18vw, 1rem);
+  line-height: 1.92;
+  opacity: 0.9;
+}
+
+figcaption,
+.media-caption {
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: var(--pink);
+  opacity: 0.48;
+  margin-top: 0.55rem;
+  letter-spacing: 0.03em;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   6. PRESENTATION ARCHIVE
+   01.png — full-width lead image (like a cover slide)
+   02–22.png — 3-column grid (21 images, 7 rows)
+────────────────────────────────────────────────────────── */
+
+/* Text intro above the images */
+.ps--archive .ps-text {
+  margin-bottom: clamp(1.5rem, 3vh, 2.5rem);
+}
+
+/* Full-width lead image */
+.archive-lead {
+  /* inherits full width from .ps padding */
+}
+
+.archive-lead img {
+  width: 100%;
+  height: auto;
+}
+
+/* 3-column grid for remaining slides */
+.archive-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--img-gap);
+  margin-top: var(--img-gap);
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   7. WORKSHOP
+   01.jpg — full-width lead
+   02–05.jpg — 4-column row
+────────────────────────────────────────────────────────── */
+
+.ps--workshop .ps-text {
+  margin-bottom: clamp(1.5rem, 3vh, 2.5rem);
+}
+
+.workshop-lead img {
+  width: 100%;
+  height: auto;
+}
+
+/* 4-column row for the remaining workshop photos */
+.workshop-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(0.5rem, 1.2vw, 1rem);
+  margin-top: clamp(0.5rem, 1.2vw, 1rem);
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   8. MARKET BOOTH
+   01.jpg — full-width lead
+   02–07.jpg — 3-column grid (2 rows)
+────────────────────────────────────────────────────────── */
+
+.ps--market .ps-text {
+  margin-bottom: clamp(1.5rem, 3vh, 2.5rem);
+}
+
+.market-lead img {
+  width: 100%;
+  height: auto;
+}
+
+/* 3-column grid: 6 images → 2 rows */
+.market-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(0.5rem, 1.2vw, 1rem);
+  margin-top: clamp(0.5rem, 1.2vw, 1rem);
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   9. SHARED GALLERY IMAGE WRAPPER
+   Applied to all lightbox-enabled image cells.
+   Hover: subtle scale + opacity fade.
+────────────────────────────────────────────────────────── */
+
+.gallery-img-wrap {
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.gallery-img-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity 0.3s ease, transform 0.35s ease;
+}
+
+.gallery-img-wrap:hover img {
+  opacity: 0.84;
+  transform: scale(1.025);
+}
+
+/* Lead images (non-grid) also get the hover style */
+.archive-lead.gallery-img-wrap img,
+.workshop-lead.gallery-img-wrap img,
+.market-lead.gallery-img-wrap img {
+  transition: opacity 0.3s ease;
+}
+
+.archive-lead.gallery-img-wrap:hover img,
+.workshop-lead.gallery-img-wrap:hover img,
+.market-lead.gallery-img-wrap:hover img {
+  opacity: 0.9;
+  transform: none; /* no scale on full-width leads — avoids overflow */
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   10. LIGHTBOX
+   White frosted overlay opened by JS on image click.
+────────────────────────────────────────────────────────── */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.93);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  cursor: zoom-out;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-inner {
+  position: relative;
+  cursor: default;
+}
+
+.lightbox-img {
+  max-width: 88vw;
+  max-height: 86vh;
+  object-fit: contain;
+  display: block;
+  box-shadow: 0 12px 60px rgba(255, 63, 127, 0.1);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -2rem;
+  right: 0;
+  font-size: 0.7rem;
+  font-weight: 300;
+  color: var(--pink);
+  opacity: 0.55;
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  transition: opacity 0.2s ease;
+  user-select: none;
+}
+
+.lightbox-close:hover { opacity: 1; }
+
+
+/* ──────────────────────────────────────────────────────────
+   11. FOOTER
+────────────────────────────────────────────────────────── */
+
+.project-footer {
+  padding: clamp(1.5rem, 3vw, 2.5rem) var(--pad-h);
+  border-top: 1px solid var(--rule);
+  margin-top: clamp(5rem, 8vh, 8rem);
+}
+
+.project-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-footer-inner span,
+.project-footer-inner a {
+  font-size: 0.74rem;
+  font-weight: 300;
+  color: var(--pink);
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+.project-footer-inner a:hover { opacity: 1; }
+
+
+/* ──────────────────────────────────────────────────────────
+   12. SCROLL REVEAL
+────────────────────────────────────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity  0.72s ease,
+    transform 0.72s ease;
+  transition-delay: var(--delay, 0s);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   13. RESPONSIVE — TABLET  (640px – 1023px)
+────────────────────────────────────────────────────────── */
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .project-hero-title {
+    font-size: clamp(3.5rem, 9vw, 7rem);
+  }
+
+  /* 3-col archive → 2-col on tablet */
+  .archive-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* 4-col workshop → 2-col on tablet */
+  .workshop-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   14. RESPONSIVE — MOBILE  (< 640px)
+────────────────────────────────────────────────────────── */
+
+@media (max-width: 639px) {
+  .project-nav { padding: 0.9rem var(--pad-h); }
+  .project-nav-links { gap: 1.2rem; }
+  .project-nav-links .nav-resume { display: none; }
+
+  .project-hero-title {
+    font-size: clamp(3.5rem, 16vw, 6rem);
+  }
+
+  .ps-text { max-width: 100%; }
+
+  /* All grids → 2-col on mobile */
+  .archive-grid-3,
+  .workshop-grid-4,
+  .market-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project-footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   NEXT PROJECT NAVIGATION
+────────────────────────────────────────────────────────── */
+
+.next-project {
+  padding: clamp(3rem, 5vh, 5rem) var(--pad-h) 0;
+  margin-top: clamp(4rem, 7vh, 6rem);
+  border-top: 1px solid var(--rule);
+}
+
+.next-project-link {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.next-project-label {
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: var(--pink);
+  opacity: 0.42;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.next-project-title {
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  font-weight: 300;
+  color: var(--pink);
+  letter-spacing: -0.01em;
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.next-project-link:hover .next-project-title {
+  transform: translateX(6px);
+}

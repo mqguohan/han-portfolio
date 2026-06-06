@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \":*)",
+      "Bash(node -e \":*)",
+      "Bash(del \"D:\\\\claude\\\\datanteater3.0\\\\anteater_b64.txt\")",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(where node:*)",
+      "Bash(where npm:*)",
+      "Bash(if not:*)",
+      "Bash(dir \"D:\\\\claude\\\\datanteater3.0\\\\environments\")",
+      "Bash(python3 -:*)",
+      "Bash(python -c ' *)",
+      "Bash(node -e ' *)",
+      "Bash(powershell -Command \"echo 'test' | Out-File -FilePath 'D:\\\\probabilitytelescope\\\\probability_telescope_package\\\\test_write.txt' -Encoding UTF8 -Force; if \\(Test-Path 'D:\\\\probabilitytelescope\\\\probability_telescope_package\\\\test_write.txt'\\) { Write-Host 'write ok'; Remove-Item 'D:\\\\probabilitytelescope\\\\probability_telescope_package\\\\test_write.txt' } else { Write-Host 'write failed' }\")",
+      "Bash(powershell -Command \"icacls 'D:\\\\probabilitytelescope\\\\probability_telescope_package'\")",
+      "Bash(powershell -Command \"whoami; whoami /groups | findstr Admin\")",
+      "Bash(powershell -Command \"net user mqguo | Select-String 'Local Group'\")",
+      "Bash(powershell -Command \"[Security.Principal.WindowsIdentity]::GetCurrent\\(\\).Name; \\([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent\\(\\)\\).IsInRole\\([Security.Principal.WindowsBuiltInRole]'Administrator'\\)\")",
+      "Bash(node D:/claude/datanteater3.0/build_multisite.js)"
+    ]
+  }
+}

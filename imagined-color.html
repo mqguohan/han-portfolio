@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>From Imagined Color to Landscape Reality — Han Guo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="imagined-color.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════════════════ -->
+  <nav class="project-nav">
+    <a href="index.html" class="project-nav-brand">Han Guo</a>
+    <div class="project-nav-links">
+      <a href="index.html#homepage">Back to Home</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+
+  <main class="project-main">
+
+    <!-- ══════════════════════════════════════════════
+         HERO — title only, no subtitle or meta
+    ══════════════════════════════════════════════ -->
+    <header class="project-hero">
+      <h1 class="project-hero-title">From Imagined Color<br />to Landscape Reality</h1>
+    </header>
+
+
+    <!-- ══════════════════════════════════════════════
+         PROJECT OVERVIEW — no section number
+    ══════════════════════════════════════════════ -->
+    <section class="ps ps--overview">
+      <div class="ps-header">
+        <h2 class="ps-title">Project Overview</h2>
+      </div>
+      <div class="ps-text">
+        <p>From Imagined Color to Landscape Reality explores the possibility of translating imagined, dreamlike colors into real landscape conditions. Inspired by the surreal aesthetics of digitally generated environments, the project begins with a simple observation: many colors that appear artificial or fictional already exist in nature and industry, not as surface decoration, but as the result of specific material, chemical, and ecological processes.</p>
+        <p>Rather than treating color as a visual attribute applied to form, the project understands color as something produced. It emerges from conditions such as mineral oxidation, microbial activity, biological growth, and industrial intervention. Pink lakes, red soils, and luminous green waters are not anomalies, but evidence of underlying systems at work.</p>
+        <p>Through visual research, material experiments, speculative landscapes, and exhibition installation, the project investigates how imagined color can become real—not by imitation, but by recreating the conditions that generate it. By shifting the role of color from appearance to process, landscape is reframed as an active field of production, where the seemingly fantastical is already latent, waiting to be activated through design.</p>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════
+         01 · MAIN IMAGE
+         Large poster image — first strong visual moment.
+         Section has a number but no title text.
+    ══════════════════════════════════════════════ -->
+    <section class="ps ps--main-image reveal">
+      <div class="ps-header">
+        <span class="ps-num">01</span>
+      </div>
+      <figure class="main-image-figure">
+        <img
+          src="assets/imagined-color/hero.jpg"
+          alt="From Imagined Color to Landscape Reality — main project image"
+          loading="eager"
+        />
+        <figcaption>Main image for From Imagined Color to Landscape Reality.</figcaption>
+      </figure>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════
+         02 · EXHIBITION VIEW
+
+         Layout:
+           01.jpg — full-width lead
+           02–05.jpg — 4-column row underneath
+    ══════════════════════════════════════════════ -->
+    <section class="ps ps--exhibition reveal">
+      <div class="ps-header">
+        <span class="ps-num">02</span>
+        <h2 class="ps-title">Exhibition View</h2>
+      </div>
+
+      <!-- Section text above the images -->
+      <div class="ps-text">
+        <p>The project was presented as an exhibition installation, bringing together visual research, spatial arrangement, printed materials, and physical display. The installation frames color as both an aesthetic experience and a material condition, allowing the research to move beyond images and into a more spatial form of viewing.</p>
+      </div>
+
+      <!-- 01.jpg — full-width lead image -->
+      <figure class="exhibition-lead reveal" style="--delay: 0.06s">
+        <img
+          src="assets/imagined-color/exhibition/01.jpg"
+          alt="Exhibition view 01"
+          loading="lazy"
+        />
+      </figure>
+
+      <!-- 02–05.jpg — 4-column row -->
+      <div class="exhibition-grid reveal" style="--delay: 0.1s">
+        <div class="exhibition-img-wrap">
+          <img
+            src="assets/imagined-color/exhibition/02.jpg"
+            alt="Exhibition view 02"
+            loading="lazy"
+          />
+        </div>
+        <div class="exhibition-img-wrap">
+          <img
+            src="assets/imagined-color/exhibition/03.jpg"
+            alt="Exhibition view 03"
+            loading="lazy"
+          />
+        </div>
+        <div class="exhibition-img-wrap">
+          <img
+            src="assets/imagined-color/exhibition/04.jpg"
+            alt="Exhibition view 04"
+            loading="lazy"
+          />
+        </div>
+        <div class="exhibition-img-wrap">
+          <img
+            src="assets/imagined-color/exhibition/05.jpg"
+            alt="Exhibition view 05"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════
+         03 · RESEARCH DOCUMENT
+
+         Desktop: embedded PDF iframe with a slim
+                  footer bar showing "Open PDF ↗".
+         Mobile:  iframe hidden; clean card shown instead.
+
+         Both always include a direct link to the PDF
+         as a reliable fallback on any device/browser.
+    ══════════════════════════════════════════════ -->
+    <section class="ps reveal">
+      <div class="ps-header">
+        <span class="ps-num">03</span>
+        <h2 class="ps-title">Research Document</h2>
+      </div>
+
+      <!-- ── Desktop: embedded viewer ── -->
+      <div class="pdf-viewer">
+        <iframe
+          src="assets/imagined-color/imagined-color-research.pdf"
+          class="pdf-iframe"
+          title="From Imagined Color to Landscape Reality — Research Document"
+          aria-label="Embedded PDF viewer for Research Document"
+        ></iframe>
+        <div class="pdf-viewer-bar">
+          <span class="pdf-viewer-label">Research Document</span>
+          <a
+            href="assets/imagined-color/imagined-color-research.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="pdf-open-link"
+          >Open PDF ↗</a>
+        </div>
+      </div>
+
+      <!-- ── Mobile: clean card (CSS shows this only on mobile) ── -->
+      <div class="pdf-card-mobile">
+        <div class="pdf-card-body">
+          <div class="pdf-card-info">
+            <h3 class="pdf-card-title">Research Document</h3>
+            <p class="pdf-card-desc">A research document containing the theoretical framework, case studies, and visual thinking behind the project.</p>
+          </div>
+          <a
+            href="assets/imagined-color/imagined-color-research.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="pdf-btn"
+            aria-label="Open research document PDF in new tab"
+          >Open PDF</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════
+         04 · VISUAL COMPANION
+         Atmospheric video — placed after the PDF
+         as a companion, not the main outcome.
+    ══════════════════════════════════════════════ -->
+    <section class="ps reveal">
+      <div class="ps-header">
+        <span class="ps-num">04</span>
+        <h2 class="ps-title">Visual Companion</h2>
+      </div>
+
+      <div class="video-wrap">
+        <video
+          class="project-video"
+          src="assets/imagined-color/visual-companion.mp4"
+          controls
+          muted
+          playsinline
+          preload="metadata"
+          aria-label="Visual companion video for From Imagined Color to Landscape Reality"
+        ></video>
+        <p class="media-caption">A visual companion video extending the atmosphere of the project.</p>
+      </div>
+
+      <div class="ps-text ps-text--after-media reveal" style="--delay: 0.08s">
+        <p>This video works as an atmospheric extension of the research, translating the project's interest in imagined color, surreal landscape, and environmental transformation into a moving visual sequence.</p>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════
+         05 · REFLECTION
+    ══════════════════════════════════════════════ -->
+    <section class="ps ps--reflection reveal">
+      <div class="ps-header">
+        <span class="ps-num">05</span>
+        <h2 class="ps-title">Reflection</h2>
+      </div>
+      <div class="ps-text">
+        <p>This project reframes color as an environmental process rather than a surface effect. Through research, image-making, and exhibition installation, it asks how landscapes might be designed by activating the material conditions that already produce seemingly impossible colors.</p>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ══════════════════════════════════════════════
+       NEXT PROJECT
+  ══════════════════════════════════════════════ -->
+  <nav class="next-project" aria-label="Next project">
+    <a href="datanteater.html" class="next-project-link">
+      <span class="next-project-label">Next Project</span>
+      <span class="next-project-title">Datanteater / Body Electric →</span>
+    </a>
+  </nav>
+
+
+  <!-- ══════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════ -->
+  <footer class="project-footer">
+    <div class="project-footer-inner">
+      <span>Han Guo</span>
+      <a href="index.html#homepage">← Back to Home</a>
+    </div>
+  </footer>
+
+  <!-- Shared: scroll-reveal observer (handles pages without intro overlay) -->
+  <script src="script.js"></script>
+
+</body>
+</html>

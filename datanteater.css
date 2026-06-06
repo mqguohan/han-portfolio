@@ -1,0 +1,626 @@
+/* ══════════════════════════════════════════════════════════════
+   DATANTEATER / BODY ELECTRIC — PROJECT PAGE STYLESHEET
+   Self-contained: all variables and styles for this page.
+   Does not depend on style.css.
+
+   Sections:
+   1.  Variables & Reset
+   2.  Navigation
+   3.  Project Hero
+   4.  Project Sections — shared structure
+   5.  Body Text
+   6.  Images & Captions
+   7.  Two-Column Image Grid
+   8.  Split Layouts (text + image side by side)
+   9.  Full-Width Media
+   10. Video
+   11. PDF Card
+   12. Footer
+   13. Scroll Reveal
+   14. Responsive — Tablet
+   15. Responsive — Mobile
+══════════════════════════════════════════════════════════════ */
+
+
+/* ──────────────────────────────────────────────────────────
+   1. VARIABLES & RESET
+────────────────────────────────────────────────────────── */
+
+:root {
+  --pink:         #FF3F7F;
+  --rule:         rgba(255, 63, 127, 0.14);
+  --pad-h:        clamp(2rem, 5vw, 5rem);
+  --section-gap:  clamp(5rem, 9vh, 9rem);
+  --font:         'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font);
+  background: #fff;
+  color: var(--pink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   2. NAVIGATION
+   Sticky bar: brand name left, links right.
+────────────────────────────────────────────────────────── */
+
+.project-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem var(--pad-h);
+  background: rgba(255, 255, 255, 0.93);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.project-nav-brand {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--pink);
+  letter-spacing: -0.01em;
+  transition: opacity 0.2s ease;
+}
+
+.project-nav-brand:hover {
+  opacity: 0.5;
+}
+
+.project-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.project-nav-links a {
+  font-size: 0.74rem;
+  font-weight: 300;
+  color: var(--pink);
+  transition: opacity 0.2s ease;
+}
+
+.project-nav-links a:hover {
+  opacity: 0.5;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   3. PROJECT HERO
+   Large title, generous padding, bottom divider.
+────────────────────────────────────────────────────────── */
+
+.project-hero {
+  padding: clamp(4rem, 8vh, 8rem) var(--pad-h) clamp(3rem, 5vh, 5rem);
+  border-bottom: 1px solid var(--rule);
+}
+
+.project-hero-title {
+  font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+  font-weight: 300;
+  color: var(--pink);
+  letter-spacing: -0.025em;
+  line-height: 1.06;
+  max-width: 900px;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   3b. PROTOTYPE CTA — large entry section after the hero
+   NOTE: Prototype files must live at:
+         prototypes/datanteater/index.html
+         (relative to datanteater.html)
+────────────────────────────────────────────────────────── */
+
+.proto-cta {
+  padding: clamp(5rem, 10vh, 9rem) var(--pad-h) clamp(4.5rem, 8vh, 8rem);
+  border-bottom: 1px solid var(--rule);
+  background: linear-gradient(170deg, rgba(255, 63, 127, 0.04) 0%, #fff 72%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.8rem;
+  transition: background 0.5s ease;
+}
+
+.proto-cta:hover {
+  background: linear-gradient(170deg, rgba(255, 63, 127, 0.08) 0%, #fff 72%);
+}
+
+/* Large welcoming headline — lighter weight than the hero title */
+.proto-cta-title {
+  font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+  font-weight: 200;
+  color: var(--pink);
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  max-width: 760px;
+}
+
+/* Supporting description — same prose style as body copy */
+.proto-cta-sub {
+  font-size: clamp(0.88rem, 1.2vw, 1rem);
+  font-weight: 300;
+  color: var(--pink);
+  opacity: 0.58;
+  line-height: 1.75;
+  max-width: 500px;
+}
+
+/* Pill button — outlined at rest, filled on hover */
+.proto-cta-btn {
+  display: inline-block;
+  margin-top: 0.4rem;
+  padding: 0.78rem 2.4rem;
+  border: 1px solid rgba(255, 63, 127, 0.5);
+  border-radius: 100px;
+  font-size: 0.76rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: var(--pink);
+  background: transparent;
+  transition:
+    background  0.28s ease,
+    color       0.28s ease,
+    border-color 0.28s ease,
+    transform   0.28s ease,
+    box-shadow  0.28s ease;
+}
+
+.proto-cta-btn:hover {
+  background:    var(--pink);
+  border-color:  var(--pink);
+  color:         #fff;
+  transform:     translateY(-2px);
+  box-shadow:    0 10px 32px rgba(255, 63, 127, 0.20);
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   4. PROJECT SECTIONS — SHARED STRUCTURE
+   .ps = "project section"
+
+   Each section has:
+     .ps-header  — optional number + section title
+     .ps-text    — narrow body copy
+     (+ media elements added per-section)
+────────────────────────────────────────────────────────── */
+
+.project-main {
+  padding-bottom: clamp(6rem, 10vh, 10rem);
+}
+
+/* Every section gets top spacing via padding (not margin) so
+   scroll-reveal translateY doesn't create layout jumps */
+.ps {
+  padding-top: var(--section-gap);
+  padding-left: var(--pad-h);
+  padding-right: var(--pad-h);
+}
+
+.ps-header {
+  margin-bottom: clamp(1.6rem, 3vh, 2.4rem);
+}
+
+/* Section number — "01", "02" … small, faded */
+.ps-num {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: var(--pink);
+  opacity: 0.38;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.45rem;
+}
+
+/* Section heading */
+.ps-title {
+  font-size: clamp(0.88rem, 1.2vw, 1.02rem);
+  font-weight: 400;
+  color: var(--pink);
+  letter-spacing: 0.035em;
+}
+
+/* Project Overview: unnumbered, slightly more prominent heading */
+.ps--overview .ps-title {
+  font-size: clamp(0.92rem, 1.3vw, 1.08rem);
+}
+
+/* Reflection section: no top rule needed, extra breathing room */
+.ps--reflection {
+  padding-top: calc(var(--section-gap) * 1.1);
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   5. BODY TEXT
+────────────────────────────────────────────────────────── */
+
+/* Narrow text column — used for prose sections */
+.ps-text {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25em;
+}
+
+.ps-text p,
+.split-text p {
+  font-size: clamp(0.875rem, 1.12vw, 0.975rem);
+  font-weight: 300;
+  color: var(--pink);
+  line-height: 1.88;
+}
+
+/* Text that sits below a piece of media */
+.ps-text--after-media {
+  margin-top: clamp(1.8rem, 3.5vh, 3rem);
+}
+
+/* Reflection: slightly softer, wider line height */
+.ps--reflection .ps-text p {
+  font-size: clamp(0.9rem, 1.18vw, 1rem);
+  line-height: 1.92;
+  opacity: 0.9;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   6. IMAGES & CAPTIONS
+────────────────────────────────────────────────────────── */
+
+figcaption,
+.media-caption {
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: var(--pink);
+  opacity: 0.48;
+  margin-top: 0.65rem;
+  letter-spacing: 0.03em;
+  line-height: 1.45;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   7. TWO-COLUMN IMAGE GRID
+   Used in "Daily Self-Tracking" for the two process images.
+────────────────────────────────────────────────────────── */
+
+.media-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+  margin-top: clamp(2.2rem, 4vh, 3.5rem);
+}
+
+.media-grid-2 figure img {
+  width: 100%;
+  height: auto;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   8. SPLIT LAYOUTS
+   Half/half grid: text on one side, image on the other.
+   .split--reversed places image first (left column).
+────────────────────────────────────────────────────────── */
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 5vw, 6rem);
+  align-items: start;
+  margin-top: clamp(1.8rem, 3vh, 2.5rem);
+}
+
+/* Reversed variant: image is first in DOM but appears on the left */
+.split--reversed .split-media {
+  order: -1;
+}
+
+.split-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25em;
+}
+
+.split-media img {
+  width: 100%;
+  height: auto;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   9. FULL-WIDTH MEDIA
+   Image spans the full width of the padded content area.
+────────────────────────────────────────────────────────── */
+
+.media-full {
+  margin-top: clamp(2.2rem, 4vh, 3.5rem);
+}
+
+.media-full img {
+  width: 100%;
+  height: auto;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   10. VIDEO
+────────────────────────────────────────────────────────── */
+
+.video-wrap {
+  margin-top: clamp(2.2rem, 4vh, 3.5rem);
+}
+
+.project-video {
+  width: 100%;
+  display: block;
+  border-radius: 3px;
+  /* Soft pink-tinted shadow gives it a gentle lift */
+  box-shadow: 0 8px 40px rgba(255, 63, 127, 0.09);
+  /* Placeholder color while the video loads or if path is missing */
+  background: #fdf0f5;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   11. PDF CARD
+   A clean document card with title, description, and
+   an "Open PDF" button. No embedded viewer.
+────────────────────────────────────────────────────────── */
+
+.pdf-card {
+  margin-top: clamp(1.8rem, 3vh, 2.5rem);
+  max-width: 600px;
+  border: 1px solid rgba(255, 63, 127, 0.2);
+  padding: clamp(1.6rem, 3vw, 2.2rem);
+  background: rgba(255, 63, 127, 0.022);
+}
+
+.pdf-card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+}
+
+.pdf-card-info {
+  flex: 1;
+}
+
+.pdf-card-title {
+  font-size: 0.84rem;
+  font-weight: 400;
+  color: var(--pink);
+  line-height: 1.4;
+  margin-bottom: 0.6rem;
+}
+
+.pdf-card-desc {
+  font-size: 0.74rem;
+  font-weight: 300;
+  color: var(--pink);
+  opacity: 0.62;
+  line-height: 1.65;
+}
+
+/* "Open PDF" button — outlined, fills on hover */
+.pdf-btn {
+  flex-shrink: 0;
+  display: inline-block;
+  padding: 0.52rem 1.2rem;
+  border: 1px solid rgba(255, 63, 127, 0.45);
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: var(--pink);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background 0.22s ease, color 0.22s ease, border-color 0.22s ease;
+}
+
+.pdf-btn:hover {
+  background: var(--pink);
+  color: #fff;
+  border-color: var(--pink);
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   12. FOOTER
+────────────────────────────────────────────────────────── */
+
+.project-footer {
+  padding: clamp(1.5rem, 3vw, 2.5rem) var(--pad-h);
+  border-top: 1px solid var(--rule);
+  margin-top: clamp(5rem, 8vh, 8rem);
+}
+
+.project-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-footer-inner span,
+.project-footer-inner a {
+  font-size: 0.74rem;
+  font-weight: 300;
+  color: var(--pink);
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+.project-footer-inner a:hover {
+  opacity: 1;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   13. SCROLL REVEAL
+   JS adds .is-visible when the element enters the viewport.
+────────────────────────────────────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity  0.72s ease,
+    transform 0.72s ease;
+  transition-delay: var(--delay, 0s);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   14. RESPONSIVE — TABLET  (640px – 1023px)
+────────────────────────────────────────────────────────── */
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .project-hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  /* Tighten the gap in split layouts */
+  .split {
+    gap: clamp(2rem, 4vw, 4rem);
+  }
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   15. RESPONSIVE — MOBILE  (< 640px)
+────────────────────────────────────────────────────────── */
+
+@media (max-width: 639px) {
+
+  /* Nav: keep brand, compact links */
+  .project-nav {
+    padding: 0.9rem var(--pad-h);
+  }
+
+  .project-nav-links {
+    gap: 1.2rem;
+  }
+
+  /* Hide Resume in nav on very small screens to avoid overflow */
+  .project-nav-links .nav-resume {
+    display: none;
+  }
+
+  /* Hero wraps naturally */
+  .project-hero-title {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+  }
+
+  /* Narrow text: remove max-width constraint, use full column */
+  .ps-text {
+    max-width: 100%;
+  }
+
+  /* 2-col image grid → stacked */
+  .media-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Split layouts → stacked, natural document order */
+  .split {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* Reset reversed split on mobile (image above text) */
+  .split--reversed .split-media {
+    order: 0;
+  }
+
+  /* PDF card: stack info and button vertically */
+  .pdf-card-body {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+
+  /* Footer: stack left */
+  .project-footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   NEXT PROJECT NAVIGATION
+────────────────────────────────────────────────────────── */
+
+.next-project {
+  padding: clamp(3rem, 5vh, 5rem) var(--pad-h) 0;
+  margin-top: clamp(4rem, 7vh, 6rem);
+  border-top: 1px solid var(--rule);
+}
+
+.next-project-link {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.next-project-label {
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: var(--pink);
+  opacity: 0.42;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.next-project-title {
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  font-weight: 300;
+  color: var(--pink);
+  letter-spacing: -0.01em;
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.next-project-link:hover .next-project-title {
+  transform: translateX(6px);
+}

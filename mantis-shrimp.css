@@ -1,0 +1,577 @@
+/* ══════════════════════════════════════════════════════════════
+   MANTIS SHRIMP UMWELT / SECOND NATURE — PROJECT PAGE STYLESHEET
+   Self-contained. Does not depend on style.css or datanteater.css.
+
+   Sections:
+   1.  Variables & Reset
+   2.  Navigation
+   3.  Project Hero
+   4.  Project Sections — shared structure
+   5.  Body Text
+   6.  Video
+   7.  Image Archive — groups, grid, hover
+   8.  Lightbox
+   9.  Footer
+   10. Scroll Reveal
+   11. Responsive — Tablet
+   12. Responsive — Mobile
+══════════════════════════════════════════════════════════════ */
+
+
+/* ──────────────────────────────────────────────────────────
+   1. VARIABLES & RESET
+────────────────────────────────────────────────────────── */
+
+:root {
+  --pink:        #FF3F7F;
+  --rule:        rgba(255, 63, 127, 0.14);
+  --pad-h:       clamp(2rem, 5vw, 5rem);
+  --section-gap: clamp(5rem, 9vh, 9rem);
+  --font:        'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font);
+  background: #fff;
+  color: var(--pink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   2. NAVIGATION
+   Sticky frosted bar — same pattern as project pages.
+────────────────────────────────────────────────────────── */
+
+.project-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem var(--pad-h);
+  background: rgba(255, 255, 255, 0.93);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.project-nav-brand {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--pink);
+  letter-spacing: -0.01em;
+  transition: opacity 0.2s ease;
+}
+
+.project-nav-brand:hover {
+  opacity: 0.5;
+}
+
+.project-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.project-nav-links a {
+  font-size: 0.74rem;
+  font-weight: 300;
+  color: var(--pink);
+  transition: opacity 0.2s ease;
+}
+
+.project-nav-links a:hover {
+  opacity: 0.5;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   3. PROJECT HERO
+────────────────────────────────────────────────────────── */
+
+.project-hero {
+  padding: clamp(4rem, 8vh, 8rem) var(--pad-h) clamp(3rem, 5vh, 5rem);
+  border-bottom: 1px solid var(--rule);
+}
+
+.project-hero-title {
+  font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+  font-weight: 300;
+  color: var(--pink);
+  letter-spacing: -0.025em;
+  line-height: 1.06;
+  max-width: 900px;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   4. PROJECT SECTIONS — SHARED STRUCTURE
+   .ps = "project section"
+────────────────────────────────────────────────────────── */
+
+.project-main {
+  padding-bottom: clamp(6rem, 10vh, 10rem);
+}
+
+.ps {
+  padding-top: var(--section-gap);
+  padding-left: var(--pad-h);
+  padding-right: var(--pad-h);
+}
+
+.ps-header {
+  margin-bottom: clamp(1.6rem, 3vh, 2.4rem);
+}
+
+/* Section number: "01", "02" … small, very faded */
+.ps-num {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: var(--pink);
+  opacity: 0.38;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.45rem;
+}
+
+.ps-title {
+  font-size: clamp(0.88rem, 1.2vw, 1.02rem);
+  font-weight: 400;
+  color: var(--pink);
+  letter-spacing: 0.035em;
+}
+
+/* Project Overview — unnumbered, heading slightly larger */
+.ps--overview .ps-title {
+  font-size: clamp(0.92rem, 1.3vw, 1.08rem);
+}
+
+/* Reflection — a touch more breathing room above */
+.ps--reflection {
+  padding-top: calc(var(--section-gap) * 1.1);
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   5. BODY TEXT
+────────────────────────────────────────────────────────── */
+
+.ps-text {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25em;
+}
+
+.ps-text p {
+  font-size: clamp(0.875rem, 1.12vw, 0.975rem);
+  font-weight: 300;
+  color: var(--pink);
+  line-height: 1.88;
+}
+
+/* Reflection: very slightly softer */
+.ps--reflection .ps-text p {
+  font-size: clamp(0.9rem, 1.18vw, 1rem);
+  line-height: 1.92;
+  opacity: 0.9;
+}
+
+figcaption,
+.media-caption {
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: var(--pink);
+  opacity: 0.48;
+  margin-top: 0.65rem;
+  letter-spacing: 0.03em;
+  line-height: 1.45;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   6. VIDEO
+   Large, full-width within the content column.
+────────────────────────────────────────────────────────── */
+
+.video-wrap {
+  margin-top: clamp(2rem, 4vh, 3.5rem);
+}
+
+.project-video {
+  width: 100%;
+  display: block;
+  border-radius: 3px;
+  box-shadow: 0 8px 40px rgba(255, 63, 127, 0.09);
+  background: #fdf0f5;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   7. IMAGE ARCHIVE
+
+   Two visible categories: "MJ Generated" / "ComfyUI Generated"
+   No sub-group labels — only the category header is shown.
+
+   .archive-category          — wrapper for one category
+   .archive-category--comfy   — extra top spacing before ComfyUI section
+   .archive-category-header   — holds the single category label
+   .archive-cat-label         — "MJ Generated" / "ComfyUI Generated"
+   .archive-grid              — 4-col default (MJ static images)
+   .archive-grid--2col        — 2-col for GIF row within MJ section
+   .archive-grid--5col        — 5-col for ComfyUI square thumbnails
+   .archive-grid--square      — forces 1:1 crop via aspect-ratio + cover
+   .archive-row-gap           — tight top gap between unlabeled sub-rows
+   .archive-img-wrap          — individual cell; hover effect here
+────────────────────────────────────────────────────────── */
+
+/* ── Category wrappers ── */
+
+.archive-category {
+  margin-top: clamp(2rem, 4vh, 3rem);
+}
+
+/* Extra breathing room before the ComfyUI category */
+.archive-category--comfy {
+  margin-top: clamp(3.5rem, 6vh, 5rem);
+  padding-top: clamp(2.5rem, 4vh, 3.5rem);
+  border-top: 1px solid var(--rule);
+}
+
+/* ── Category label ── */
+
+.archive-category-header {
+  margin-bottom: clamp(0.8rem, 1.5vh, 1.2rem);
+}
+
+.archive-cat-label {
+  font-size: 0.7rem;
+  font-weight: 300;
+  color: var(--pink);
+  opacity: 0.45;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── Grids ── */
+
+/* Default: 4 columns — MJ static images */
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(0.4rem, 1.2vw, 1rem);
+}
+
+/* 2 columns — Group 5 GIFs within MJ section */
+.archive-grid--2col {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 680px;
+}
+
+/* 5 columns — ComfyUI square thumbnails */
+.archive-grid--5col {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+/* Small top gap for unlabeled sub-rows within a category
+   (GIFs row and Group 6 row inside MJ Generated).
+   Same value as the grid gap so they read as one archive. */
+.archive-row-gap {
+  margin-top: clamp(0.4rem, 1.2vw, 1rem);
+}
+
+/* ── Square crop modifier — ComfyUI images only ──
+   Forces a 1:1 aspect ratio with centered cover crop.
+   The lightbox still shows the full uncropped image. */
+.archive-grid--square .archive-img-wrap {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.archive-grid--square .archive-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ── Individual image cell ── */
+.archive-img-wrap {
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* MJ images: natural aspect ratio, no crop */
+.archive-img-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition:
+    opacity  0.3s ease,
+    transform 0.35s ease;
+}
+
+.archive-img-wrap:hover img {
+  opacity: 0.82;
+  transform: scale(1.025);
+}
+
+/* ── Tools line in Reflection section ── */
+.ps-text-tools {
+  font-size: clamp(0.78rem, 0.95vw, 0.85rem) !important;
+  opacity: 0.62;
+  margin-top: 0.2em;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   8. LIGHTBOX
+   White frosted overlay, consistent with the pink aesthetic.
+   JS adds/removes .is-open on #lightbox.
+────────────────────────────────────────────────────────── */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.93);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  cursor: zoom-out;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-inner {
+  position: relative;
+  /* Prevent clicks on the image from closing the lightbox */
+  cursor: default;
+}
+
+.lightbox-img {
+  max-width: 88vw;
+  max-height: 86vh;
+  object-fit: contain;
+  display: block;
+  box-shadow: 0 12px 60px rgba(255, 63, 127, 0.1);
+}
+
+/* "Close" text link above the image */
+.lightbox-close {
+  position: absolute;
+  top: -2rem;
+  right: 0;
+  font-size: 0.7rem;
+  font-weight: 300;
+  color: var(--pink);
+  opacity: 0.55;
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  transition: opacity 0.2s ease;
+  user-select: none;
+}
+
+.lightbox-close:hover {
+  opacity: 1;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   9. FOOTER
+────────────────────────────────────────────────────────── */
+
+.project-footer {
+  padding: clamp(1.5rem, 3vw, 2.5rem) var(--pad-h);
+  border-top: 1px solid var(--rule);
+  margin-top: clamp(5rem, 8vh, 8rem);
+}
+
+.project-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-footer-inner span,
+.project-footer-inner a {
+  font-size: 0.74rem;
+  font-weight: 300;
+  color: var(--pink);
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+.project-footer-inner a:hover {
+  opacity: 1;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   10. SCROLL REVEAL
+────────────────────────────────────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity  0.72s ease,
+    transform 0.72s ease;
+  transition-delay: var(--delay, 0s);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   11. RESPONSIVE — TABLET  (640px – 1023px)
+────────────────────────────────────────────────────────── */
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .project-hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  /* 4-col → 3-col on tablet */
+  .archive-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* 5-col → 3-col on tablet (ComfyUI square grid) */
+  .archive-grid--5col {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* GIF 2-col: remove max-width so it fills tablet column */
+  .archive-grid--2col {
+    max-width: 100%;
+  }
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   12. RESPONSIVE — MOBILE  (< 640px)
+────────────────────────────────────────────────────────── */
+
+@media (max-width: 639px) {
+  .project-nav {
+    padding: 0.9rem var(--pad-h);
+  }
+
+  .project-nav-links {
+    gap: 1.2rem;
+  }
+
+  /* Hide Resume on very small screens */
+  .project-nav-links .nav-resume {
+    display: none;
+  }
+
+  .project-hero-title {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+  }
+
+  .ps-text {
+    max-width: 100%;
+  }
+
+  /* All grids → 2 columns on mobile */
+  .archive-grid,
+  .archive-grid--5col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* GIF 2-col stays 2-col on mobile, no max-width */
+  .archive-grid--2col {
+    max-width: 100%;
+  }
+
+  /* Square crop still applies on mobile (ComfyUI grid) */
+  .archive-grid--square .archive-img-wrap {
+    aspect-ratio: 1 / 1;
+  }
+
+  .project-footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   NEXT PROJECT NAVIGATION
+────────────────────────────────────────────────────────── */
+
+.next-project {
+  padding: clamp(3rem, 5vh, 5rem) var(--pad-h) 0;
+  margin-top: clamp(4rem, 7vh, 6rem);
+  border-top: 1px solid var(--rule);
+}
+
+.next-project-link {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.next-project-label {
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: var(--pink);
+  opacity: 0.42;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.next-project-title {
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  font-weight: 300;
+  color: var(--pink);
+  letter-spacing: -0.01em;
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.next-project-link:hover .next-project-title {
+  transform: translateX(6px);
+}

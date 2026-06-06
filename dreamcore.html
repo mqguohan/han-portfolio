@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dream Core Landscape — Han Guo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="dreamcore.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════════════════ -->
+  <nav class="project-nav">
+    <a href="index.html" class="project-nav-brand">Han Guo</a>
+    <div class="project-nav-links">
+      <a href="index.html#homepage">Back to Home</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+
+  <main class="project-main">
+
+    <!-- ══════════════════════════════════════════════
+         HERO — title + first-semester label
+    ══════════════════════════════════════════════ -->
+    <header class="project-hero">
+      <h1 class="project-hero-title">Dream Core Landscape</h1>
+      <span class="hero-label">First-Semester Project</span>
+    </header>
+
+
+    <!-- ══════════════════════════════════════════════
+         PROJECT OVERVIEW — no section number
+    ══════════════════════════════════════════════ -->
+    <section class="ps ps--overview">
+      <div class="ps-header">
+        <h2 class="ps-title">Project Overview</h2>
+      </div>
+      <div class="ps-text">
+        <p>Dream Core Landscape is a first-semester visual experiment exploring dreamlike environments, artificial nature, and atmospheric world-building. The project includes a short dream story video and an image-to-3D Gaussian Splatting study that transforms generated imagery into immersive spatial scenes.</p>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════
+         01 · DREAM STORY VIDEO
+    ══════════════════════════════════════════════ -->
+    <section class="ps reveal">
+      <div class="ps-header">
+        <span class="ps-num">01</span>
+        <h2 class="ps-title">Dream Story Video</h2>
+      </div>
+
+      <div class="ps-text">
+        <p>A short dreamlike visual story set within an artificial landscape atmosphere.</p>
+      </div>
+
+      <div class="video-wrap reveal" style="--delay: 0.06s">
+        <video
+          class="project-video"
+          src="assets/dreamcore/video1.mp4"
+          controls
+          muted
+          playsinline
+          preload="metadata"
+          aria-label="Dream story video"
+        ></video>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════
+         02 · IMAGE-TO-3D GAUSSIAN SPLATTING STUDY
+         Layout: short text → 2-col image grid → video 2
+         Click any image to open the lightbox.
+    ══════════════════════════════════════════════ -->
+    <section class="ps ps--images reveal">
+      <div class="ps-header">
+        <span class="ps-num">02</span>
+        <h2 class="ps-title">Image-to-3D Gaussian Splatting Study</h2>
+      </div>
+
+      <div class="ps-text">
+        <p>This section documents the process behind the second video, using presentation images and video documentation to show how generated visual material was translated into a spatial dreamcore landscape.</p>
+      </div>
+
+      <!-- Process / presentation images — 2-col grid -->
+      <div class="img-grid-2 reveal" style="--delay: 0.07s">
+        <div class="gallery-img-wrap">
+          <img src="assets/dreamcore/images/01.jpg" alt="Gaussian Splatting process 01" loading="lazy" />
+        </div>
+        <div class="gallery-img-wrap">
+          <img src="assets/dreamcore/images/02.jpg" alt="Gaussian Splatting process 02" loading="lazy" />
+        </div>
+        <div class="gallery-img-wrap">
+          <img src="assets/dreamcore/images/03.jpg" alt="Gaussian Splatting process 03" loading="lazy" />
+        </div>
+        <div class="gallery-img-wrap">
+          <img src="assets/dreamcore/images/04.jpg" alt="Gaussian Splatting process 04" loading="lazy" />
+        </div>
+        <div class="gallery-img-wrap">
+          <img src="assets/dreamcore/images/05.jpg" alt="Gaussian Splatting process 05" loading="lazy" />
+        </div>
+        <div class="gallery-img-wrap">
+          <img src="assets/dreamcore/images/06.jpg" alt="Gaussian Splatting process 06" loading="lazy" />
+        </div>
+        <div class="gallery-img-wrap">
+          <img src="assets/dreamcore/images/07.jpg" alt="Gaussian Splatting process 07" loading="lazy" />
+        </div>
+        <div class="gallery-img-wrap">
+          <img src="assets/dreamcore/images/08.jpg" alt="Gaussian Splatting process 08" loading="lazy" />
+        </div>
+      </div>
+
+      <!-- Video 2 — appears below the image grid, within the same section -->
+      <div class="video-wrap reveal" style="--delay: 0.08s">
+        <video
+          class="project-video"
+          src="assets/dreamcore/video2.mp4"
+          controls
+          muted
+          playsinline
+          preload="metadata"
+          aria-label="Video documentation of the image-to-3D Gaussian Splatting landscape experiment"
+        ></video>
+        <p class="media-caption">Video documentation of the image-to-3D Gaussian Splatting landscape experiment.</p>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════
+         03 · REFLECTION
+    ══════════════════════════════════════════════ -->
+    <section class="ps ps--reflection reveal">
+      <div class="ps-header">
+        <span class="ps-num">03</span>
+        <h2 class="ps-title">Reflection</h2>
+      </div>
+      <div class="ps-text">
+        <p>This early project experiments with dreamlike landscape atmosphere through moving image and image-to-3D Gaussian Splatting.</p>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ══════════════════════════════════════════════
+       NEXT PROJECT
+  ══════════════════════════════════════════════ -->
+  <nav class="next-project" aria-label="Next project">
+    <a href="imagined-color.html" class="next-project-link">
+      <span class="next-project-label">Next Project</span>
+      <span class="next-project-title">From Imagined Color to Landscape Reality →</span>
+    </a>
+  </nav>
+
+
+  <!-- ══════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════ -->
+  <footer class="project-footer">
+    <div class="project-footer-inner">
+      <span>Han Guo</span>
+      <a href="index.html#homepage">← Back to Home</a>
+    </div>
+  </footer>
+
+
+  <!-- ══════════════════════════════════════════════
+       LIGHTBOX OVERLAY
+  ══════════════════════════════════════════════ -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <div class="lightbox-inner">
+      <span class="lightbox-close" role="button" tabindex="0" aria-label="Close image viewer">Close</span>
+      <img class="lightbox-img" id="lightbox-img" src="" alt="" />
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════
+       SCRIPTS
+  ══════════════════════════════════════════════ -->
+  <script src="script.js"></script>
+
+  <script>
+    (function () {
+      const lightbox    = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const closeBtn    = lightbox.querySelector('.lightbox-close');
+
+      document.querySelectorAll('.gallery-img-wrap img').forEach((img) => {
+        img.addEventListener('click', () => {
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt;
+          lightbox.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+          closeBtn.focus();
+        });
+      });
+
+      function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        document.body.style.overflow = '';
+        lightboxImg.src = '';
+      }
+
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      closeBtn.addEventListener('click', closeLightbox);
+      closeBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); closeLightbox(); }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+      });
+    })();
+  </script>
+
+</body>
+</html>

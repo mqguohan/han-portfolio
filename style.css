@@ -1,0 +1,575 @@
+/* ══════════════════════════════════════════════════════════════
+   HAN GUO — PORTFOLIO STYLESHEET
+
+   Sections:
+   1.  Variables & Reset
+   2.  Intro / Landing Frame
+   3.  Homepage Header
+   4.  Project Grid
+   5.  About Section
+   6.  Contact / Footer
+   7.  Scroll Reveal Utility
+   8.  Responsive — Tablet
+   9.  Responsive — Mobile
+══════════════════════════════════════════════════════════════ */
+
+
+/* ──────────────────────────────────────────────────────────
+   1. VARIABLES & RESET
+────────────────────────────────────────────────────────── */
+
+:root {
+  /* Primary type color */
+  --pink:         #FF3F7F;
+
+  /* Project block fills */
+  --block-pink:     #FFB5CA;   /* soft pastel pink  — project 1 */
+  --block-hot:      #FF3777;   /* vivid hot pink    — project 2 */
+  --block-green:    #5DC48A;   /* soft sage green   — project 3 */
+  --block-blue:     #88C6E9;   /* soft sky blue     — project 4 */
+  --block-lavender: #BDB5E8;   /* soft lavender     — project 5 */
+
+  /* Divider lines */
+  --rule:         rgba(255, 63, 127, 0.14);
+
+  /* Shared horizontal padding */
+  --pad-h:        clamp(2rem, 5vw, 5rem);
+
+  /* Font stack */
+  --font:         'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font);
+  background: #fff;
+  color: var(--pink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Reusable small label — "Selected Projects", "About" */
+.label {
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: var(--pink);
+  letter-spacing: 0.03em;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   2. INTRO / LANDING FRAME
+────────────────────────────────────────────────────────── */
+
+/* Scroll locked while intro is visible */
+body.intro-active {
+  overflow: hidden;
+}
+
+/* ── Intro is a fixed full-screen overlay, not a scroll section.
+   It sits above everything at z-index 100 and fades out on click. ── */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* Fade transition — JS adds .intro-hidden to trigger it */
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.85s ease, visibility 0.85s ease;
+}
+
+/* After clicking Han: fade out, then fully remove from interaction.
+   visibility snaps to hidden at the END of the transition (CSS spec
+   behaviour for visible→hidden), so the element is accessible while
+   still visible and truly gone once the fade completes. */
+.intro.intro-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ── Background image ── */
+.intro-bg {
+  position: absolute;
+  inset: -60px;          /* overshoot edges to hide blur halos */
+  z-index: 0;
+  /* Pastel gradient — visible while hero-bg.jpg loads or is missing */
+  background: linear-gradient(
+    135deg,
+    #fce4ec 0%,
+    #f8bbd0 18%,
+    #dfd5f4 36%,
+    #b3e5fc 55%,
+    #e8f5e9 75%,
+    #fff9c4 90%,
+    #fce4ec 100%
+  );
+}
+
+.intro-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(14px) saturate(1.1);
+  transform: scale(1.06);   /* hide blur-edge artifacts */
+}
+
+/* ── "This is Han" text ── */
+.intro-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  user-select: none;
+}
+
+.intro-text {
+  display: inline-flex;
+  align-items: baseline;
+  color: #fff;
+  line-height: 1;
+}
+
+.intro-prefix {
+  font-size: clamp(1rem, 2.2vw, 1.6rem);
+  font-weight: 300;
+  letter-spacing: 0.025em;
+  /* Small optical nudge so it aligns neatly next to the huge "Han" */
+  padding-bottom: 0.1em;
+}
+
+.intro-name {
+  font-size: clamp(5rem, 15vw, 12rem);
+  font-weight: 200;
+  letter-spacing: -0.025em;
+  line-height: 0.95;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.intro-name:hover {
+  opacity: 0.75;
+}
+
+/* White underline beneath "Han" — matches the width of the word */
+.intro-name::after {
+  content: '';
+  position: absolute;
+  bottom: -0.07em;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   3. HOMEPAGE HEADER
+────────────────────────────────────────────────────────── */
+
+.homepage {
+  background: #fff;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: var(--pad-h);
+  padding-bottom: clamp(2.5rem, 4vh, 4.5rem);
+}
+
+/* ── Left side: name + tagline ── */
+.header-left {
+  flex: 1;
+  max-width: 58%;
+}
+
+.site-name {
+  font-size: clamp(1.75rem, 2.8vw, 2.4rem);
+  font-weight: 500;
+  color: var(--pink);
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  margin-bottom: 0.55rem;
+}
+
+.site-tagline {
+  font-size: clamp(0.72rem, 1vw, 0.875rem);
+  font-weight: 300;
+  color: var(--pink);
+  line-height: 1.65;
+  max-width: 430px;
+}
+
+/* ── Right side: stacked vertical navigation ── */
+.site-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.38rem;
+  padding-top: 0.15rem;
+}
+
+.nav-link {
+  font-size: clamp(0.7rem, 0.9vw, 0.82rem);
+  font-weight: 300;
+  color: var(--pink);
+  line-height: 1;
+  transition: opacity 0.2s ease;
+}
+
+.nav-link:hover {
+  opacity: 0.45;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   4. PROJECT GRID
+────────────────────────────────────────────────────────── */
+
+/* The "Selected Projects" label sits above the full-bleed grid */
+.projects-meta {
+  padding: 0 var(--pad-h);
+  margin-bottom: 0.9rem;
+}
+
+/* Full-bleed 2-column grid, no gap — blocks sit flush */
+.project-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: clamp(260px, 46vh, 520px);
+}
+
+/* ── Individual block ── */
+.project-block {
+  position: relative;
+  display: block;
+  overflow: hidden;      /* clips oversized title text at block edge */
+  cursor: pointer;
+}
+
+.project--pastel-pink { background-color: var(--block-pink);     }
+.project--hot-pink    { background-color: var(--block-hot);      }
+.project--green       { background-color: var(--block-green);    }
+.project--blue        { background-color: var(--block-blue);     }
+.project--lavender    { background-color: var(--block-lavender); }
+
+/* 5th block: spans both columns for a wide cinematic row.
+   On mobile the single-column grid makes this behave normally. */
+.project-block--wide {
+  grid-column: 1 / -1;
+}
+
+/* Subtle dark overlay on hover (sits above image, below text) */
+.project-block::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.38s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.project-block:hover::after {
+  background: rgba(0, 0, 0, 0.07);
+}
+
+/* ── Project image (hidden; blends into color on hover) ── */
+.project-img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;   /* image tints the block color rather than covering it */
+}
+
+.project-block:hover .project-img {
+  opacity: 0.3;
+}
+
+/* ── Content wrapper ── */
+.project-inner {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;   /* title anchored to top by default */
+  padding: clamp(1.2rem, 2.5vw, 2rem);
+  overflow: hidden;
+}
+
+/* KANANA modifier: title anchored to the bottom */
+.project--title-bottom .project-inner {
+  justify-content: space-between;
+}
+
+/* ── Oversized title ──
+   Width > 100% so text intentionally bleeds past the right edge.
+   The block's overflow:hidden clips it cleanly. */
+.project-title {
+  font-size: clamp(3rem, 8vw, 7.5rem);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  width: calc(100% + 4rem);      /* deliberate bleed */
+  flex-shrink: 0;
+  transition: transform 0.38s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.project-block:hover .project-title {
+  transform: translateY(-5px);
+}
+
+/* ── Project description ── hidden until hover ── */
+.project-desc {
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.65;
+  max-width: 320px;
+  margin-top: auto;
+  flex-shrink: 0;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* For KANANA, description sits at the top (title is at bottom) */
+.project--title-bottom .project-desc {
+  margin-top: 0;
+}
+
+.project-block:hover .project-desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   5. ABOUT SECTION
+────────────────────────────────────────────────────────── */
+
+.about {
+  padding: clamp(4rem, 7vh, 7rem) var(--pad-h);
+  border-top: 1px solid var(--rule);
+  margin-top: clamp(4rem, 7vh, 6rem);
+}
+
+/* Two-column layout: label | body text */
+.about-inner {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  column-gap: clamp(2rem, 4vw, 5rem);
+  align-items: start;
+}
+
+.about-label {
+  padding-top: 0.2rem;
+}
+
+.about-text {
+  font-size: clamp(0.875rem, 1.2vw, 1rem);
+  font-weight: 300;
+  color: var(--pink);
+  line-height: 1.85;
+  max-width: 540px;
+  margin-bottom: 2.5rem;
+}
+
+/* ── Education ── */
+.education {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.edu-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+}
+
+.edu-school {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--pink);
+  line-height: 1.35;
+}
+
+.edu-degree {
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: var(--pink);
+  opacity: 0.6;
+  line-height: 1.45;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   6. CONTACT / FOOTER
+────────────────────────────────────────────────────────── */
+
+.contact {
+  padding: clamp(1.5rem, 3vw, 2.5rem) var(--pad-h);
+  border-top: 1px solid var(--rule);
+  margin-top: 2rem;
+}
+
+.contact-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact-name {
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: var(--pink);
+  opacity: 0.5;
+}
+
+.contact-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.contact-links a {
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: var(--pink);
+  transition: opacity 0.2s ease;
+}
+
+.contact-links a:hover {
+  opacity: 0.45;
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   7. SCROLL REVEAL
+   Elements with class .reveal start invisible and translate
+   upward. JS adds .is-visible when they enter the viewport.
+────────────────────────────────────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity  0.72s ease,
+    transform 0.72s ease;
+  transition-delay: var(--delay, 0s);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   8. RESPONSIVE — TABLET  (640px – 1023px)
+────────────────────────────────────────────────────────── */
+
+@media (min-width: 640px) {
+  .br-desktop { display: block; }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .project-title {
+    font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+  }
+
+  .about-inner {
+    grid-template-columns: 120px 1fr;
+  }
+}
+
+
+/* ──────────────────────────────────────────────────────────
+   9. RESPONSIVE — MOBILE  (< 640px)
+────────────────────────────────────────────────────────── */
+
+/* Hide desktop line-break in tagline on small screens */
+.br-desktop { display: none; }
+
+@media (max-width: 639px) {
+  /* Header: stack vertically */
+  .site-header {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .header-left {
+    max-width: 100%;
+  }
+
+  /* Nav becomes a horizontal row on mobile */
+  .site-nav {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  /* Single-column project stack */
+  .project-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: clamp(200px, 58vw, 360px);
+  }
+
+  .project-title {
+    font-size: clamp(2.4rem, 11.5vw, 4rem);
+    width: calc(100% + 1.5rem);
+  }
+
+  /* About: remove label sidebar */
+  .about-inner {
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+  }
+
+  /* Contact: stack left */
+  .contact-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
