@@ -11,189 +11,105 @@
     href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500&display=swap"
     rel="stylesheet"
   />
-
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="intro-active">
 
-  <!-- ═══════════════════════════════════════════
-       FRAME 1 — INTRO / LANDING
-  ════════════════════════════════════════════ -->
+  <!-- Intro splash: clicking "Han" enters the portfolio. -->
   <section class="intro" id="intro">
-
-    <!-- Blurred pastel background image.
-         Fallback gradient is defined in CSS and shows while
-         hero-bg.jpg loads or if the file is missing. -->
     <div class="intro-bg">
-      <img
-        src="assets/hero-bg.jpg"
-        alt=""
-        class="intro-bg-img"
-        aria-hidden="true"
-      />
+      <img src="assets/hero-bg.jpg" alt="" class="intro-bg-img" aria-hidden="true" />
     </div>
-
-    <!-- "This is Han" — mixed-size baseline-aligned text -->
     <div class="intro-content">
       <div class="intro-text">
-        <span class="intro-prefix">This is&nbsp;</span><span
-          class="intro-name"
-          role="button"
-          tabindex="0"
-          aria-label="Enter site"
-        >Han</span>
+        <span class="intro-prefix">This is&nbsp;</span>
+        <span class="intro-name" role="button" tabindex="0" aria-label="Enter site">Han</span>
       </div>
     </div>
-
   </section>
 
-
-  <!-- ═══════════════════════════════════════════
-       FRAME 2 — MAIN HOMEPAGE
-  ════════════════════════════════════════════ -->
   <main class="homepage" id="homepage">
-
-    <!-- ── Header ──────────────────────────────────────────── -->
     <header class="site-header">
-
       <div class="header-left">
         <h1 class="site-name">Han Guo</h1>
-        <p class="site-tagline">
-          Media designer and creative technologist working with AI, synthetic landscapes,<br class="br-desktop" />
-          ecology, and interactive systems.
-        </p>
+        <p class="site-tagline">Media designer and creative technologist working across synthetic landscapes, ecology, AI, and interactive systems.</p>
       </div>
 
-      <!-- Stacked right-aligned navigation -->
-      <nav class="site-nav" aria-label="Main navigation">
-        <a href="#contact" class="nav-link">Contact</a>
+      <nav class="site-nav" aria-label="Contact">
         <a href="mailto:mqguohan@gmail.com" class="nav-link">mqguohan@gmail.com</a>
       </nav>
-
     </header>
 
-
-    <!-- ── Selected Projects ───────────────────────────────── -->
-    <section class="projects" aria-label="Selected Projects">
-
+    <!-- Image-led editorial project board. -->
+    <section class="projects" id="projects" aria-labelledby="projects-title">
       <div class="projects-meta">
-        <span class="label">Selected Projects</span>
+        <h2 class="label" id="projects-title">Selected Projects</h2>
+        <span class="projects-count">01-05</span>
       </div>
 
-      <!-- Full-bleed 2-column grid. Each block uses overflow:hidden
-           to clip the oversized title text at the block edge. -->
       <div class="project-grid">
-
-        <!-- 1 · From Imagined Color to Landscape Reality -->
-        <a
-          href="imagined-color.html"
-          class="project-block project--pastel-pink reveal"
-          aria-label="From Imagined Color to Landscape Reality"
-        >
-          <!-- Project image: hidden by default, blends in subtly on hover -->
+        <a href="imagined-color.html" class="project-block project-block--imagined reveal" aria-label="From Imagined Color to Landscape Reality">
           <div class="project-img">
-            <img src="assets/imagined-color/imagined-color-01.jpg" alt="" loading="lazy" aria-hidden="true" />
+            <img src="assets/homepage/imagined-color-cover.jpg" alt="Dreamlike pink landscape from From Imagined Color to Landscape Reality" />
           </div>
           <div class="project-inner">
-            <h2 class="project-title">From Imagined Color to Landscape Reality</h2>
-            <p class="project-desc">
-              A visual research project exploring how imagined colors become real landscape conditions
-              through biological, mineral, industrial, and designed processes.
-            </p>
+            <span class="project-index">01</span>
+            <h3 class="project-title">From Imagined Color to Landscape Reality</h3>
+            <p class="project-desc">Imagined colors translated into biological, mineral, industrial, and designed landscape conditions.</p>
           </div>
         </a>
 
-        <!-- 2 · Datanteater / Body Electric -->
-        <a
-          href="datanteater.html"
-          class="project-block project--hot-pink reveal"
-          style="--delay: 0.08s"
-          aria-label="Datanteater / Body Electric"
-        >
+        <a href="datanteater.html" class="project-block project-block--datanteater reveal" style="--delay: 0.08s" aria-label="Datanteater / Body Electric">
           <div class="project-img">
-            <img src="assets/datanteater/datanteater-01.jpg" alt="" loading="lazy" aria-hidden="true" />
+            <img src="assets/homepage/datanteater-cover.jpg" data-fallback-src="assets/homepage/datanteater-cover.png" alt="Digital organism from Datanteater / Body Electric" loading="lazy" />
           </div>
           <div class="project-inner">
-            <h2 class="project-title">Datanteater / Body Electric</h2>
-            <p class="project-desc">
-              An interactive emotional data system that transforms daily reflections, bodily states,
-              and environmental inputs into a changing digital organism and landscape.
-            </p>
+            <span class="project-index">02</span>
+            <h3 class="project-title">Datanteater / Body Electric</h3>
+            <p class="project-desc">Daily reflections and body data become a changing digital organism and environment.</p>
           </div>
         </a>
 
-        <!-- 3 · KANANA — title anchored to bottom of block -->
-        <a
-          href="kanana.html"
-          class="project-block project--green project--title-bottom reveal"
-          style="--delay: 0.16s"
-          aria-label="KANANA"
-        >
+        <a href="kanana.html" class="project-block project-block--kanana reveal" style="--delay: 0.16s" aria-label="KANANA">
           <div class="project-img">
-            <img src="assets/kanana/kanana-01.jpg" alt="" loading="lazy" aria-hidden="true" />
+            <img src="assets/homepage/kanana-cover.jpg" alt="KANANA banana biodiversity brand project" loading="lazy" />
           </div>
-          <!-- Description is placed before the title in markup so it
-               floats to the top while the title anchors to the bottom -->
           <div class="project-inner">
-            <p class="project-desc">
-              A public welfare brand about banana biodiversity conservation. Through the pop-up concept
-              "Banana Tribe," role-playing as "banana people," and satirical visual language, the
-              project communicates ecological equality and the message of "All Life Matters."
-            </p>
-            <h2 class="project-title">KANANA</h2>
+            <span class="project-index">03</span>
+            <h3 class="project-title">KANANA</h3>
+            <p class="project-desc">A playful public-welfare brand for banana biodiversity conservation and ecological equality.</p>
           </div>
         </a>
 
-        <!-- 4 · Mantis Shrimp Umwelt / Second Nature -->
-        <a
-          href="mantis-shrimp.html"
-          class="project-block project--blue reveal"
-          style="--delay: 0.24s"
-          aria-label="Mantis Shrimp Umwelt / Second Nature"
-        >
+        <a href="mantis-shrimp.html" class="project-block project-block--mantis reveal" style="--delay: 0.24s" aria-label="Mantis Shrimp Umwelt / Second Nature">
           <div class="project-img">
-            <img src="assets/mantis-shrimp/mantis-shrimp-01.jpg" alt="" loading="lazy" aria-hidden="true" />
+            <img src="assets/homepage/mantis-shrimp-cover.jpg" data-fallback-src="assets/homepage/mantis-shrimp-cover.png" alt="Multispectral world from Mantis Shrimp Umwelt / Second Nature" loading="lazy" />
           </div>
           <div class="project-inner">
-            <h2 class="project-title">Mantis Shrimp Umwelt / Second Nature</h2>
-            <p class="project-desc">
-              A speculative visual study of non-human perception, using the mantis shrimp's sensory
-              world as a way to rethink color, environment, and experience.
-            </p>
+            <span class="project-index">04</span>
+            <h3 class="project-title">Mantis Shrimp Umwelt / Second Nature</h3>
+            <p class="project-desc">A speculative visual study of non-human perception, color, and environment.</p>
           </div>
         </a>
 
-        <!-- 5 · Dream Core Landscape — wide full-span block -->
-        <a
-          href="dreamcore.html"
-          class="project-block project--lavender project-block--wide reveal"
-          style="--delay: 0.32s"
-          aria-label="Dream Core Landscape"
-        >
+        <a href="dreamcore.html" class="project-block project-block--dreamcore reveal" style="--delay: 0.32s" aria-label="Dream Core Landscape">
           <div class="project-img">
-            <img src="assets/dream-core/dream-core-01.jpg" alt="" loading="lazy" aria-hidden="true" />
+            <img src="assets/homepage/dreamcore-cover.jpg" alt="Atmospheric artificial landscape from Dream Core Landscape" loading="lazy" />
           </div>
           <div class="project-inner">
-            <h2 class="project-title">Dream Core Landscape</h2>
-            <p class="project-desc">
-              A first-semester speculative landscape project exploring dreamlike environments,
-              artificial nature, and atmospheric world-building.
-            </p>
+            <span class="project-index">05</span>
+            <h3 class="project-title">Dream Core Landscape</h3>
+            <p class="project-desc">Dreamlike environments, artificial nature, and atmospheric world-building.</p>
           </div>
         </a>
-
-      </div><!-- /.project-grid -->
+      </div>
     </section>
 
-
-    <!-- ── About ───────────────────────────────────────────── -->
     <section class="about reveal" id="about">
       <div class="about-inner">
-
         <div class="about-label">
           <span class="label">About</span>
         </div>
-
         <div class="about-body">
           <p class="about-text">
             Han Guo is a media designer and creative technologist currently studying Synthetic
@@ -213,12 +129,9 @@
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
-
-    <!-- ── Contact / Footer ────────────────────────────────── -->
     <footer class="contact reveal" id="contact">
       <div class="contact-inner">
         <span class="contact-name">Han Guo</span>
@@ -227,7 +140,6 @@
         </div>
       </div>
     </footer>
-
   </main>
 
   <script src="script.js"></script>

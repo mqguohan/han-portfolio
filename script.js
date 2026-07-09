@@ -107,3 +107,12 @@ function initRevealObserver() {
 
   revealEls.forEach((el) => observer.observe(el));
 }
+
+/* Use an existing alternate cover while an intended JPG is not present. */
+document.querySelectorAll('img[data-fallback-src]').forEach((image) => {
+  image.addEventListener('error', () => {
+    const fallback = image.dataset.fallbackSrc;
+    if (!fallback || image.src.endsWith(fallback)) return;
+    image.src = fallback;
+  }, { once: true });
+});

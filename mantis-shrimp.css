@@ -244,11 +244,11 @@ figcaption,
    .archive-category--comfy   — extra top spacing before ComfyUI section
    .archive-category-header   — holds the single category label
    .archive-cat-label         — "MJ Generated" / "ComfyUI Generated"
-   .archive-grid              — 4-col default (MJ static images)
-   .archive-grid--2col        — 2-col for GIF row within MJ section
+   .image-group               — filename-grouped MJ image rows
+   .archive-grid              — default grid
+   .archive-grid--2col        — 2-col modifier
    .archive-grid--5col        — 5-col for ComfyUI square thumbnails
    .archive-grid--square      — forces 1:1 crop via aspect-ratio + cover
-   .archive-row-gap           — tight top gap between unlabeled sub-rows
    .archive-img-wrap          — individual cell; hover effect here
 ────────────────────────────────────────────────────────── */
 
@@ -300,11 +300,37 @@ figcaption,
   grid-template-columns: repeat(5, 1fr);
 }
 
-/* Small top gap for unlabeled sub-rows within a category
-   (GIFs row and Group 6 row inside MJ Generated).
-   Same value as the grid gap so they read as one archive. */
-.archive-row-gap {
-  margin-top: clamp(0.4rem, 1.2vw, 1rem);
+/* MJ archive: each filename group is kept as its own row block. */
+.image-group {
+  display: grid;
+  gap: clamp(0.55rem, 1.25vw, 1rem);
+  margin-bottom: clamp(1.5rem, 3.5vw, 3rem);
+}
+
+.image-group:last-child {
+  margin-bottom: 0;
+}
+
+.image-group--four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.image-group--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 760px;
+}
+
+/* Groups 2-4 use consistent vertical cards only. */
+.portrait-group .archive-img-wrap {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+
+.portrait-group .archive-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* ── Square crop modifier — ComfyUI images only ──
@@ -485,6 +511,14 @@ figcaption,
   .archive-grid--2col {
     max-width: 100%;
   }
+
+  .image-group--four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .image-group--two {
+    max-width: 100%;
+  }
 }
 
 
@@ -522,6 +556,17 @@ figcaption,
 
   /* GIF 2-col stays 2-col on mobile, no max-width */
   .archive-grid--2col {
+    max-width: 100%;
+  }
+
+  .image-group {
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .image-group--four,
+  .image-group--two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     max-width: 100%;
   }
 

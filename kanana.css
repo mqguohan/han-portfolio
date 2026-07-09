@@ -9,8 +9,8 @@
    4.  Project Sections — shared structure
    5.  Body Text
    6.  Presentation Archive — lead + 3-col grid
-   7.  Workshop — lead + 4-col row
-   8.  Market Booth — lead + 3-col grid
+   7.  Workshop — lead + 2x2 grid
+   8.  Market Booth — orientation groups
    9.  Shared gallery image wrapper + hover
    10. Lightbox
    11. Footer
@@ -242,7 +242,7 @@ figcaption,
 /* ──────────────────────────────────────────────────────────
    7. WORKSHOP
    01.jpg — full-width lead
-   02–05.jpg — 4-column row
+   02–05.jpg — 2x2 grid
 ────────────────────────────────────────────────────────── */
 
 .ps--workshop .ps-text {
@@ -254,10 +254,10 @@ figcaption,
   height: auto;
 }
 
-/* 4-column row for the remaining workshop photos */
+/* 2x2 grid for the remaining workshop photos */
 .workshop-grid-4 {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: clamp(0.5rem, 1.2vw, 1rem);
   margin-top: clamp(0.5rem, 1.2vw, 1rem);
 }
@@ -266,7 +266,7 @@ figcaption,
 /* ──────────────────────────────────────────────────────────
    8. MARKET BOOTH
    01.jpg — full-width lead
-   02–07.jpg — 3-column grid (2 rows)
+   02–07.jpg — grouped horizontal / vertical grids
 ────────────────────────────────────────────────────────── */
 
 .ps--market .ps-text {
@@ -278,12 +278,18 @@ figcaption,
   height: auto;
 }
 
-/* 3-column grid: 6 images → 2 rows */
-.market-grid-3 {
+.market-groups {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.8rem, 1.6vw, 1.4rem);
+  margin-top: clamp(0.6rem, 1.3vw, 1rem);
+}
+
+/* Two images per row within each orientation group */
+.market-orientation-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(0.5rem, 1.2vw, 1rem);
-  margin-top: clamp(0.5rem, 1.2vw, 1rem);
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(0.8rem, 1.6vw, 1.4rem);
 }
 
 
@@ -443,7 +449,7 @@ figcaption,
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* 4-col workshop → 2-col on tablet */
+  /* Workshop stays as a 2x2 documentary grid on tablet */
   .workshop-grid-4 {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -467,9 +473,12 @@ figcaption,
 
   /* All grids → 2-col on mobile */
   .archive-grid-3,
-  .workshop-grid-4,
-  .market-grid-3 {
+  .workshop-grid-4 {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .market-orientation-grid {
+    grid-template-columns: 1fr;
   }
 
   .project-footer-inner {

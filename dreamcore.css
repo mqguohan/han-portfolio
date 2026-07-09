@@ -214,6 +214,18 @@ figcaption,
   background: #f2f0fb;   /* soft lavender placeholder while loading */
 }
 
+.workflow-media {
+  margin-top: clamp(2rem, 4vh, 3.5rem);
+}
+
+.workflow-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 3px;
+  box-shadow: 0 8px 40px rgba(255, 63, 127, 0.08);
+}
+
 
 /* ──────────────────────────────────────────────────────────
    7. IMAGE GRID
