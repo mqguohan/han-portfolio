@@ -1,0 +1,47 @@
+﻿{
+    "endingKey":  "designed_spectacle",
+    "title":  "Designed Spectacle",
+    "subtitle":  "A legible and visually intensified landscape ending",
+    "description":  "Design interventions reshaped how the landscape is seen. Legibility, public visibility, and vividness are high, but the visual presentation may exceed the underlying ecological health.",
+    "dominantTendency":  "Design",
+    "relatedMetrics":  {
+                           "vividness":  82,
+                           "biodiversity":  42,
+                           "ecologicalRecovery":  38,
+                           "toxicity":  40,
+                           "stability":  46,
+                           "publicVisibility":  82,
+                           "legibility":  78,
+                           "hiddenRisk":  60
+                       },
+    "assets":  {
+                   "splat":  "../assets/endings/designed_spectacle.spz",
+                   "format":  "spz"
+               },
+    "camera":  {
+                   "position":  [
+                                    0.8,
+                                    1.2,
+                                    3.6
+                                ],
+                   "target":  [
+                                  0,
+                                  0.4,
+                                  0
+                              ],
+                   "fov":  55,
+                   "minDistance":  0.3,
+                   "maxDistance":  12
+               },
+    "theme":  {
+                  "background":  "#211621",
+                  "text":  "#fff8f2",
+                  "accent":  "#ff7bac",
+                  "secondaryAccent":  "#efce7b"
+              },
+    "uiText":  {
+                   "dominantForce":  "Design intervention",
+                   "systemReading":  "Spectacle and legibility dominate",
+                   "risk":  "A beautiful reading may conceal unresolved material conditions."
+               }
+}

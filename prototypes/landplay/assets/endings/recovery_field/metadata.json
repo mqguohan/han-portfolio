@@ -1,0 +1,45 @@
+﻿{
+    "endingKey":  "recovery_field",
+    "title":  "Recovery Field",
+    "subtitle":  "A partial ecological repair landscape ending",
+    "description":  "Despite earlier contamination or disturbance, biological systems began to reassert themselves. Recovery is genuine but slow, and memory of damage persists.",
+    "dominantTendency":  "Recovery",
+    "relatedMetrics":  {
+                           "vividness":  48,
+                           "biodiversity":  56,
+                           "ecologicalRecovery":  58,
+                           "toxicity":  38,
+                           "stability":  50,
+                           "hiddenRisk":  38
+                       },
+    "assets":  {
+                   "splat":  "../assets/endings/recovery_field.spz",
+                   "format":  "spz"
+               },
+    "camera":  {
+                   "position":  [
+                                    0.8,
+                                    1.2,
+                                    3.6
+                                ],
+                   "target":  [
+                                  0,
+                                  0.4,
+                                  0
+                              ],
+                   "fov":  55,
+                   "minDistance":  0.3,
+                   "maxDistance":  12
+               },
+    "theme":  {
+                  "background":  "#211621",
+                  "text":  "#fff8f2",
+                  "accent":  "#b7dcae",
+                  "secondaryAccent":  "#7fffe0"
+              },
+    "uiText":  {
+                   "dominantForce":  "Ecological recovery",
+                   "systemReading":  "Partial but real ecological repair",
+                   "risk":  "Recovery is present, but it remains uneven and memory of damage persists."
+               }
+}

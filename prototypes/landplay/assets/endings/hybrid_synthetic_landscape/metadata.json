@@ -1,0 +1,47 @@
+﻿{
+    "endingKey":  "hybrid_synthetic_landscape",
+    "title":  "Hybrid Synthetic Landscape",
+    "subtitle":  "A layered multi-force landscape ending",
+    "description":  "No single force gained dominance. Industrial, biological, speculative, and social forces each left partial marks, producing a layered and contradictory synthetic terrain.",
+    "dominantTendency":  "Hybrid",
+    "relatedMetrics":  {
+                           "vividness":  58,
+                           "biodiversity":  46,
+                           "ecologicalRecovery":  44,
+                           "toxicity":  48,
+                           "stability":  44,
+                           "speculation":  54,
+                           "artificiality":  52,
+                           "hiddenRisk":  58
+                       },
+    "assets":  {
+                   "splat":  "../assets/endings/hybrid_synthetic_landscape.spz",
+                   "format":  "spz"
+               },
+    "camera":  {
+                   "position":  [
+                                    0.8,
+                                    1.2,
+                                    3.6
+                                ],
+                   "target":  [
+                                  0,
+                                  0.4,
+                                  0
+                              ],
+                   "fov":  55,
+                   "minDistance":  0.3,
+                   "maxDistance":  12
+               },
+    "theme":  {
+                  "background":  "#211621",
+                  "text":  "#fff8f2",
+                  "accent":  "#d9c8ff",
+                  "secondaryAccent":  "#ff7bac"
+              },
+    "uiText":  {
+                   "dominantForce":  "Overlapping forces",
+                   "systemReading":  "Multiple systems coexist without resolving",
+                   "risk":  "Contradictory forces remain active across the field."
+               }
+}

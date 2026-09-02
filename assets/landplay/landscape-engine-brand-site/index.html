@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landplay — A Playable Landscape System</title>
+  <meta name="description" content="Landplay is a playable system for generating landscapes through conditions, rules, and chance.">
+  <link rel="stylesheet" href="style.css">
+  <!-- Card styles, scoped under .field-deck; loaded last so the deck's own
+       rules win inside the cards and nowhere else. -->
+  <link rel="stylesheet" href="assets/field-deck/field-deck.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       FIXED NAVIGATION
+       ============================================================ -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <a class="site-nav__brand" href="#top">Landplay</a>
+    <div class="site-nav__links">
+      <a href="#concept">Concept</a>
+      <a href="#system">System</a>
+      <a href="#states">States</a>
+      <a href="#output">Output</a>
+      <a href="#game-entry">Play the game</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ============================================================
+         SECTION 1 — HERO
+         Physical matter (left) / digital output (right)
+         ============================================================ -->
+    <header class="hero" id="top" data-split data-boundary data-cursor-shift>
+      <div class="hero__panes" aria-hidden="false">
+        <figure class="split-pane split-pane--material">
+          <img src="assets/images/material/pink_rock.png"
+               alt="Large pale pink boulders surrounding small turquoise pools of water"
+               fetchpriority="high" decoding="async" data-shift="left">
+        </figure>
+        <div class="seam" aria-hidden="true"></div>
+        <figure class="split-pane split-pane--digital">
+          <img src="assets/images/digital/game-spectral-valley.png"
+               alt="Landplay output: a turquoise and magenta valley under a flecked sky, overlaid with translucent rectangular fragments"
+               fetchpriority="high" decoding="async" data-shift="right">
+        </figure>
+      </div>
+
+      <p class="hero__label" data-reveal>Rule-Based Playable Landscape System</p>
+
+      <div class="hero__text">
+        <p class="hero__subtitle" data-reveal>A playable system for generating landscapes<br>through conditions, rules, and chance.</p>
+        <h1 class="hero__title">Landplay</h1>
+      </div>
+    </header>
+
+    <!-- ============================================================
+         SECTION 2 — TEXT INTRODUCTION  (pause)
+         ============================================================ -->
+    <section class="intro" id="concept" aria-labelledby="intro-statement">
+      <p class="intro__lead" data-reveal>
+        Landscape is not a fixed image.<br>
+        It is the result of forces, conditions, decisions, and time.
+      </p>
+      <h2 class="intro__statement" id="intro-statement" data-reveal>
+        Conditions determine tendency.<br>
+        Randomness determines manifestation.
+      </h2>
+    </section>
+
+    <!-- ============================================================
+         SECTION 3 — MATERIAL BECOMES CONDITION  (translation)
+         pink_wet_moss ↔ game-river-valley
+         ============================================================ -->
+    <section class="condition" data-cursor-shift aria-labelledby="condition-headline">
+      <div class="condition__panes">
+        <figure class="split-pane split-pane--material">
+          <img src="assets/images/material/pink_wet_moss.png"
+               alt="Dense pink and green moss growing over dark wet stone and water"
+               loading="lazy" decoding="async" data-shift="left" data-parallax="0.03">
+          <span class="spec-label spec-label--a">Moisture</span>
+          <span class="spec-label spec-label--b">Biodiversity</span>
+        </figure>
+        <div class="seam seam--moss" aria-hidden="true"></div>
+        <figure class="split-pane split-pane--digital">
+          <img src="assets/images/digital/game-river-valley.png"
+               alt="Landplay output: a green river valley under clouds, sampled into overlapping rectangular fragments"
+               loading="lazy" decoding="async" data-shift="right" data-parallax="0.03">
+          <span class="spec-label spec-label--c">Salinity</span>
+          <span class="spec-label spec-label--d">Toxicity</span>
+        </figure>
+      </div>
+      <div class="condition__text">
+        <h2 class="condition__headline" id="condition-headline" data-reveal>A material becomes a&nbsp;condition.</h2>
+        <p class="condition__note" data-reveal>Physical matter is translated into measurable states.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 4 — ACTION  (intervention)
+         pink_dry_soil ↔ game-dry-plain, 35 / 65 split
+         ============================================================ -->
+    <section class="action" aria-labelledby="action-statement">
+      <figure class="action__material">
+        <img src="assets/images/material/pink_dry_soil.png"
+             alt="Cracked dry pink soil with fractured crust plates"
+             loading="lazy" decoding="async" data-parallax="0.03">
+      </figure>
+      <div class="action__body">
+        <h2 class="action__statement" id="action-statement" data-reveal>
+          The player does not draw the landscape&nbsp;directly.
+          <span class="action__statement-strong">The player changes its&nbsp;conditions.</span>
+        </h2>
+        <ul class="action__commands" data-reveal aria-label="Available actions">
+          <li>Irrigate</li>
+          <li>Extract</li>
+          <li>Seed</li>
+          <li>Protect</li>
+          <li>Drain</li>
+          <li>Wait</li>
+        </ul>
+        <figure class="action__digital">
+          <img src="assets/images/digital/game-dry-plain.png"
+               alt="Landplay output: a dry tan plain streaked with shallow water and sparse growth under a wide sky"
+               loading="lazy" decoding="async" data-parallax="0.015">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 5 — CONTROL  (pause)
+         ============================================================ -->
+    <section class="control" aria-labelledby="control-statement">
+      <h2 class="control__statement" id="control-statement" data-reveal>
+        You can influence the&nbsp;system.<br>
+        <span class="control__statement-muted">You cannot fully control&nbsp;it.</span>
+      </h2>
+      <p class="control__note" data-reveal>
+        Every action creates consequences, but the final landscape emerges
+        through thresholds, feedback, time, and chance.
+      </p>
+    </section>
+
+    <!-- ============================================================
+         SECTION 6 — SYSTEM LOGIC
+         pink_oil_surface ↔ game-toxic-basin behind a moving sequence line
+         ============================================================ -->
+    <section class="system" id="system" aria-labelledby="system-heading">
+      <div class="system__panes" aria-hidden="true">
+        <figure class="split-pane split-pane--material">
+          <img src="assets/images/material/pink_oil_surface.png"
+               alt="" loading="lazy" decoding="async" data-parallax="0.03">
+        </figure>
+        <figure class="split-pane split-pane--digital split-pane--scanlines">
+          <img src="assets/images/digital/game-toxic-basin.png"
+               alt="" loading="lazy" decoding="async" data-parallax="0.03">
+        </figure>
+      </div>
+      <h2 class="system__heading" id="system-heading" data-reveal>System logic</h2>
+      <div class="system__track" data-track>
+        <ol class="system__sequence">
+          <li>Action</li>
+          <li aria-hidden="true" class="system__arrow">→</li>
+          <li>Local condition</li>
+          <li aria-hidden="true" class="system__arrow">→</li>
+          <li>Emergent rule</li>
+          <li aria-hidden="true" class="system__arrow">→</li>
+          <li>Landscape response</li>
+        </ol>
+      </div>
+      <p class="system__note" data-reveal>Nothing is placed. Everything is provoked.</p>
+    </section>
+
+
+    <!-- ============================================================
+         SECTION 7 — LANDPLAY FIELD DECK  (physical interface)
+         The five cards below are lifted verbatim from the field-deck
+         project. Their styles live in assets/field-deck/field-deck.css,
+         scoped under .field-deck so the two systems cannot reach
+         each other. Regenerate from the deck project rather than
+         hand-editing the card markup.
+         ============================================================ -->
+    <section class="field-deck-section" id="field-deck" aria-labelledby="field-deck-heading">
+      <div class="field-deck__head">
+        <p class="field-deck__label" data-reveal>Physical interface / field instrument</p>
+        <h2 class="field-deck__title" id="field-deck-heading" data-reveal>Landplay field deck</h2>
+        <p class="field-deck__note" data-reveal>
+          The rules of Landplay leave the screen and become a physical system of
+          actions, metrics, and possible outcomes.
+        </p>
+      </div>
+
+      <div class="field-deck__scroller" tabindex="0" role="region" aria-label="Field deck sample cards, scrollable">
+        <div class="field-deck field-deck__field">
+          <article class="card-shell  " data-type="action" data-index="1"><div class="card-inner"><div class="card-face card-front action-card category-climate"><div class="card-top"><span>A–01 / ADD LIGHT RAIN</span><span>02 / ACTION</span></div><div class="action-field pattern-rain"><div class="influence influence--region" aria-label="region influence diagram"><i data-i="0"></i><i data-i="1"></i><i data-i="2"></i><i data-i="3"></i><i data-i="4"></i><i data-i="5"></i><i data-i="6"></i><i data-i="7"></i><i data-i="8"></i><i data-i="9"></i><i data-i="10"></i><i data-i="11"></i><i data-i="12"></i><i data-i="13"></i><i data-i="14"></i><i data-i="15"></i><i data-i="16"></i><i data-i="17"></i><i data-i="18"></i><i data-i="19"></i><i data-i="20"></i><i data-i="21"></i><i data-i="22"></i><i data-i="23"></i><i data-i="24"></i></div><span class="scope-label">SELECTED + NEIGHBORS</span></div><div class="title-block title-fit title-fit--short"><span>CLIMATE / BASIC FORCES</span><h3>ADD LIGHT RAIN</h3></div><p class="summary clamp-3">Moisture rises across the selected region.</p><dl class="effect-list"><div class="effect effect-up"><dt>MOISTURE ↑</dt></div><div class="effect effect-up"><dt>STABILITY ↑</dt></div></dl><div class="card-foot"><span>CONDITION INTERVENTION</span><span>A–01</span></div></div><div class="card-face card-back universal-card-back back-family-action"><div class="universal-back ub-01"><div class="ub-safe"><div class="ub-cells"><i data-cell="0"></i><i data-cell="1"></i><i data-cell="2"></i><i data-cell="3"></i><i data-cell="4"></i><i data-cell="5"></i><i data-cell="6"></i><i data-cell="7"></i><i data-cell="8"></i><i data-cell="9"></i><i data-cell="10"></i><i data-cell="11"></i><i data-cell="12"></i><i data-cell="13"></i><i data-cell="14"></i><i data-cell="15"></i><i data-cell="16"></i><i data-cell="17"></i><i data-cell="18"></i><i data-cell="19"></i><i data-cell="20"></i><i data-cell="21"></i><i data-cell="22"></i><i data-cell="23"></i><i data-cell="24"></i></div><b class="ub-mark ub-mark--top">LANDPLAY</b><b class="ub-mark ub-mark--bottom">LANDPLAY</b></div></div></div></div></article>
+          <article class="card-shell  " data-type="action" data-index="11"><div class="card-inner"><div class="card-face card-front action-card category-industrial"><div class="card-top"><span>A–11 / EXTRACT SURFACE MATERIAL</span><span>02 / ACTION</span></div><div class="action-field pattern-cut"><div class="influence influence--local" aria-label="local influence diagram"><i data-i="0"></i><i data-i="1"></i><i data-i="2"></i><i data-i="3"></i><i data-i="4"></i><i data-i="5"></i><i data-i="6"></i><i data-i="7"></i><i data-i="8"></i><i data-i="9"></i><i data-i="10"></i><i data-i="11"></i><i data-i="12"></i><i data-i="13"></i><i data-i="14"></i><i data-i="15"></i><i data-i="16"></i><i data-i="17"></i><i data-i="18"></i><i data-i="19"></i><i data-i="20"></i><i data-i="21"></i><i data-i="22"></i><i data-i="23"></i><i data-i="24"></i></div><span class="scope-label">SELECTED CELL</span></div><div class="title-block title-fit title-fit--medium"><span>INDUSTRIAL / BASIC FORCES</span><h3>EXTRACT SURFACE MATERIAL</h3></div><p class="summary clamp-3">Extracts material and damages local biological stability.</p><dl class="effect-list"><div class="effect effect-up"><dt>MINERAL EXPOSURE ↑</dt></div><div class="effect effect-down"><dt>STABILITY ↓</dt></div><div class="effect effect-down"><dt>ORGANIC ACTIVITY ↓</dt></div></dl><div class="card-foot"><span>CONDITION INTERVENTION</span><span>A–11</span></div></div><div class="card-face card-back universal-card-back back-family-action"><div class="universal-back ub-01"><div class="ub-safe"><div class="ub-cells"><i data-cell="0"></i><i data-cell="1"></i><i data-cell="2"></i><i data-cell="3"></i><i data-cell="4"></i><i data-cell="5"></i><i data-cell="6"></i><i data-cell="7"></i><i data-cell="8"></i><i data-cell="9"></i><i data-cell="10"></i><i data-cell="11"></i><i data-cell="12"></i><i data-cell="13"></i><i data-cell="14"></i><i data-cell="15"></i><i data-cell="16"></i><i data-cell="17"></i><i data-cell="18"></i><i data-cell="19"></i><i data-cell="20"></i><i data-cell="21"></i><i data-cell="22"></i><i data-cell="23"></i><i data-cell="24"></i></div><b class="ub-mark ub-mark--top">LANDPLAY</b><b class="ub-mark ub-mark--bottom">LANDPLAY</b></div></div></div></div></article>
+          <article class="card-shell  " data-type="metric" data-index="58"><div class="card-inner"><div class="card-face card-front metric-card metric-toxicity"><div class="card-top"><span>M–02 / TOXICITY</span><span>03 / METRIC</span></div><div class="metric-title title-fit title-fit--short"><span>GLOBAL MEASUREMENT</span><h3>TOXICITY</h3></div><div class="gauge"><div class="gauge-numbers"><span>00</span><span>25</span><span>50</span><span>75</span><span>100</span></div><div class="gauge-track"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="gauge-labels"><span>LOW</span><span>GLOBAL FIELD</span><span>HIGH</span></div></div><p class="summary clamp-3">The rounded mean toxicity of all landscape cells.</p><ul class="components"><li>MEAN CELL TOXICITY</li><li>ROUND</li><li>CLAMP 0—100</li></ul><div class="metric-signal pattern-toxic"></div><div class="card-foot"><span>RANGE / 00—100</span><span>M–02</span></div></div><div class="card-face card-back universal-card-back back-family-metric"><div class="universal-back ub-01"><div class="ub-safe"><div class="ub-cells"><i data-cell="0"></i><i data-cell="1"></i><i data-cell="2"></i><i data-cell="3"></i><i data-cell="4"></i><i data-cell="5"></i><i data-cell="6"></i><i data-cell="7"></i><i data-cell="8"></i><i data-cell="9"></i><i data-cell="10"></i><i data-cell="11"></i><i data-cell="12"></i><i data-cell="13"></i><i data-cell="14"></i><i data-cell="15"></i><i data-cell="16"></i><i data-cell="17"></i><i data-cell="18"></i><i data-cell="19"></i><i data-cell="20"></i><i data-cell="21"></i><i data-cell="22"></i><i data-cell="23"></i><i data-cell="24"></i></div><b class="ub-mark ub-mark--top">LANDPLAY</b><b class="ub-mark ub-mark--bottom">LANDPLAY</b></div></div></div></div></article>
+          <article class="card-shell  " data-type="metric" data-index="61"><div class="card-inner"><div class="card-face card-front metric-card metric-biodiversity"><div class="card-top"><span>M–05 / BIODIVERSITY</span><span>03 / METRIC</span></div><div class="metric-title title-fit title-fit--long"><span>GLOBAL MEASUREMENT</span><h3>BIODIVERSITY</h3></div><div class="gauge"><div class="gauge-numbers"><span>00</span><span>25</span><span>50</span><span>75</span><span>100</span></div><div class="gauge-track"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="gauge-labels"><span>LOW</span><span>GLOBAL FIELD</span><span>HIGH</span></div></div><p class="summary clamp-3">Biological activity and ecological memory, reduced by toxicity.</p><ul class="components"><li>ORGANIC ACTIVITY × 0.5</li><li>BLOOM + STABLE BLOOM</li><li>CULTIVATED + RECOVERED</li><li>TOXICITY × −0.2</li></ul><div class="metric-signal pattern-bio"></div><div class="card-foot"><span>RANGE / 00—100</span><span>M–05</span></div></div><div class="card-face card-back universal-card-back back-family-metric"><div class="universal-back ub-01"><div class="ub-safe"><div class="ub-cells"><i data-cell="0"></i><i data-cell="1"></i><i data-cell="2"></i><i data-cell="3"></i><i data-cell="4"></i><i data-cell="5"></i><i data-cell="6"></i><i data-cell="7"></i><i data-cell="8"></i><i data-cell="9"></i><i data-cell="10"></i><i data-cell="11"></i><i data-cell="12"></i><i data-cell="13"></i><i data-cell="14"></i><i data-cell="15"></i><i data-cell="16"></i><i data-cell="17"></i><i data-cell="18"></i><i data-cell="19"></i><i data-cell="20"></i><i data-cell="21"></i><i data-cell="22"></i><i data-cell="23"></i><i data-cell="24"></i></div><b class="ub-mark ub-mark--top">LANDPLAY</b><b class="ub-mark ub-mark--bottom">LANDPLAY</b></div></div></div></div></article>
+          <article class="card-shell  " data-type="ending" data-index="75"><div class="card-inner"><div class="card-face card-front ending-card ending-bloom_landscape"><div class="ending-image"><img src="assets/field-deck/bloom_landscape.png" alt="BLOOM LANDSCAPE — official LANDPLAY ending screenshot"><div class="scan-overlay"></div><span>E–07</span></div><div class="ending-body"><div class="card-top"><span>BLOOM LANDSCAPE</span><span>04 / ENDING</span></div><span class="ending-tendency">DOMINANT TENDENCY / BLOOM</span><h3 class="title-fit title-fit--short">BLOOM LANDSCAPE</h3><p class="summary clamp-3">Biological bloom expands visibly across the field.</p><ul class="signals"><li>BLOOM CELLS ≥3</li><li>TOXICITY &lt;55</li><li>OR BLOOM-DOMINANT PATH</li></ul></div><div class="card-foot"><span>CATALOGUE OF POSSIBLE WORLDS</span><span>E–07</span></div></div><div class="card-face card-back universal-card-back back-family-ending"><div class="universal-back ub-01"><div class="ub-safe"><div class="ub-cells"><i data-cell="0"></i><i data-cell="1"></i><i data-cell="2"></i><i data-cell="3"></i><i data-cell="4"></i><i data-cell="5"></i><i data-cell="6"></i><i data-cell="7"></i><i data-cell="8"></i><i data-cell="9"></i><i data-cell="10"></i><i data-cell="11"></i><i data-cell="12"></i><i data-cell="13"></i><i data-cell="14"></i><i data-cell="15"></i><i data-cell="16"></i><i data-cell="17"></i><i data-cell="18"></i><i data-cell="19"></i><i data-cell="20"></i><i data-cell="21"></i><i data-cell="22"></i><i data-cell="23"></i><i data-cell="24"></i></div><b class="ub-mark ub-mark--top">LANDPLAY</b><b class="ub-mark ub-mark--bottom">LANDPLAY</b></div></div></div></div></article>
+        </div>
+      </div>
+
+      <div class="field-deck__foot">
+        <p class="field-deck__axis">
+          <span>Digital rules</span><span class="field-deck__axis-mark" aria-hidden="true">→</span><span>Field deck</span>
+        </p>
+        <a class="field-deck__link" href="#" data-deck-link>
+          <span>View the field deck</span><span class="field-deck__arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 8 — LANDSCAPE STATES  (archive)
+         Six digital images as expanding vertical strips
+         ============================================================ -->
+    <section class="states" id="states" aria-labelledby="states-heading">
+      <div class="states__header">
+        <h2 class="states__heading" id="states-heading" data-reveal>Landscape states</h2>
+        <p class="states__note" data-reveal>Specimens generated by the engine. Same rules, different chance.</p>
+      </div>
+      <div class="states__strips">
+        <figure class="state" data-state>
+          <img src="assets/images/digital/game-dry-plain.png"
+               alt="Dry state: a tan plain with cracked ground and receding water"
+               loading="lazy" decoding="async">
+          <figcaption>
+            <span class="state__index">01</span>
+            <span class="state__name">Dry</span>
+            <span class="state__source">source — pink_dry_soil</span>
+          </figcaption>
+        </figure>
+        <figure class="state" data-state>
+          <img src="assets/images/digital/game-river-valley.png"
+               alt="Wet state: a green valley with a river running through open grassland"
+               loading="lazy" decoding="async">
+          <figcaption>
+            <span class="state__index">02</span>
+            <span class="state__name">Wet</span>
+            <span class="state__source">source — pink_wet_moss</span>
+          </figcaption>
+        </figure>
+        <figure class="state" data-state>
+          <img src="assets/images/digital/game-pink-ridge.png"
+               alt="Bloom state: ridges saturated with pink and yellow above a dark vegetated foreground"
+               loading="lazy" decoding="async">
+          <figcaption>
+            <span class="state__index">03</span>
+            <span class="state__name">Bloom</span>
+            <span class="state__source">source — pink_plants</span>
+          </figcaption>
+        </figure>
+        <figure class="state" data-state>
+          <img src="assets/images/digital/game-toxic-basin.png"
+               alt="Toxic state: a dark red basin under heavy fog with bare standing trees"
+               loading="lazy" decoding="async">
+          <figcaption>
+            <span class="state__index">04</span>
+            <span class="state__name">Toxic</span>
+            <span class="state__source">source — pink_oil_surface</span>
+          </figcaption>
+        </figure>
+        <figure class="state" data-state>
+          <img src="assets/images/digital/game-salt-dunes.png"
+               alt="Salt state: pale white crusted dunes broken by low green mounds"
+               loading="lazy" decoding="async">
+          <figcaption>
+            <span class="state__index">05</span>
+            <span class="state__name">Salt</span>
+            <span class="state__source">source — pink_salt_crust</span>
+          </figcaption>
+        </figure>
+        <figure class="state" data-state>
+          <img src="assets/images/digital/game-spectral-valley.png"
+               alt="AI ghost state: a turquoise and magenta valley glowing under a flecked sky"
+               loading="lazy" decoding="async">
+          <figcaption>
+            <span class="state__index">06</span>
+            <span class="state__name">AI Ghost</span>
+            <span class="state__source">source — pink_rock</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 9 — REFLECTION  (pause)
+         pink_salt_crust fragment clipped at the viewport edge
+         ============================================================ -->
+    <section class="reflection" aria-labelledby="reflection-statement">
+      <figure class="reflection__fragment" aria-hidden="true">
+        <img src="assets/images/material/pink_salt_crust.png"
+             alt="" loading="lazy" decoding="async" data-parallax="0.02">
+      </figure>
+      <h2 class="reflection__statement" id="reflection-statement" data-reveal>
+        Landscape is not designed as a final&nbsp;form.<br>
+        <span class="reflection__statement-em">It emerges from the conditions that make it&nbsp;possible.</span>
+      </h2>
+      <p class="reflection__note" data-reveal>The designer constructs tendencies rather than fixed outcomes.</p>
+    </section>
+
+    <!-- ============================================================
+         SECTION 10 — FINAL  (conclusion)
+         Closes with the physical source index (all six materials)
+         ============================================================ -->
+    <section class="final" id="output" aria-labelledby="final-statement">
+      <!-- Each intended line is its own block so wrapping can never strand a
+           word (e.g. "NOT") on a line of its own. -->
+      <h2 class="final__statement" id="final-statement" data-reveal>
+        <span class="final__line">Landscape is not</span>
+        <span class="final__line">the object.</span>
+        <span class="final__line final__statement-em">Landscape is</span>
+        <span class="final__line final__statement-em">the output.</span>
+      </h2>
+      <p class="final__note" data-reveal>
+        Landplay asks what happens when designers stop defining
+        a final form and instead construct the conditions from which form can emerge.
+      </p>
+      <ul class="final__verbs" data-reveal aria-label="Ways of engaging">
+        <li>Play</li>
+        <li>Observe</li>
+        <li>Intervene</li>
+        <li>Wait</li>
+      </ul>
+
+      <!-- Game entry — editorial call-to-action.
+           Not wired to the game yet: href="#" is intercepted in script.js. -->
+      <div class="game-entry" id="game-entry" data-reveal>
+        <p class="game-entry__label">Playable web experience</p>
+        <a class="game-entry__link" href="#" data-game-entry>
+          <span class="game-entry__text">Enter Landplay</span>
+          <span class="game-entry__arrow" aria-hidden="true">→</span>
+        </a>
+        <span class="game-entry__strip" aria-hidden="true"></span>
+        <p class="game-entry__note">Intervene in local conditions and observe how the landscape responds.</p>
+        <p class="game-entry__status" data-game-status role="status">Landplay — coming soon</p>
+      </div>
+
+      <!-- Physical source index — the six raw materials, archived -->
+      <footer class="final__archive">
+        <p class="final__archive-label">Physical source archive</p>
+        <div class="final__archive-strip">
+          <figure>
+            <img src="assets/images/material/pink_dry_soil.png"
+                 alt="Cracked dry pink soil sample" loading="lazy" decoding="async">
+            <figcaption>M-01 dry soil</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/images/material/pink_wet_moss.png"
+                 alt="Wet pink and green moss sample" loading="lazy" decoding="async">
+            <figcaption>M-02 wet moss</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/images/material/pink_plants.png"
+                 alt="Soft feathery pink plant fibres sample" loading="lazy" decoding="async">
+            <figcaption>M-03 plants</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/images/material/pink_oil_surface.png"
+                 alt="Marbled pink and dark green oil surface sample" loading="lazy" decoding="async">
+            <figcaption>M-04 oil surface</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/images/material/pink_salt_crust.png"
+                 alt="White salt crystals crusting over pink brine sample" loading="lazy" decoding="async">
+            <figcaption>M-05 salt crust</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/images/material/pink_rock.png"
+                 alt="Pale pink boulders with turquoise pools sample" loading="lazy" decoding="async">
+            <figcaption>M-06 rock</figcaption>
+          </figure>
+        </div>
+        <p class="final__colophon">Landplay — rule-based playable landscape system</p>
+      </footer>
+    </section>
+
+  </main>
+
+  <script src="script.js?v=presentation-return"></script>
+</body>
+</html>

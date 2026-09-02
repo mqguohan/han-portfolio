@@ -1,0 +1,45 @@
+﻿{
+    "endingKey":  "fragile_bloom_landscape",
+    "title":  "Fragile Bloom Landscape",
+    "subtitle":  "A bloom-dominant but unstable landscape ending",
+    "description":  "Bloom has spread across the field, but the system remains unstable. Beauty and risk coexist in a landscape where biological growth has not fully secured its ground.",
+    "dominantTendency":  "Bloom",
+    "relatedMetrics":  {
+                           "vividness":  82,
+                           "biodiversity":  62,
+                           "ecologicalRecovery":  48,
+                           "toxicity":  46,
+                           "stability":  31,
+                           "hiddenRisk":  72
+                       },
+    "assets":  {
+                   "splat":  "../assets/endings/fragile_bloom_landscape.spz",
+                   "format":  "spz"
+               },
+    "camera":  {
+                   "position":  [
+                                    0.8,
+                                    1.2,
+                                    3.6
+                                ],
+                   "target":  [
+                                  0,
+                                  0.4,
+                                  0
+                              ],
+                   "fov":  55,
+                   "minDistance":  0.3,
+                   "maxDistance":  12
+               },
+    "theme":  {
+                  "background":  "#211621",
+                  "text":  "#fff8f2",
+                  "accent":  "#ff7bac",
+                  "secondaryAccent":  "#7fffe0"
+              },
+    "uiText":  {
+                   "dominantForce":  "Bloom",
+                   "systemReading":  "Beautiful but unstable biological expansion",
+                   "risk":  "Bloom activity is strong, but hidden risk and low stability remain beneath the surface."
+               }
+}

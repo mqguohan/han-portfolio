@@ -1,0 +1,46 @@
+﻿{
+    "endingKey":  "extractive_wound",
+    "title":  "Extractive Wound",
+    "subtitle":  "An exposed and damaged mineral landscape ending",
+    "description":  "Extraction left deep marks on the terrain through mineral exposure, contamination, and lowered stability. Recovery remains possible, but the wound is persistent.",
+    "dominantTendency":  "Extraction",
+    "relatedMetrics":  {
+                           "vividness":  38,
+                           "biodiversity":  20,
+                           "ecologicalRecovery":  16,
+                           "toxicity":  68,
+                           "stability":  28,
+                           "extractionPressure":  86,
+                           "hiddenRisk":  76
+                       },
+    "assets":  {
+                   "splat":  "../assets/endings/extractive_wound.spz",
+                   "format":  "spz"
+               },
+    "camera":  {
+                   "position":  [
+                                    0.8,
+                                    1.2,
+                                    3.6
+                                ],
+                   "target":  [
+                                  0,
+                                  0.4,
+                                  0
+                              ],
+                   "fov":  55,
+                   "minDistance":  0.3,
+                   "maxDistance":  12
+               },
+    "theme":  {
+                  "background":  "#211621",
+                  "text":  "#fff8f2",
+                  "accent":  "#d98a3d",
+                  "secondaryAccent":  "#8b596f"
+              },
+    "uiText":  {
+                   "dominantForce":  "Extraction",
+                   "systemReading":  "Mineral exposure and extraction memory",
+                   "risk":  "Extraction scars continue to weaken stability and recovery."
+               }
+}

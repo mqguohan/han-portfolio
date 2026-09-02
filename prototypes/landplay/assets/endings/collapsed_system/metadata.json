@@ -1,0 +1,45 @@
+﻿{
+    "endingKey":  "collapsed_system",
+    "title":  "Collapsed System",
+    "subtitle":  "A toxic and unstable landscape ending",
+    "description":  "Toxicity overwhelmed organic activity, and instability prevented recovery. The landscape has lost much of its capacity to self-organize.",
+    "dominantTendency":  "Collapse",
+    "relatedMetrics":  {
+                           "vividness":  22,
+                           "biodiversity":  14,
+                           "ecologicalRecovery":  10,
+                           "toxicity":  86,
+                           "stability":  18,
+                           "hiddenRisk":  82
+                       },
+    "assets":  {
+                   "splat":  "../assets/endings/collapsed_system.spz",
+                   "format":  "spz"
+               },
+    "camera":  {
+                   "position":  [
+                                    0.8,
+                                    1.2,
+                                    3.6
+                                ],
+                   "target":  [
+                                  0,
+                                  0.4,
+                                  0
+                              ],
+                   "fov":  55,
+                   "minDistance":  0.3,
+                   "maxDistance":  12
+               },
+    "theme":  {
+                  "background":  "#211621",
+                  "text":  "#fff8f2",
+                  "accent":  "#8b596f",
+                  "secondaryAccent":  "#7fffe0"
+              },
+    "uiText":  {
+                   "dominantForce":  "Toxic collapse",
+                   "systemReading":  "Ecological function has failed",
+                   "risk":  "Contamination and low stability dominate the field."
+               }
+}

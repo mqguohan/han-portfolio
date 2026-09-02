@@ -1,0 +1,1221 @@
+/* ==========================================================================
+   LANDPLAY — brand site
+   Editorial, image-led, physical ↔ digital.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   0. Font — Scope (local variable font: wght 60–100, wdth 400–600)
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Scope";
+  src: url("assets/fonts/scope-variable.ttf") format("truetype-variations");
+  font-weight: 60 100;
+  font-stretch: 400% 600%;
+  font-display: swap;
+}
+
+/* --------------------------------------------------------------------------
+   1. Custom properties
+   -------------------------------------------------------------------------- */
+:root {
+  /* color — derived from the material images */
+  --paper: #f2ebe7;          /* warm mineral off-white */
+  --paper-soft: #ece1dc;     /* slightly pinker paper for pauses */
+  --ink: #1d1518;            /* near-black plum */
+  --ink-soft: #5c4e50;       /* muted body copy */
+  --pink: #cf8f92;           /* dusty rock pink */
+  --pink-deep: #a75f66;      /* accent, sparingly */
+  --moss: #2d3324;           /* deep moss green */
+  --night: #171114;          /* dark sections */
+  --line: rgba(29, 21, 24, 0.25);
+  --line-light: rgba(242, 235, 231, 0.35);
+
+  /* type */
+  --font-display: "Scope", "Helvetica Neue", Arial, sans-serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --wide: "wght" 100, "wdth" 600;   /* heaviest, widest cut */
+  --mid:  "wght" 85,  "wdth" 500;
+  --narrow: "wght" 65, "wdth" 420;  /* light, condensed cut */
+
+  --size-hero: clamp(2.6rem, 16.2vw, 20rem);
+  --size-xl: clamp(2.4rem, 6.5vw, 6.8rem);
+  --size-lg: clamp(1.8rem, 4.5vw, 4.4rem);
+  --size-md: clamp(1.05rem, 1.7vw, 1.4rem);
+  --size-sm: clamp(0.82rem, 1vw, 0.95rem);
+  --size-label: clamp(0.6rem, 0.75vw, 0.72rem);
+
+  /* spacing */
+  --gutter: clamp(1.25rem, 4vw, 4rem);
+  --seam-w: clamp(14px, 2.4vw, 34px);
+  /* how far the closing image archive rides up under the game-entry CTA */
+  --cta-overlap: clamp(8rem, 21vh, 15rem);
+
+  /* motion (JS writes into these) */
+  --split: 50%;      /* hero boundary position */
+  --shift-x: 0px;    /* cursor-driven object-position shift */
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & base
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+html, body { overflow-x: clip; }
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--size-md);
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+img { display: block; max-width: 100%; }
+
+ul, ol { list-style: none; }
+
+a { color: inherit; text-decoration: none; }
+
+section, header.hero { scroll-margin-top: 0; }
+
+/* shared display-type helpers */
+h1, h2 {
+  font-family: var(--font-display);
+  font-variation-settings: var(--wide);
+  font-weight: normal;
+  line-height: 0.98;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+/* small scientific label style, reused across sections */
+.spec-label,
+.hero__label,
+.state__index,
+.state__source,
+.final__archive-label,
+.final__archive-strip figcaption,
+.final__colophon {
+  font-family: var(--font-body);
+  font-size: var(--size-label);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* reveal-on-scroll (JS adds .is-visible; harmless without JS) */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(1.2rem);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+[data-reveal].is-visible { opacity: 1; transform: none; }
+.no-js [data-reveal] { opacity: 1; transform: none; }
+
+/* --------------------------------------------------------------------------
+   3. Navigation — thin, quiet, readable over anything via blend mode
+   -------------------------------------------------------------------------- */
+.site-nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.9rem var(--gutter);
+  color: #fff;
+  mix-blend-mode: difference;   /* stays legible over light and dark imagery */
+  pointer-events: none;         /* let clicks through except on links */
+}
+.site-nav a { pointer-events: auto; }
+
+.site-nav__brand {
+  font-family: var(--font-display);
+  font-variation-settings: var(--mid);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.85rem;
+}
+
+.site-nav__links {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2.6rem);
+}
+.site-nav__links a {
+  font-size: var(--size-label);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  white-space: nowrap;          /* never break a nav word mid-item */
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+.site-nav__links a:hover,
+.site-nav__links a:focus-visible { border-bottom-color: #fff; }
+
+/* --------------------------------------------------------------------------
+   4. Split-pane machinery (hero, condition, system)
+   -------------------------------------------------------------------------- */
+.split-pane {
+  position: relative;
+  overflow: hidden;
+}
+.split-pane img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* slight over-scale gives parallax + cursor-shift room without gaps */
+  transform: scale(1.08);
+  will-change: transform;
+}
+/* cursor-driven counter-movement: left and right drift apart */
+[data-cursor-shift] img[data-shift="left"]  { object-position: calc(50% + var(--shift-x)) 50%; }
+[data-cursor-shift] img[data-shift="right"] { object-position: calc(50% - var(--shift-x)) 50%; }
+
+/* Seam — narrow transition zone interleaving both images as horizontal
+   strips (physical ::before, digital ::after, opposite mask phases) */
+.seam {
+  position: relative;
+  flex: 0 0 var(--seam-w);
+  z-index: 2;
+}
+.seam::before,
+.seam::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+.seam::before {
+  background-image: url("assets/images/material/pink_rock.png");
+  -webkit-mask-image: repeating-linear-gradient(to bottom, #000 0 14px, transparent 14px 28px);
+          mask-image: repeating-linear-gradient(to bottom, #000 0 14px, transparent 14px 28px);
+}
+.seam::after {
+  background-image: url("assets/images/digital/game-spectral-valley.png");
+  -webkit-mask-image: repeating-linear-gradient(to bottom, transparent 0 14px, #000 14px 28px);
+          mask-image: repeating-linear-gradient(to bottom, transparent 0 14px, #000 14px 28px);
+}
+.seam--moss::before { background-image: url("assets/images/material/pink_wet_moss.png"); }
+.seam--moss::after  { background-image: url("assets/images/digital/game-river-valley.png"); }
+
+/* --------------------------------------------------------------------------
+   5. SECTION 1 — HERO
+   -------------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 560px;
+  overflow: hidden;
+}
+
+.hero__panes {
+  position: absolute;
+  inset: 0;
+  display: flex;
+}
+.hero__panes .split-pane--material {
+  flex: 0 0 calc(var(--split) - var(--seam-w) / 2);
+  transition: flex-basis 0.7s cubic-bezier(0.25, 0.6, 0.3, 1);
+}
+.hero__panes .split-pane--digital { flex: 1 1 auto; }
+
+.hero__label {
+  position: absolute;
+  top: 4.2rem;
+  left: var(--gutter);
+  z-index: 3;
+  color: #fff;
+  mix-blend-mode: difference;
+}
+
+.hero__text {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 3;
+  padding-bottom: clamp(1.6rem, 4.5vh, 3.4rem);
+}
+.hero__subtitle {
+  padding: 0 var(--gutter) clamp(1.4rem, 3vh, 2.4rem);
+  max-width: 34rem;
+  font-size: var(--size-sm);
+  line-height: 1.7;
+  color: var(--ink);
+}
+/* Title spans both images but clears the gutter on every edge.
+   The size is set by width, not height: "LANDPLAY" measures 5.42em at this
+   tracking, so 16.2vw fills ~97% of the space between the gutters — the same
+   proportion the longer former name held, which keeps the composition intact
+   instead of leaving the shorter word stranded in empty space. */
+.hero__title {
+  padding: 0 var(--gutter);
+  font-size: var(--size-hero);
+  line-height: 0.86;      /* cap height 0.70em — no ink escapes the line box */
+  letter-spacing: -0.05em;
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------------------------
+   6. SECTION 2 — TEXT INTRODUCTION
+   -------------------------------------------------------------------------- */
+.intro {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(3rem, 9vh, 7rem);
+  padding: 20vh var(--gutter);
+  background: var(--paper);
+}
+.intro__lead {
+  max-width: 30rem;
+  margin-left: clamp(0rem, 8vw, 9rem);  /* asymmetric placement */
+  font-size: var(--size-sm);
+  line-height: 2;
+  color: var(--ink-soft);
+}
+.intro__statement {
+  font-size: var(--size-xl);
+  font-variation-settings: var(--wide);
+  max-width: 18ch;
+  line-height: 1.04;
+}
+
+/* --------------------------------------------------------------------------
+   7. SECTION 3 — MATERIAL BECOMES CONDITION
+   -------------------------------------------------------------------------- */
+.condition {
+  position: relative;
+  height: 100vh;
+  min-height: 560px;
+  overflow: hidden;
+}
+.condition__panes {
+  position: absolute;
+  inset: 0;
+  display: flex;
+}
+.condition__panes .split-pane { flex: 1 1 50%; }
+
+.condition__text {
+  position: absolute;
+  left: var(--gutter);
+  bottom: 9vh;
+  z-index: 3;
+  max-width: 44rem;
+}
+.condition__headline {
+  font-size: var(--size-lg);
+  color: var(--paper);
+}
+.condition__note {
+  margin-top: 1.1rem;
+  font-size: var(--size-sm);
+  color: rgba(242, 235, 231, 0.82);
+}
+
+/* small scientific labels floated over the imagery */
+.spec-label {
+  position: absolute;
+  z-index: 2;
+  color: #fff;
+  padding-left: 1.4rem;
+  opacity: 0.9;
+}
+.spec-label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1rem;
+  height: 1px;
+  background: currentColor;
+}
+.spec-label--a { top: 18%; left: 8%; }
+.spec-label--b { top: 64%; left: 16%; }
+.spec-label--c { top: 26%; right: 10%; }
+.spec-label--d { top: 72%; right: 18%; }
+
+/* --------------------------------------------------------------------------
+   8. SECTION 4 — ACTION  (35 / 65)
+   -------------------------------------------------------------------------- */
+.action {
+  display: grid;
+  grid-template-columns: 35fr 65fr;
+  min-height: 100vh;
+  background: var(--paper-soft);
+}
+.action__material {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+.action__material img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.08);
+}
+.action__body {
+  display: flex;
+  flex-direction: column;
+  padding: 16vh var(--gutter) 0 clamp(2rem, 5vw, 5rem);
+}
+.action__statement {
+  font-size: var(--size-lg);
+  font-variation-settings: var(--narrow);
+  max-width: 24ch;
+  line-height: 1.06;
+  color: var(--ink-soft);
+}
+.action__statement-strong {
+  display: block;
+  margin-top: 1.2rem;
+  font-variation-settings: var(--wide);
+  color: var(--ink);
+}
+
+/* commands — interface-like, but typographic and restrained */
+.action__commands {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 2.6rem;
+  margin: clamp(2.5rem, 6vh, 4.5rem) 0;
+}
+.action__commands li {
+  font-family: var(--font-display);
+  font-variation-settings: var(--mid);
+  text-transform: uppercase;
+  font-size: clamp(1rem, 1.8vw, 1.5rem);
+  letter-spacing: 0.08em;
+  padding: 0.55rem 0;
+  border-top: 1px solid var(--line);
+  position: relative;
+}
+.action__commands li::before {
+  content: "▸";
+  font-family: var(--font-body);
+  font-size: 0.55em;
+  vertical-align: 0.25em;
+  margin-right: 0.6em;
+  color: var(--pink-deep);
+}
+
+.action__digital {
+  position: relative;
+  overflow: hidden;
+  margin-top: auto;
+  height: 34vh;
+  min-height: 220px;
+}
+.action__digital img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.08);
+}
+
+/* --------------------------------------------------------------------------
+   9. SECTION 5 — CONTROL  (pause)
+   -------------------------------------------------------------------------- */
+.control {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 22vh var(--gutter);
+  background: var(--paper);
+}
+.control__statement {
+  font-size: var(--size-xl);
+  max-width: 16ch;
+  margin-left: auto;          /* pushed right — asymmetry against §2 */
+  text-align: right;
+  line-height: 1.04;
+}
+.control__statement-muted { color: var(--pink-deep); }
+.control__note {
+  margin-top: clamp(3rem, 8vh, 6rem);
+  max-width: 26rem;
+  font-size: var(--size-sm);
+  line-height: 1.9;
+  color: var(--ink-soft);
+}
+
+/* --------------------------------------------------------------------------
+   10. SECTION 6 — SYSTEM LOGIC  (dark)
+   -------------------------------------------------------------------------- */
+.system {
+  position: relative;
+  height: 100vh;
+  min-height: 560px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--night);
+}
+.system__panes {
+  position: absolute;
+  inset: 0;
+  display: flex;
+}
+.system__panes .split-pane { flex: 1 1 50%; }
+.system__panes img { opacity: 0.42; }   /* imagery recedes behind the line */
+.system::after {                         /* quiet vignette for legibility */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(23,17,20,0.55), rgba(23,17,20,0.15) 45%, rgba(23,17,20,0.6));
+  pointer-events: none;
+}
+
+/* structural scan-lines over the digital pane only */
+.split-pane--scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0 6px,
+    rgba(23, 17, 20, 0.28) 6px 8px
+  );
+  pointer-events: none;
+}
+
+.system__heading {
+  position: relative;
+  z-index: 2;
+  padding: 0 var(--gutter);
+  font-size: var(--size-sm);
+  font-variation-settings: var(--mid);
+  letter-spacing: 0.3em;
+  color: var(--line-light);
+  margin-bottom: 6vh;
+}
+
+/* the sequence — one long thin line travelling across the screen */
+.system__track {
+  position: relative;
+  z-index: 2;
+  width: 140%;               /* wider than viewport: cropped at both ends */
+  margin-left: -20%;
+  will-change: transform;
+}
+.system__sequence {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.2rem, 3vw, 3rem);
+  white-space: nowrap;
+  border-top: 1px solid var(--line-light);
+  border-bottom: 1px solid var(--line-light);
+  padding: clamp(1.2rem, 3vh, 2.2rem) 0;
+  justify-content: center;
+}
+.system__sequence li {
+  font-family: var(--font-display);
+  font-variation-settings: var(--wide);
+  text-transform: uppercase;
+  font-size: clamp(1.3rem, 3.4vw, 3.2rem);
+  color: var(--paper);
+}
+.system__sequence .system__arrow {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2vw, 1.8rem);
+  color: var(--pink);
+}
+
+.system__note {
+  position: relative;
+  z-index: 2;
+  margin-top: 7vh;
+  padding: 0 var(--gutter);
+  text-align: right;
+  font-size: var(--size-sm);
+  color: rgba(242, 235, 231, 0.7);
+}
+
+/* --------------------------------------------------------------------------
+   11. SECTION 7 — LANDPLAY FIELD DECK  (physical interface)
+   The cards themselves are styled by assets/field-deck/field-deck.css.
+   Everything here is composition only: where the cards sit, how they
+   overlap, and how the field scrolls.
+   -------------------------------------------------------------------------- */
+.field-deck-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(2.5rem, 6vh, 4.5rem);
+  padding: clamp(6rem, 14vh, 10rem) 0 clamp(4rem, 10vh, 7rem);
+  background: var(--night);
+  color: var(--paper);
+  overflow: hidden;              /* the scroller owns horizontal movement */
+}
+
+.field-deck__head {
+  padding: 0 var(--gutter);
+  max-width: 46rem;
+}
+.field-deck__label {
+  font-family: var(--font-body);
+  font-size: var(--size-label);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(242, 235, 231, 0.55);
+  margin-bottom: clamp(1rem, 2.5vh, 1.6rem);
+}
+.field-deck__title {
+  font-size: var(--size-lg);
+  color: var(--paper);
+}
+.field-deck__note {
+  margin-top: clamp(1.2rem, 3vh, 1.8rem);
+  max-width: 38rem;
+  font-size: var(--size-sm);
+  line-height: 1.9;
+  color: rgba(242, 235, 231, 0.72);
+  text-wrap: balance;
+}
+
+/* the field: a loose horizontal run of cards that continues past the edge */
+.field-deck__scroller {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overscroll-behavior-x: contain;
+}
+.field-deck__scroller::-webkit-scrollbar { display: none; }
+.field-deck__scroller:focus-visible {
+  outline: 1px solid var(--line-light);
+  outline-offset: -1px;
+}
+
+/* two classes so this beats the deck's own `.field-deck` token block,
+   which is loaded after this file */
+.field-deck-section .field-deck__field {
+  --display-scale: 0.72;         /* the deck's own card scale token */
+  display: flex;
+  align-items: flex-start;
+  width: max-content;
+  padding: clamp(2rem, 5vh, 3.4rem) var(--gutter) clamp(2.6rem, 6vh, 4rem);
+  gap: clamp(1.4rem, 2.6vw, 2.6rem);
+}
+
+/* Layout only — never the card's internal design. Three classes so these
+   beat the deck's own `.field-deck .card-shell` rules regardless of order. */
+.field-deck-section .field-deck .card-shell {
+  flex: 0 0 auto;
+  cursor: default;
+  transition: transform 0.5s cubic-bezier(0.25, 0.6, 0.3, 1);
+}
+/* a designed scatter, not a random one */
+.field-deck-section .field-deck .card-shell:nth-child(1) { transform: rotate(-2deg) translateY(10px); }
+.field-deck-section .field-deck .card-shell:nth-child(2) { transform: rotate(1deg)  translateY(-14px); margin-left: -3.2rem; }
+.field-deck-section .field-deck .card-shell:nth-child(3) { transform: rotate(-1deg) translateY(22px);  margin-left: -2.4rem; }
+.field-deck-section .field-deck .card-shell:nth-child(4) { transform: rotate(2deg)  translateY(-6px);  margin-left: -3.6rem; }
+.field-deck-section .field-deck .card-shell:nth-child(5) { transform: rotate(-1.5deg) translateY(16px); margin-left: -2.8rem; }
+
+/* hover: lift, straighten, bring forward. No 3D tilt, no heavy shadow. */
+@media (hover: hover) and (pointer: fine) {
+  .field-deck-section .field-deck .card-shell:hover {
+    transform: rotate(0deg) translateY(-12px);
+    z-index: 5;
+  }
+}
+
+.field-deck__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.4rem 2rem;
+  padding: 0 var(--gutter);
+}
+/* the quiet digital -> physical note */
+.field-deck__axis {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-family: var(--font-body);
+  font-size: var(--size-label);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(242, 235, 231, 0.45);
+}
+.field-deck__axis-mark { color: var(--pink); }
+
+.field-deck__link {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  padding-bottom: 0.25em;
+  font-family: var(--font-display);
+  font-variation-settings: var(--mid);
+  font-size: clamp(0.95rem, 1.5vw, 1.3rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--paper);
+}
+.field-deck__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0.86);
+  transform-origin: left center;
+  transition: transform 0.55s cubic-bezier(0.25, 0.6, 0.3, 1);
+}
+.field-deck__link:hover::after,
+.field-deck__link:focus-visible::after { transform: scaleX(1); }
+.field-deck__arrow {
+  color: var(--pink);
+  transition: transform 0.55s cubic-bezier(0.25, 0.6, 0.3, 1);
+}
+.field-deck__link:hover .field-deck__arrow,
+.field-deck__link:focus-visible .field-deck__arrow { transform: translateX(0.45rem); }
+
+/* --------------------------------------------------------------------------
+   12. SECTION 8 — LANDSCAPE STATES  (archive strips)
+   -------------------------------------------------------------------------- */
+.states {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+}
+.states__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2rem;
+  padding: calc(3.5rem + 2vh) var(--gutter) 1.6rem;
+}
+.states__heading { font-size: var(--size-lg); }
+.states__note {
+  font-size: var(--size-sm);
+  color: var(--ink-soft);
+  max-width: 22rem;
+  text-align: right;
+}
+
+/* six flush vertical strips; hovering a strip widens it */
+.states__strips {
+  flex: 1;
+  display: flex;
+  min-height: 66vh;
+  border-top: 1px solid var(--line);
+}
+.state {
+  position: relative;
+  flex: 1 1 0;
+  overflow: hidden;
+  cursor: crosshair;
+  transition: flex-grow 0.65s cubic-bezier(0.3, 0.6, 0.2, 1);
+}
+.state:hover,
+.state:focus-within,
+.state.is-active { flex-grow: 2.4; }
+
+.state img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.55) contrast(0.96);
+  transition: filter 0.65s ease;
+}
+.state:hover img,
+.state:focus-within img,
+.state.is-active img { filter: none; }
+
+.state figcaption {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1.1rem 1.2rem 1.3rem;
+  background: linear-gradient(to top, rgba(23, 17, 20, 0.72), transparent);
+  color: var(--paper);
+  opacity: 0;
+  transform: translateY(0.6rem);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.state:hover figcaption,
+.state:focus-within figcaption,
+.state.is-active figcaption { opacity: 1; transform: none; }
+
+.state__name {
+  font-family: var(--font-display);
+  font-variation-settings: var(--wide);
+  text-transform: uppercase;
+  font-size: clamp(1.3rem, 2.6vw, 2.4rem);
+  line-height: 1;
+}
+.state__index, .state__source { opacity: 0.75; }
+
+/* --------------------------------------------------------------------------
+   12. SECTION 8 — REFLECTION  (pause + edge fragment)
+   -------------------------------------------------------------------------- */
+.reflection {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 22vh var(--gutter);
+  background: var(--paper-soft);
+  overflow: hidden;
+}
+.reflection__statement {
+  font-size: var(--size-lg);
+  max-width: 24ch;
+  line-height: 1.08;
+  position: relative;
+  z-index: 2;
+}
+.reflection__statement-em { color: var(--pink-deep); }
+.reflection__note {
+  position: relative;
+  z-index: 2;
+  margin-top: clamp(2.5rem, 7vh, 5rem);
+  font-size: var(--size-sm);
+  color: var(--ink-soft);
+}
+
+/* salt-crust fragment clipped at the right edge, blocky mask */
+.reflection__fragment {
+  position: absolute;
+  top: 14vh;
+  right: calc(-1 * clamp(3rem, 8vw, 8rem));
+  width: clamp(14rem, 30vw, 30rem);
+  height: 62vh;
+  overflow: hidden;
+  clip-path: polygon(
+    0 0, 100% 0, 100% 100%, 12% 100%,
+    12% 82%, 0 82%, 0 46%, 8% 46%, 8% 22%, 0 22%
+  );
+}
+.reflection__fragment img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.08);
+}
+
+/* --------------------------------------------------------------------------
+   13. SECTION 9 — FINAL  (dark, conclusive)
+   -------------------------------------------------------------------------- */
+.final {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 18vh 0 0;
+  background: var(--night);
+  color: var(--paper);
+}
+/* Statement lines are grouped explicitly rather than left to the browser:
+   the old `max-width: 14ch` wrapped "LANDSCAPE IS NOT THE OBJECT." after
+   "IS", stranding "NOT" on a line by itself. Each logical line is now its
+   own non-wrapping block, and the size is driven by width so the longest
+   line ("LANDSCAPE IS NOT") always fits between the gutters.
+   Identical to --size-xl from 419px up; below that the floor becomes
+   width-relative (7.2vw), because "LANDSCAPE IS NOT" measures 11.36em and a
+   fixed rem floor would push past the gutter on a 320px phone. */
+.final__statement {
+  padding: 0 var(--gutter);
+  font-size: clamp(min(7.2vw, 1.7rem), 6.5vw, 6.8rem);
+  line-height: 1.04;
+}
+.final__line {
+  display: block;
+  white-space: nowrap;   /* the four phrases never break internally */
+}
+.final__statement-em { color: var(--pink); }
+.final__note {
+  padding: 0 var(--gutter);
+  margin-top: clamp(2.5rem, 6vh, 4.5rem);
+  /* 30rem forced three short lines; two lines need >=680px at the largest
+     body size, so 43rem. Narrower viewports just cap it and wrap naturally. */
+  max-width: 43rem;
+  font-size: var(--size-sm);
+  line-height: 1.9;
+  color: rgba(242, 235, 231, 0.75);
+  text-wrap: balance;  /* even line lengths, never a lone trailing word */
+}
+.final__verbs {
+  display: flex;
+  gap: clamp(1.6rem, 5vw, 4rem);
+  padding: 0 var(--gutter);
+  /* was 12vh of dead space below; the archive now closes the section */
+  margin: clamp(2.5rem, 6vh, 4.5rem) 0 clamp(2rem, 5vh, 3.5rem);
+}
+.final__verbs li {
+  font-family: var(--font-display);
+  font-variation-settings: var(--mid);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: var(--size-sm);
+  border-top: 1px solid var(--line-light);
+  padding-top: 0.7rem;
+}
+
+/* game entry — editorial call-to-action, no button chrome
+   ------------------------------------------------------- */
+/* The CTA block sits above the archive in the stacking order so its type can
+   overlap the image strip, which is pulled up underneath it by --cta-overlap. */
+.game-entry {
+  position: relative;
+  z-index: 3;
+  padding: clamp(2.4rem, 6vh, 4rem) var(--gutter) 0;
+  border-top: 1px solid var(--line-light);
+  scroll-margin-top: 4.5rem;   /* clears the fixed nav when linked to */
+  pointer-events: none;        /* let the archive below stay hoverable */
+}
+.game-entry > * { pointer-events: auto; }
+.game-entry__label {
+  font-family: var(--font-body);
+  font-size: var(--size-label);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(242, 235, 231, 0.55);
+  margin-bottom: clamp(1rem, 2.5vh, 1.6rem);
+}
+
+/* the link itself: display type, thin underline, no container */
+.game-entry__link {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: clamp(0.8rem, 2vw, 1.6rem);
+  max-width: 100%;
+  padding-bottom: 0.3em;
+  font-family: var(--font-display);
+  font-variation-settings: var(--wide);
+  font-size: clamp(3rem, 5.5vw, 7rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--paper);
+  /* keeps the type crisp over the imagery without a box behind it */
+  text-shadow: 0 2px 22px rgba(23, 17, 20, 0.55);
+}
+/* underline extends from 82% to full width on hover */
+.game-entry__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0.82);
+  transform-origin: left center;
+  transition: transform 0.55s cubic-bezier(0.25, 0.6, 0.3, 1);
+}
+.game-entry__link:hover::after,
+.game-entry__link:focus-visible::after { transform: scaleX(1); }
+
+.game-entry__arrow {
+  font-family: var(--font-body);
+  font-size: 0.62em;
+  color: var(--pink);
+  transform: translateX(0);
+  transition: transform 0.55s cubic-bezier(0.25, 0.6, 0.3, 1);
+}
+.game-entry__link:hover .game-entry__arrow,
+.game-entry__link:focus-visible .game-entry__arrow { transform: translateX(0.55rem); }
+
+/* narrow digital strip revealed under the link on hover */
+.game-entry__strip {
+  display: block;
+  width: min(26rem, 100%);
+  height: 7px;
+  margin-top: 1rem;
+  background: url("assets/images/digital/game-spectral-valley.png") 50% 45% / cover;
+  opacity: 0;
+  transform: scaleX(0.35);
+  transform-origin: left center;
+  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.25, 0.6, 0.3, 1);
+}
+.game-entry__link:hover + .game-entry__strip,
+.game-entry__link:focus-visible + .game-entry__strip {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.game-entry__note {
+  margin-top: clamp(0.9rem, 2vh, 1.4rem);
+  /* the sentence measures ~516px once --size-sm reaches its 0.95rem cap, so
+     32rem (512px) broke "responds." onto its own line on large screens */
+  max-width: 38rem;
+  font-size: var(--size-sm);
+  line-height: 1.8;
+  color: rgba(242, 235, 231, 0.82);
+  text-shadow: 0 1px 14px rgba(23, 17, 20, 0.7);
+  text-wrap: balance;  /* if it must wrap on small screens, split it evenly */
+}
+
+/* click status — hidden until JS reveals it, then fades out */
+.game-entry__status {
+  margin-top: 0.9rem;
+  text-shadow: 0 1px 14px rgba(23, 17, 20, 0.8);
+  font-family: var(--font-body);
+  font-size: var(--size-label);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--pink);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.45s ease, visibility 0s linear 0.45s;
+}
+.game-entry__status.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.25s ease, visibility 0s;
+}
+
+/* physical source archive — the six materials, pulled up so the CTA type
+   lands across the top of the strip and the two read as one composition */
+.final__archive {
+  position: relative;
+  margin-top: calc(-1 * var(--cta-overlap));
+}
+/* label pinned to the top-right of the strip: stays visible and secondary,
+   and can never collide with the left-aligned CTA above it */
+.final__archive-label {
+  position: absolute;
+  top: 1rem;
+  right: var(--gutter);
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  color: rgba(242, 235, 231, 0.75);
+}
+.final__archive-strip {
+  position: relative;
+  display: flex;
+}
+/* light gradient over the top band only — enough to hold the type, while the
+   lower two-thirds of every image stays untouched */
+.final__archive-strip::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 72%;
+  z-index: 1;
+  background: linear-gradient(to bottom, rgba(23, 17, 20, 0.52), rgba(23, 17, 20, 0));
+  pointer-events: none;
+}
+.final__archive-strip figure {
+  position: relative;
+  flex: 1 1 0;
+  height: clamp(210px, 30vh, 340px);
+  overflow: hidden;
+}
+.final__archive-strip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.8);
+}
+.final__archive-strip figcaption {
+  position: absolute;
+  left: 0.6rem;
+  bottom: 0.5rem;
+  color: #fff;
+  mix-blend-mode: difference;
+}
+.final__colophon {
+  padding: 1rem var(--gutter) 1.2rem;
+  color: rgba(242, 235, 231, 0.45);
+}
+
+/* --------------------------------------------------------------------------
+   14. Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  :root { --seam-w: 12px; }
+
+  /* hero: stack material over digital */
+  .hero__panes { flex-direction: column; }
+  .hero__panes .split-pane--material { flex: 1 1 50%; transition: none; }
+  .seam { flex-basis: var(--seam-w); }
+  .seam::before,
+  .seam::after {
+    -webkit-mask-image: repeating-linear-gradient(to right, #000 0 14px, transparent 14px 28px);
+            mask-image: repeating-linear-gradient(to right, #000 0 14px, transparent 14px 28px);
+  }
+  .seam::after {
+    -webkit-mask-image: repeating-linear-gradient(to right, transparent 0 14px, #000 14px 28px);
+            mask-image: repeating-linear-gradient(to right, transparent 0 14px, #000 14px 28px);
+  }
+  /* tablet: a little more air than desktop, still filling the measure */
+  .hero__title { font-size: clamp(2.6rem, 15.8vw, 9rem); line-height: 0.9; }
+  .hero__label { top: 3.4rem; }
+
+  .condition__panes { flex-direction: column; }
+  .spec-label--a { top: 12%; left: 6%; }
+  .spec-label--b { top: 34%; left: 14%; }
+  .spec-label--c { top: 60%; right: 8%; }
+  .spec-label--d { top: 84%; right: 14%; }
+
+  .action { grid-template-columns: 1fr; }
+  .action__material { min-height: 42vh; }
+  .action__body { padding: 4rem var(--gutter) 0; }
+  .action__commands { gap: 0 1.6rem; }
+
+  .control__statement { margin-left: 0; text-align: left; }
+
+  .system__panes { flex-direction: column; }
+  .system__sequence {
+    flex-direction: column;
+    align-items: flex-start;
+    white-space: normal;
+    gap: 0.6rem;
+    padding-left: var(--gutter);
+  }
+  .system__track { width: 100%; margin-left: 0; }
+
+  /* field deck: less overlap, cards keep their proportions */
+  .field-deck-section .field-deck__field {
+    --display-scale: 0.62;
+    gap: 1.2rem;
+  }
+  .field-deck-section .field-deck .card-shell:nth-child(n) { margin-left: -1.2rem; }
+  .field-deck-section .field-deck .card-shell:nth-child(1) { margin-left: 0; }
+  .field-deck__foot { flex-direction: column; align-items: flex-start; }
+
+  /* archive becomes a vertical stack; labels always on */
+  .states__strips { flex-direction: column; }
+  .state { min-height: 34vh; }
+  .state figcaption { opacity: 1; transform: none; }
+  .state img { filter: saturate(0.7); }
+  .states__header { flex-direction: column; align-items: flex-start; }
+  .states__note { text-align: left; }
+
+  .reflection__fragment {
+    top: auto;
+    bottom: 6vh;
+    height: 30vh;
+    width: 52vw;
+  }
+
+  .final__verbs { flex-wrap: wrap; gap: 1.2rem 1.6rem; }
+
+  /* CTA: wrap the title naturally, drop hover-only reveals */
+  .game-entry__link {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem 1rem;
+    font-size: clamp(2.4rem, 6.4vw, 4rem);
+  }
+  .game-entry__link::after { transform: scaleX(1); }
+  .game-entry__strip { display: none; }
+
+  /* tablet: keep the overlap, on a shorter strip (3 tiles per row) */
+  :root { --cta-overlap: clamp(6rem, 14.5vh, 9.5rem); }
+  .final__archive-strip figure { height: clamp(150px, 20vh, 210px); }
+  .final__archive-strip::after { height: 72%; }
+  .final__archive-label { top: 0.8rem; }
+  .final__archive-strip { flex-wrap: wrap; }
+  .final__archive-strip figure { flex: 1 1 33.333%; }
+  .final__archive-strip figcaption { font-size: 0.5rem; }
+}
+
+/* very small screens: two-row nav, relaxed heights so text never clips */
+@media (max-width: 480px) {
+  .site-nav {
+    flex-wrap: wrap;
+    row-gap: 0.35rem;
+    padding: 0.7rem var(--gutter);
+  }
+  .site-nav__brand { flex: 1 0 100%; }
+  /* five items: let them flow onto a second row rather than squeeze */
+  .site-nav__links { flex-wrap: wrap; gap: 0.35rem 0.9rem; }
+  .site-nav__links a { letter-spacing: 0.14em; }
+  .hero__label { top: 4.6rem; }
+
+  /* phone: the CTA can wrap, so the overlap is dropped entirely — the copy
+     stays off the images and the strip sits tight beneath it instead */
+  :root { --cta-overlap: 0px; }
+  .game-entry { padding-bottom: clamp(1.2rem, 3vh, 2rem); }
+  .game-entry__link { font-size: clamp(2rem, 9vw, 2.9rem); }
+  .game-entry__note { max-width: none; }
+  .final__archive-strip::after { height: 40%; }
+  /* back into the flow on its own line so it cannot cross the copy above */
+  .final__archive-label {
+    position: static;
+    text-align: right;
+    padding: 0 var(--gutter) 0.6rem;
+  }
+
+  /* phone: cards become a swipeable run showing roughly 1.3 at a time,
+     at a scale that keeps the card text readable rather than a thumbnail */
+  .field-deck-section .field-deck__field {
+    --display-scale: 0.78;
+    gap: 1rem;
+    padding-right: 38vw;         /* the next card always peeks in */
+  }
+  .field-deck-section .field-deck .card-shell:nth-child(n) {
+    margin-left: 0;
+    transform: none;             /* no rotation while swiping */
+  }
+  .field-deck__scroller {
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+  .field-deck-section .field-deck .card-shell { scroll-snap-align: center; }
+
+  /* phone: single word, so it never wraps; keep it filling the measure */
+  .hero__title {
+    font-size: clamp(2.2rem, 15vw, 5rem);
+    white-space: normal;
+    text-wrap: balance;
+  }
+  .intro, .control, .reflection { padding-top: 14vh; padding-bottom: 14vh; }
+}
+
+/* --------------------------------------------------------------------------
+   15. Reduced motion — kill every animation and transform
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.001s !important;
+    animation-duration: 0.001s !important;
+  }
+  [data-reveal] { opacity: 1; transform: none; }
+  .split-pane img, .action__material img, .action__digital img,
+  .reflection__fragment img { transform: none; }
+  /* field deck: cards sit flat and still */
+  .field-deck-section .field-deck .card-shell,
+  .field-deck-section .field-deck .card-shell:hover { transform: none !important; }
+  /* CTA: keep the underline and status legible, drop the motion */
+  .game-entry__link::after { transform: scaleX(1); }
+  .game-entry__arrow { transform: none !important; }
+  .game-entry__strip { display: none; }
+}

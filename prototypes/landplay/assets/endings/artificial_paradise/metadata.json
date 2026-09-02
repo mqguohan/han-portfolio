@@ -1,0 +1,46 @@
+﻿{
+    "endingKey":  "artificial_paradise",
+    "title":  "Artificial Paradise",
+    "subtitle":  "A controlled but ecologically simplified landscape ending",
+    "description":  "High control and stability have produced a legible, managed field. The landscape appears functional and composed, but biodiversity and local variation have been reduced by artificial order.",
+    "dominantTendency":  "Control",
+    "relatedMetrics":  {
+                           "vividness":  44,
+                           "biodiversity":  26,
+                           "ecologicalRecovery":  34,
+                           "toxicity":  34,
+                           "stability":  74,
+                           "artificiality":  82,
+                           "hiddenRisk":  42
+                       },
+    "assets":  {
+                   "splat":  "../assets/endings/artificial_paradise.spz",
+                   "format":  "spz"
+               },
+    "camera":  {
+                   "position":  [
+                                    0.8,
+                                    1.2,
+                                    3.6
+                                ],
+                   "target":  [
+                                  0,
+                                  0.4,
+                                  0
+                              ],
+                   "fov":  55,
+                   "minDistance":  0.3,
+                   "maxDistance":  12
+               },
+    "theme":  {
+                  "background":  "#211621",
+                  "text":  "#fff8f2",
+                  "accent":  "#cfd5d7",
+                  "secondaryAccent":  "#ff7bac"
+              },
+    "uiText":  {
+                   "dominantForce":  "Artificial control",
+                   "systemReading":  "Stabilized artificial order",
+                   "risk":  "Ecological variation is flattened beneath a controlled surface."
+               }
+}

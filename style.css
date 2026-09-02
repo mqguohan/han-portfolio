@@ -684,6 +684,16 @@ body.intro-active {
   grid-column: 1 / span 7;
 }
 
+.project-block--landplay {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 8;
+}
+
+.project-block--landplay .project-title {
+  font-size: clamp(3.6rem, 9vw, 8.5rem);
+  max-width: 12ch;
+}
+
 .project-block--datanteater {
   grid-column: 8 / span 5;
   margin-top: clamp(3.5rem, 9vh, 7rem);
@@ -855,6 +865,7 @@ body.intro-active {
     row-gap: 2.5rem;
   }
 
+  .project-block--landplay,
   .project-block--imagined,
   .project-block--mantis {
     grid-column: 1 / -1;
@@ -880,6 +891,10 @@ body.intro-active {
 
   .project-title {
     font-size: 1.8rem;
+  }
+
+  .project-block--landplay .project-title {
+    font-size: 2.4rem;
   }
 }
 
@@ -910,6 +925,7 @@ body.intro-active {
     gap: 1.5rem;
   }
 
+  .project-block--landplay,
   .project-block--imagined,
   .project-block--datanteater,
   .project-block--kanana,
@@ -930,6 +946,10 @@ body.intro-active {
     width: auto;
     max-width: 19ch;
     font-size: 1.55rem;
+  }
+
+  .project-block--landplay .project-title {
+    font-size: 2.2rem;
   }
 
   .project-desc,

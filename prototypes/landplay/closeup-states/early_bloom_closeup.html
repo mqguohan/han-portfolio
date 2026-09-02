@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landplay - Early Bloom Close-Up</title>
+  <style>
+    html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #211621; }
+    #scene { display: block; width: 100vw; height: 100vh; background: #211621; }
+    .specimen-label { position: fixed; left: 18px; bottom: 16px; z-index: 5; color: rgba(255,255,255,0.72); font: 12px/1.4 system-ui, sans-serif; letter-spacing: 0.08em; text-transform: uppercase; pointer-events: none; }
+  </style>
+  <script type="importmap">
+    {"imports":{"three":"../vendor/three/build/three.module.js","three/examples/jsm/":"../vendor/three/examples/jsm/"}}
+  </script>
+</head>
+<body>
+  <canvas id="scene"></canvas>
+  <div class="specimen-label">Early Bloom</div>
+  <script type="module" src="./src/closeup_early_bloom.js?v=state-library-1"></script>
+</body>
+</html>
+

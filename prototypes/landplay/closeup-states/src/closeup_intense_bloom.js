@@ -1,0 +1,25 @@
+﻿import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+
+document.title = 'Landplay - Intense Bloom';
+const BG=0x211621, canvas=document.querySelector('#scene');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:'high-performance'}); renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(innerWidth,innerHeight); renderer.setClearColor(BG,1); renderer.outputColorSpace=THREE.SRGBColorSpace;
+document.body.style.margin='0'; document.body.style.overflow='hidden'; document.body.style.background='#211621';
+const scene=new THREE.Scene(); scene.background=new THREE.Color(BG); scene.fog=new THREE.FogExp2(BG,.15);
+const camera=new THREE.PerspectiveCamera(42,innerWidth/innerHeight,.1,80); camera.position.set(4.25,3.0,5.05);
+const controls=new OrbitControls(camera,renderer.domElement); Object.assign(controls,{enableDamping:true,dampingFactor:.055,autoRotate:true,autoRotateSpeed:.24,enablePan:false,minDistance:3.7,maxDistance:8.4,maxPolarAngle:Math.PI*.49}); controls.target.set(0,-.06,0); controls.update();
+scene.add(new THREE.HemisphereLight(0xeaffcf,0x211621,1.55)); [[0x7fffe0,7,-1.5,1.0,-1.2],[0xff7bac,6.5,1.4,1.1,.9],[0xf1ff9a,4.8,.2,1.6,1.6]].forEach(([c,i,x,y,z])=>{const l=new THREE.PointLight(c,i,7.2);l.position.set(x,y,z);scene.add(l);});
+const pointer=new THREE.Vector2(.5,.5), smoothPointer=new THREE.Vector2(.5,.5); const uniforms={uTime:{value:0},uMouse:{value:new THREE.Vector2(.5,.5)}};
+const tile=new THREE.Mesh(new THREE.PlaneGeometry(4,4,250,250),new THREE.ShaderMaterial({uniforms,side:THREE.DoubleSide,
+vertexShader:`
+varying vec2 vUv; varying float vHeight; varying float vBloom; varying float vWet; varying float vPulse; uniform float uTime; uniform vec2 uMouse;
+float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453123);} float noise(vec2 p){vec2 i=floor(p),f=fract(p),u=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1,0)),u.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),u.x),u.y);} float fbm(vec2 p){float v=0.,a=.52;for(int i=0;i<5;i++){v+=a*noise(p);p*=1.98;a*=.48;}return v;} float b(vec2 uv,vec2 c,float r){return smoothstep(r,0.,length((uv-c)*vec2(1.,1.22)));}
+void main(){vUv=uv;vec2 p=uv*2.-1.;float broad=fbm(p*1.45+vec2(0,uTime*.006));float fine=fbm(p*4.7-vec2(uTime*.012,0));vBloom=clamp(b(uv,vec2(.26,.28),.36)+b(uv,vec2(.58,.48),.43)+b(uv,vec2(.72,.72),.34)+smoothstep(.55,.78,fine)*.42,0.,1.);vWet=smoothstep(.12,0.,abs(uv.x-(.5+sin(uv.y*6.28)*.20)));float md=distance(uv,uMouse);vPulse=exp(-md*9.5)*(.6+.4*sin(md*30.-uTime*3.2));vHeight=broad*.55+fine*.45;vec3 pos=position;pos.z=(broad-.5)*.11+(fine-.5)*.035+vBloom*.085-vWet*.035+vPulse*.05;gl_Position=projectionMatrix*modelViewMatrix*vec4(pos,1.);}`,
+fragmentShader:`
+varying vec2 vUv; varying float vHeight; varying float vBloom; varying float vWet; varying float vPulse; uniform float uTime; float hash(vec2 p){return fract(sin(dot(p,vec2(41.7,289.1)))*97143.231);}
+void main(){vec3 plum=vec3(.129,.086,.129), deep=vec3(.06,.23,.08), green=vec3(.30,.95,.32), cyan=vec3(.32,1.0,.86), pink=vec3(1.,.32,.62), yellow=vec3(.95,1.,.36);float shade=smoothstep(.12,.84,vHeight);float spore=step(.94,hash(floor(vUv*170.0)))*vBloom;float cluster=smoothstep(.38,1.,vBloom);float edge=smoothstep(0.,.055,vUv.x)*smoothstep(0.,.055,vUv.y)*smoothstep(0.,.055,1.-vUv.x)*smoothstep(0.,.055,1.-vUv.y);vec3 color=mix(deep,green,shade*.35+cluster*.55);color=mix(color,pink,cluster*.30);color+=cyan*vWet*.22+yellow*spore*.24+pink*vPulse*.16+cyan*vPulse*vWet*.20;color=mix(plum,color,edge);gl_FragColor=vec4(color,1.);}`}));
+tile.rotation.x=-Math.PI/2; tile.position.y=-.38; scene.add(tile);
+const count=360, pos=new Float32Array(count*3); for(let i=0;i<count;i++){pos[i*3]=(Math.random()-.5)*3.8;pos[i*3+1]=-.05+Math.random()*1.25;pos[i*3+2]=(Math.random()-.5)*3.8;} const spores=new THREE.Points(new THREE.BufferGeometry().setAttribute('position',new THREE.BufferAttribute(pos,3)),new THREE.PointsMaterial({color:0xff8fbd,size:.022,transparent:true,opacity:.44,depthWrite:false,blending:THREE.AdditiveBlending})); scene.add(spores);
+const vignette=new THREE.Mesh(new THREE.PlaneGeometry(2,2),new THREE.ShaderMaterial({transparent:true,depthWrite:false,depthTest:false,vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.,1.);}`,fragmentShader:`varying vec2 vUv;void main(){float a=smoothstep(.32,.78,distance(vUv,vec2(.5)))*.58;gl_FragColor=vec4(.129,.086,.129,a);}`}));vignette.renderOrder=10;scene.add(vignette);
+addEventListener('pointermove',e=>{pointer.x=e.clientX/innerWidth;pointer.y=1-e.clientY/innerHeight;}); addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(devicePixelRatio,2));});
+function animate(now=0){const t=now*.001;smoothPointer.lerp(pointer,.06);uniforms.uTime.value=t;uniforms.uMouse.value.copy(smoothPointer);spores.rotation.y=t*.045;spores.position.y=Math.sin(t*.8)*.035;controls.update();renderer.render(scene,camera);requestAnimationFrame(animate);} animate();

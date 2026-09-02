@@ -1,0 +1,46 @@
+﻿{
+    "endingKey":  "contested_commons",
+    "title":  "Contested Commons",
+    "subtitle":  "A public and politically active landscape ending",
+    "description":  "Community action, visibility, protection, and conflict have made the landscape a shared public matter. The field is not settled, but it has become socially present and defended.",
+    "dominantTendency":  "Commons",
+    "relatedMetrics":  {
+                           "vividness":  56,
+                           "biodiversity":  52,
+                           "ecologicalRecovery":  54,
+                           "toxicity":  42,
+                           "stability":  48,
+                           "publicVisibility":  78,
+                           "hiddenRisk":  50
+                       },
+    "assets":  {
+                   "splat":  "../assets/endings/contested_commons.spz",
+                   "format":  "spz"
+               },
+    "camera":  {
+                   "position":  [
+                                    0.8,
+                                    1.2,
+                                    3.6
+                                ],
+                   "target":  [
+                                  0,
+                                  0.4,
+                                  0
+                              ],
+                   "fov":  55,
+                   "minDistance":  0.3,
+                   "maxDistance":  12
+               },
+    "theme":  {
+                  "background":  "#211621",
+                  "text":  "#fff8f2",
+                  "accent":  "#ff7bac",
+                  "secondaryAccent":  "#7fffe0"
+              },
+    "uiText":  {
+                   "dominantForce":  "Community action",
+                   "systemReading":  "Collective stewardship and conflict",
+                   "risk":  "Protection remains contested by pressure from control, extraction, or outside interest."
+               }
+}

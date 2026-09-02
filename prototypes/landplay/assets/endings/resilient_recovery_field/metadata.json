@@ -1,0 +1,46 @@
+﻿{
+    "endingKey":  "resilient_recovery_field",
+    "title":  "Resilient Recovery Field",
+    "subtitle":  "A stable long-term ecological recovery ending",
+    "description":  "Repeated restoration, soil care, wetland support, and local memory created a stable ecological trajectory. The system is not necessarily spectacular, but it can resist collapse.",
+    "dominantTendency":  "Resilience",
+    "relatedMetrics":  {
+                           "vividness":  46,
+                           "biodiversity":  66,
+                           "ecologicalRecovery":  74,
+                           "toxicity":  26,
+                           "stability":  68,
+                           "hiddenRisk":  30,
+                           "extractionPressure":  22
+                       },
+    "assets":  {
+                   "splat":  "../assets/endings/resilient_recovery_field.spz",
+                   "format":  "spz"
+               },
+    "camera":  {
+                   "position":  [
+                                    0.8,
+                                    1.2,
+                                    3.6
+                                ],
+                   "target":  [
+                                  0,
+                                  0.4,
+                                  0
+                              ],
+                   "fov":  55,
+                   "minDistance":  0.3,
+                   "maxDistance":  12
+               },
+    "theme":  {
+                  "background":  "#211621",
+                  "text":  "#fff8f2",
+                  "accent":  "#b7dcae",
+                  "secondaryAccent":  "#aacc96"
+              },
+    "uiText":  {
+                   "dominantForce":  "Quiet restoration",
+                   "systemReading":  "Long-term recovery memory and resilience",
+                   "risk":  "Past disturbance remains in memory, but recovery now has structure."
+               }
+}

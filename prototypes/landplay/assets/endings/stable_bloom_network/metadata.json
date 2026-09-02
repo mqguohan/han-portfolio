@@ -1,0 +1,45 @@
+﻿{
+    "endingKey":  "stable_bloom_network",
+    "title":  "Stable Bloom Network",
+    "subtitle":  "A connected and durable bloom landscape ending",
+    "description":  "Bloom established itself with memory and stability across several connected cells. The result is a quieter, more durable form of biological success.",
+    "dominantTendency":  "Stable Bloom",
+    "relatedMetrics":  {
+                           "vividness":  74,
+                           "biodiversity":  72,
+                           "ecologicalRecovery":  68,
+                           "toxicity":  24,
+                           "stability":  62,
+                           "hiddenRisk":  28
+                       },
+    "assets":  {
+                   "splat":  "../assets/endings/stable_bloom_network.spz",
+                   "format":  "spz"
+               },
+    "camera":  {
+                   "position":  [
+                                    0.8,
+                                    1.2,
+                                    3.6
+                                ],
+                   "target":  [
+                                  0,
+                                  0.4,
+                                  0
+                              ],
+                   "fov":  55,
+                   "minDistance":  0.3,
+                   "maxDistance":  12
+               },
+    "theme":  {
+                  "background":  "#211621",
+                  "text":  "#fff8f2",
+                  "accent":  "#7fffe0",
+                  "secondaryAccent":  "#b7dcae"
+              },
+    "uiText":  {
+                   "dominantForce":  "Stable bloom",
+                   "systemReading":  "Connected biological resilience",
+                   "risk":  "The bloom network is stable, but still depends on moisture and protection."
+               }
+}

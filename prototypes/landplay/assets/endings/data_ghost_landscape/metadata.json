@@ -1,0 +1,46 @@
+﻿{
+    "endingKey":  "data_ghost_landscape",
+    "title":  "Data Ghost Landscape",
+    "subtitle":  "A speculative and AI-inferred landscape ending",
+    "description":  "Speculative layers and AI inference accumulated until the material field became partially occluded by data. The visible world is reconstructed, uncertain, and ghosted.",
+    "dominantTendency":  "Speculation",
+    "relatedMetrics":  {
+                           "vividness":  62,
+                           "biodiversity":  34,
+                           "ecologicalRecovery":  28,
+                           "toxicity":  38,
+                           "stability":  36,
+                           "speculation":  86,
+                           "hiddenRisk":  70
+                       },
+    "assets":  {
+                   "splat":  "../assets/endings/data_ghost_landscape.spz",
+                   "format":  "spz"
+               },
+    "camera":  {
+                   "position":  [
+                                    0.8,
+                                    1.2,
+                                    3.6
+                                ],
+                   "target":  [
+                                  0,
+                                  0.4,
+                                  0
+                              ],
+                   "fov":  55,
+                   "minDistance":  0.3,
+                   "maxDistance":  12
+               },
+    "theme":  {
+                  "background":  "#211621",
+                  "text":  "#fff8f2",
+                  "accent":  "#c7ddff",
+                  "secondaryAccent":  "#d9c8ff"
+              },
+    "uiText":  {
+                   "dominantForce":  "AI inference",
+                   "systemReading":  "Inferred terrain overriding observed terrain",
+                   "risk":  "The map may be more complete than it is true."
+               }
+}

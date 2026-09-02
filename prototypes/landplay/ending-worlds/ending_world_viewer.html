@@ -1,0 +1,364 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landplay - Ending World Viewer</title>
+  <script>
+    (function setEndingWorldBasePath() {
+      const current = new URL(window.location.href);
+      const originalSearch = current.search;
+      const originalHash = current.hash;
+      if (current.pathname.endsWith('/ending_world_viewer')) {
+        current.pathname = `${current.pathname}.html`;
+        window.history.replaceState(null, document.title, `${current.pathname}${originalSearch}${originalHash}`);
+      }
+      current.pathname = current.pathname.replace(/[^/]*$/, '');
+      current.search = '';
+      current.hash = '';
+      document.write(`<base href="${current.href}">`);
+    })();
+  </script>
+  <style>
+    @font-face {
+      font-family: "Scope";
+      src: url("../assets/fonts/scope-variable.ttf") format("truetype");
+      font-weight: 300 800;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg: #211621;
+      --text: #fff8f2;
+      --text-soft: rgba(255, 248, 242, 0.72);
+      --line: rgba(255, 216, 235, 0.30);
+      --panel: rgba(33, 22, 33, 0.48);
+      --accent: #7fffe0;
+      --accent-2: #ff7bac;
+      --error: #ffd3e4;
+      --font-main: "Scope", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-main);
+      overflow: hidden;
+    }
+
+    #worldMount {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 68% 42%, rgba(127, 255, 224, 0.16), transparent 28%),
+        radial-gradient(circle at 30% 74%, rgba(255, 123, 172, 0.12), transparent 34%),
+        var(--bg);
+    }
+
+    #worldMount canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    #worldMount::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(33, 22, 33, 0.52), rgba(33, 22, 33, 0.10) 48%, rgba(33, 22, 33, 0.22)),
+        linear-gradient(0deg, rgba(33, 22, 33, 0.30), transparent 42%);
+    }
+
+    .world-ui {
+      position: fixed;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      display: grid;
+      grid-template-columns: minmax(24px, 5vw) minmax(300px, 560px) 1fr minmax(24px, 5vw);
+      grid-template-rows: minmax(28px, 8vh) 1fr auto minmax(26px, 7vh);
+    }
+
+    .world-copy {
+      grid-column: 2;
+      grid-row: 3;
+      max-width: 560px;
+      text-shadow: 0 2px 20px rgba(33, 22, 33, 0.62);
+    }
+
+    .kicker {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(48px, 7vw, 104px);
+      line-height: 0.94;
+      font-weight: 420;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 14px 0 0;
+      color: var(--text);
+      font-size: 16px;
+      letter-spacing: 0.01em;
+    }
+
+    .description {
+      max-width: 520px;
+      margin: 16px 0 0;
+      color: var(--text-soft);
+      font-size: 14px;
+      line-height: 1.65;
+      letter-spacing: 0.01em;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      width: min(540px, 100%);
+      margin-top: 22px;
+      border: 1px solid var(--line);
+      background: var(--line);
+    }
+
+    .metric {
+      min-height: 56px;
+      padding: 10px 12px;
+      background: rgba(33, 22, 33, 0.38);
+      backdrop-filter: blur(10px);
+    }
+
+    .metric span {
+      display: block;
+      color: rgba(255, 216, 235, 0.72);
+      font-size: 9px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 5px;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 520;
+    }
+
+    .status-panel {
+      width: min(540px, 100%);
+      margin-top: 14px;
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      background: rgba(33, 22, 33, 0.38);
+      color: var(--text-soft);
+      font-size: 12px;
+      line-height: 1.55;
+      backdrop-filter: blur(10px);
+    }
+
+    .status-panel strong { color: var(--text); font-weight: 500; }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+      pointer-events: auto;
+    }
+
+    button,
+    a {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 9px 13px;
+      border: 1px solid rgba(255, 216, 235, 0.48);
+      background: rgba(255, 248, 242, 0.08);
+      color: var(--text);
+      font: inherit;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+    }
+
+    button:hover,
+    a:hover {
+      background: rgba(255, 216, 235, 0.18);
+      border-color: var(--accent);
+    }
+
+    .asset-status {
+      position: fixed;
+      right: 22px;
+      bottom: 18px;
+      z-index: 4;
+      max-width: 320px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      background: rgba(33, 22, 33, 0.54);
+      color: var(--text-soft);
+      font-size: 11px;
+      line-height: 1.5;
+      pointer-events: none;
+      backdrop-filter: blur(10px);
+    }
+
+    .asset-status strong { color: var(--error); font-weight: 500; }
+
+    .viewer-controls {
+      position: fixed;
+      top: 18px;
+      z-index: 5;
+      display: flex;
+      gap: 10px;
+      pointer-events: auto;
+    }
+
+    .viewer-controls.return-controls {
+      left: 20px;
+    }
+
+    .viewer-controls.interface-controls {
+      right: 20px;
+      align-items: flex-end;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .viewer-control-button {
+      min-height: 34px;
+      padding: 8px 12px;
+      border-color: rgba(255, 216, 235, 0.58);
+      background: rgba(33, 22, 33, 0.38);
+      color: var(--text);
+      box-shadow: 0 10px 32px rgba(11, 6, 12, 0.14);
+    }
+
+    .viewer-control-button:hover {
+      background: rgba(255, 216, 235, 0.16);
+      border-color: var(--accent-2);
+    }
+
+    .viewer-control-hint {
+      color: rgba(255, 216, 235, 0.68);
+      font-size: 10px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 14px rgba(33, 22, 33, 0.62);
+      pointer-events: none;
+    }
+
+    body.interface-hidden {
+      cursor: default;
+    }
+
+    body.interface-hidden .viewer-ui {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 160ms ease, visibility 160ms ease;
+    }
+
+    body.interface-hidden #worldMount::after {
+      opacity: 0.12;
+    }
+
+    body.interface-hidden .asset-status.is-error {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: none;
+    }
+
+    body.capture-mode {
+      cursor: none;
+    }
+
+    body.capture-mode .viewer-ui {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    body.capture-mode #worldMount::after {
+      opacity: 0.34;
+    }
+
+    @media (max-width: 760px) {
+      .world-ui {
+        grid-template-columns: 22px 1fr 22px;
+      }
+
+      .metric-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .asset-status {
+        left: 22px;
+        right: 22px;
+        bottom: 14px;
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="worldMount" aria-label="Ending world viewport"></div>
+  <div class="viewer-controls return-controls viewer-ui" aria-label="Ending world return control">
+    <button id="returnToReport" class="viewer-control-button" type="button">← Return to Report</button>
+  </div>
+  <div class="viewer-controls interface-controls viewer-ui" aria-label="Ending world interface controls">
+    <button id="toggleInterface" class="viewer-control-button" type="button">Hide Interface</button>
+    <div class="viewer-control-hint">WASD - Move · Mouse - Look · 0 - Reset · H - Hide / Show Interface</div>
+  </div>
+  <main class="world-ui viewer-ui">
+    <section class="world-copy">
+      <p id="worldKicker" class="kicker">Ending World</p>
+      <h1 id="worldTitle">Loading Ending World</h1>
+      <p id="worldSubtitle" class="subtitle"></p>
+      <p id="worldDescription" class="description"></p>
+      <div id="metricGrid" class="metric-grid" aria-label="Ending world metrics"></div>
+      <div id="worldStatusPanel" class="status-panel"></div>
+      <div class="controls">
+        <button id="reloadWorld" type="button">Reload World</button>
+        <a href="../index.html?restart=1">Restart Game</a>
+      </div>
+    </section>
+  </main>
+  <div id="assetStatus" class="asset-status viewer-ui">Preparing ending world.</div>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "../vendor/three-r180/build/three.module.js",
+        "three/addons/": "../vendor/three-r180/examples/jsm/",
+        "@sparkjsdev/spark": "../vendor/spark/spark.module.js"
+      }
+    }
+  </script>
+  <script type="module" src="./src/ending_world_viewer.js?v=presentation-return-1"></script>
+</body>
+</html>

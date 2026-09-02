@@ -1,0 +1,45 @@
+﻿{
+    "endingKey":  "bloom_landscape",
+    "title":  "Bloom Landscape",
+    "subtitle":  "A bloom-dominant landscape ending",
+    "description":  "Moisture and organic activity have produced a vivid biological field. Growth is spreading across the landscape, but the system has not yet settled into a fully stable network.",
+    "dominantTendency":  "Bloom",
+    "relatedMetrics":  {
+                           "vividness":  78,
+                           "biodiversity":  68,
+                           "ecologicalRecovery":  58,
+                           "toxicity":  28,
+                           "stability":  42,
+                           "hiddenRisk":  36
+                       },
+    "assets":  {
+                   "splat":  "../assets/endings/bloom_landscape.spz",
+                   "format":  "spz"
+               },
+    "camera":  {
+                   "position":  [
+                                    0.8,
+                                    1.2,
+                                    3.6
+                                ],
+                   "target":  [
+                                  0,
+                                  0.4,
+                                  0
+                              ],
+                   "fov":  55,
+                   "minDistance":  0.3,
+                   "maxDistance":  12
+               },
+    "theme":  {
+                  "background":  "#211621",
+                  "text":  "#fff8f2",
+                  "accent":  "#7fffe0",
+                  "secondaryAccent":  "#ff7bac"
+              },
+    "uiText":  {
+                   "dominantForce":  "Bloom",
+                   "systemReading":  "Vivid biological expansion",
+                   "risk":  "The bloom is active and visually strong, but not yet fully stabilized."
+               }
+}

@@ -1,0 +1,26 @@
+﻿import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+
+document.title = 'Landplay - Ecological Stress';
+const BG=0x211621, canvas=document.querySelector('#scene');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:'high-performance'}); renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(innerWidth,innerHeight); renderer.setClearColor(BG,1); renderer.outputColorSpace=THREE.SRGBColorSpace;
+document.body.style.margin='0'; document.body.style.overflow='hidden'; document.body.style.background='#211621';
+const scene=new THREE.Scene(); scene.background=new THREE.Color(BG); scene.fog=new THREE.FogExp2(BG,.17);
+const camera=new THREE.PerspectiveCamera(42,innerWidth/innerHeight,.1,80); camera.position.set(4.35,3.0,5.2);
+const controls=new OrbitControls(camera,renderer.domElement); Object.assign(controls,{enableDamping:true,dampingFactor:.055,autoRotate:true,autoRotateSpeed:.18,enablePan:false,minDistance:3.7,maxDistance:8.5,maxPolarAngle:Math.PI*.49}); controls.target.set(0,-.09,0); controls.update();
+scene.add(new THREE.HemisphereLight(0xd8b8c4,0x211621,1.18)); const rim=new THREE.DirectionalLight(0x8b596f,2.2); rim.position.set(-3.8,5.7,2.8); scene.add(rim); const sick=new THREE.PointLight(0xff6f9f,2.8,6.5); sick.position.set(1.3,.9,1.1); scene.add(sick);
+const pointer=new THREE.Vector2(.5,.5), smoothPointer=new THREE.Vector2(.5,.5); const uniforms={uTime:{value:0},uMouse:{value:new THREE.Vector2(.5,.5)}};
+const tile=new THREE.Mesh(new THREE.PlaneGeometry(4,4,230,230),new THREE.ShaderMaterial({uniforms,side:THREE.DoubleSide,
+vertexShader:`
+varying vec2 vUv; varying float vHeight; varying float vCrack; varying float vStress; varying float vLife; uniform float uTime; uniform vec2 uMouse;
+float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453123);} float noise(vec2 p){vec2 i=floor(p),f=fract(p),u=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1,0)),u.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),u.x),u.y);} float fbm(vec2 p){float v=0.,a=.52;for(int i=0;i<5;i++){v+=a*noise(p);p*=1.98;a*=.48;}return v;}
+void main(){vUv=uv;vec2 p=uv*2.-1.;float broad=fbm(p*1.55+vec2(0,uTime*.002));float fine=fbm(p*5.0-3.0);float lines=abs(sin(p.x*12.0+fbm(p*2.0)*5.0))*abs(sin(p.y*9.0));vCrack=smoothstep(.88,.98,lines+fine*.22);vStress=smoothstep(.56,.86,fbm(p*3.0+7.0));vLife=smoothstep(.78,.92,fbm(p*4.5-9.0))*(1.-vStress*.65);float pulse=exp(-distance(uv,uMouse)*10.)*.016;vHeight=broad*.62+fine*.25;vec3 pos=position;pos.z=(broad-.5)*.12-vCrack*.055-vStress*.030+vLife*.016+pulse;gl_Position=projectionMatrix*modelViewMatrix*vec4(pos,1.);}`,
+fragmentShader:`
+varying vec2 vUv; varying float vHeight; varying float vCrack; varying float vStress; varying float vLife; uniform float uTime; float hash(vec2 p){return fract(sin(dot(p,vec2(41.7,289.1)))*97143.231);}
+void main(){vec3 plum=vec3(.129,.086,.129), soil=vec3(.34,.25,.22), ash=vec3(.43,.39,.36), bruise=vec3(.36,.13,.24), dry=vec3(.62,.47,.32), weak=vec3(.42,.50,.22), red=vec3(.72,.18,.26);float shade=smoothstep(.12,.82,vHeight);float dead=step(.975,hash(floor(vUv*120.0)))*vLife;float edge=smoothstep(0.,.055,vUv.x)*smoothstep(0.,.055,vUv.y)*smoothstep(0.,.055,1.-vUv.x)*smoothstep(0.,.055,1.-vUv.y);vec3 color=mix(soil,dry,shade*.45);color=mix(color,ash,(1.-shade)*.26);color=mix(color,bruise,vStress*.48);color=mix(color,plum,vCrack*.45);color+=red*vCrack*.12+weak*vLife*.20+vec3(.84,.70,.48)*dead*.16;color=mix(plum,color,edge);gl_FragColor=vec4(color,1.);}`}));
+tile.rotation.x=-Math.PI/2; tile.position.y=-.36; scene.add(tile);
+const remnants=new THREE.Group(); scene.add(remnants); const mat=new THREE.MeshBasicMaterial({color:0x8c9a48,transparent:true,opacity:.18,depthWrite:false}); const stressMat=new THREE.MeshBasicMaterial({color:0xff6f9f,transparent:true,opacity:.20,depthWrite:false});
+for(let i=0;i<44;i++){const m=new THREE.Mesh(new THREE.PlaneGeometry(.01,.10+Math.random()*.16),i%4===0?stressMat:mat);m.position.set((Math.random()-.5)*3.4,-.24+Math.random()*.08,(Math.random()-.5)*3.3);m.rotation.x=-Math.PI/2;m.rotation.z=(Math.random()-.5)*1.6;remnants.add(m);}
+const vignette=new THREE.Mesh(new THREE.PlaneGeometry(2,2),new THREE.ShaderMaterial({transparent:true,depthWrite:false,depthTest:false,vertexShader:`varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.,1.);}`,fragmentShader:`varying vec2 vUv;void main(){float a=smoothstep(.30,.78,distance(vUv,vec2(.5)))*.66;gl_FragColor=vec4(.129,.086,.129,a);}`}));vignette.renderOrder=10;scene.add(vignette);
+addEventListener('pointermove',e=>{pointer.x=e.clientX/innerWidth;pointer.y=1-e.clientY/innerHeight;}); addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(devicePixelRatio,2));});
+function animate(now=0){const t=now*.001;smoothPointer.lerp(pointer,.06);uniforms.uTime.value=t;uniforms.uMouse.value.copy(smoothPointer);remnants.children.forEach((c,i)=>c.material.opacity=.13+Math.sin(t*.38+i)*.035);controls.update();renderer.render(scene,camera);requestAnimationFrame(animate);} animate();
