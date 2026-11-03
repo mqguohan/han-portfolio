@@ -1,0 +1,38 @@
+- generic "Ending world viewport"
+- generic "Ending world return control":
+  - button "← Return to Report"
+- generic "Ending world interface controls":
+  - button "Hide Interface"
+  - generic: WASD - Move · Mouse - Look · 0 - Reset · H - Hide / Show Interface
+- main:
+  - paragraph: A stable long-term ecological recovery ending
+  - heading "Resilient Recovery Field" [level=1]
+  - paragraph: "Dominant tendency: Resilience"
+  - paragraph: Repeated restoration, soil care, wetland support, and local memory created a stable ecological trajectory. The system is not necessarily spectacular, but it can resist collapse.
+  - generic "Ending world metrics":
+    - generic: Vividness
+    - strong: "46"
+    - generic: Biodiversity
+    - strong: "66"
+    - generic: Ecological Recovery
+    - strong: "74"
+    - generic: Toxicity
+    - strong: "26"
+    - generic: Stability
+    - strong: "68"
+    - generic: Hidden Risk
+    - strong: "30"
+    - generic: Extraction Pressure
+    - strong: "22"
+  - strong: "System reading:"
+  - text: Long-term recovery memory and resilience
+  - strong: "Dominant force:"
+  - text: Quiet restoration
+  - strong: "Risk:"
+  - text: Past disturbance remains in memory, but recovery now has structure.
+  - button "Reload World"
+  - link "Restart Game":
+    - /url: ../v08h_start_and_land_selection_refine.html?restart=1
+- text: Spark.js world loaded.
+- text: "Asset: ../assets/endings/resilient_recovery_field.spz"
+- text: "Format: .spz"

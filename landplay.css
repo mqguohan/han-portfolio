@@ -1,4 +1,123 @@
 /* LANDPLAY project page. Soft portfolio styling, self-contained. */
+.identity-part + .identity-part { margin-top: 4rem; }
+.identity-part-title { font-size: 1.15rem; line-height: 1.5; font-weight: 400; margin-bottom: 1.6rem; }
+.identity-part-title span { font-size: 0.75rem; font-weight: 300; }
+.identity-brand-link { display: inline-flex; align-items: center; justify-content: center; gap: 0.65rem; min-height: 44px; max-width: 100%; padding: 14px 22px; border: 0; border-radius: 5px; background: #c73163; background: color-mix(in srgb, var(--pink) 78%, #000); color: #fff; font-size: 0.95rem; font-weight: 500; line-height: 1.5; transition: background-color 0.2s ease; }
+.identity-brand-link:hover { background: #af2b57; background: color-mix(in srgb, var(--pink) 69%, #000); }
+.identity-brand-link:focus-visible { outline: 2px solid #a94370; outline-offset: 4px; }
+/* Behind the System: explanatory visuals, without simulated measurements. */
+.behind-module { margin-top: 4rem; }
+.behind-module-title { font-size: 1.35rem; font-weight: 400; line-height: 1.4; margin-bottom: 1.5rem; }
+.behind-rules-visual { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 2.5rem; align-items: center; max-width: 1000px; margin: 2.5rem auto 0; color: #a94370; }
+.behind-field { max-width: 340px; width: 100%; margin-inline: auto; }
+.behind-cell-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; aspect-ratio: 1; }
+.behind-cell-grid span { border: 1px solid var(--rule); background: #fcf5f8; }
+/* Reuse LANDPLAY dry, wet, and recovery state colors; this field is illustrative. */
+.behind-cell-grid span:nth-child(3n) { background: #ead9c9; }
+.behind-cell-grid span:nth-child(5n + 2) { background: #8fd8cf; }
+.behind-cell-grid span:nth-child(7n) { background: #b7dcae; }
+.behind-cell-grid .behind-cell-selected { outline: 2px solid #a94370; outline-offset: -3px; }
+.behind-field figcaption { margin-top: 1rem; font-size: 0.9rem; line-height: 1.7; }
+.behind-field figcaption span { display: block; font-size: 0.8rem; opacity: 0.75; }
+.behind-conditional { position: relative; text-align: center; min-width: 0; }
+.behind-conditional::before { content: ""; position: absolute; left: -2.5rem; width: 2.5rem; top: 50%; border-top: 1px solid var(--rule); }
+.behind-conditional h4 { font-size: 0.8rem; font-weight: 400; margin-bottom: 0.6rem; }
+.behind-local-note { font-size: 0.75rem; line-height: 1.7; margin-bottom: 1.5rem; }
+.behind-rainfall { font-size: 1.4rem; padding-bottom: 2rem; position: relative; }
+.behind-rainfall::after { content: ""; position: absolute; left: 50%; bottom: 0; height: 1.3rem; border-left: 1px solid currentColor; }
+.behind-branches { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+.behind-branches > div { position: relative; padding-top: 1.5rem; font-size: 0.85rem; line-height: 1.7; }
+.behind-branches > div::before { content: ""; position: absolute; top: 0; left: 50%; height: 1rem; border-left: 1px solid currentColor; }
+.behind-branches > div::after { content: ""; position: absolute; top: 0; border-top: 1px solid currentColor; width: calc(50% + 0.75rem); }
+.behind-branches > div:first-child::after { left: 50%; }
+.behind-branches > div:last-child::after { right: 50%; }
+.behind-direction { display: block; margin: 0.75rem 0; }
+.behind-result { font-size: 1rem; font-weight: 400; }
+.behind-memory-sequence { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; margin-top: 2.5rem; }
+.behind-time-note { margin-top: 2rem; font-size: 0.8rem; opacity: 0.75; }
+.behind-memory-sequence > li { position: relative; min-width: 0; }
+.behind-memory-sequence > li:not(:last-child)::after { content: "→"; position: absolute; right: -1.5rem; top: 0; font-size: 0.9rem; }
+.behind-record { display: inline-block; margin-top: 0.8rem; padding-left: 0.65rem; border-left: 2px solid #a94370; font-size: 0.7rem; line-height: 1.6; }
+.behind-memory-sequence h4 { font-size: 0.95rem; font-weight: 400; margin-bottom: 1rem; }
+.behind-memory-media { aspect-ratio: 4 / 3; width: 100%; display: flex; align-items: center; justify-content: center; padding: 1rem; border: 1px solid #e5dce0; background: #f7f6f5; font-size: 0.7rem; color: #8f7781; text-align: center; object-fit: contain; }
+.behind-memory-sequence p { margin-top: 1rem; font-size: 0.85rem; line-height: 1.8; font-weight: 300; }
+.behind-memory-equation { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem; margin-top: 2.5rem; font-size: 0.85rem; line-height: 1.7; text-align: center; }
+.behind-memory-equation strong { font-weight: 500; }
+.behind-annotation { max-width: 42rem; margin: 1.5rem auto 0; text-align: center; font-size: 0.85rem; line-height: 1.8; font-style: italic; }
+.behind-comparison { margin-top: 2.5rem; }
+.behind-comparison h4 { font-size: 1.4rem; font-weight: 400; line-height: 1.5; }
+.behind-comparison-label, .behind-ending-note { font-size: 0.8rem; line-height: 1.8; margin-top: 0.7rem; }
+.behind-comparison-label { opacity: 0.75; }
+.behind-comparison-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; margin-top: 2rem; }
+.behind-comparison-grid figure { min-width: 0; }
+.behind-comparison h5 { font-size: 1rem; font-weight: 400; margin-bottom: 1rem; }
+.behind-comparison-media { width: 100%; aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; background: #f7f6f5; border: 1px solid #e5dce0; color: #8f7781; font-size: 0.7rem; padding: 1rem; text-align: center; object-fit: contain; }
+.behind-comparison dl { margin-top: 1rem; font-size: 0.85rem; line-height: 1.8; }
+.behind-comparison dl > div { display: flex; justify-content: space-between; gap: 1rem; padding: 0.35rem 0; border-bottom: 1px solid var(--rule); }
+.behind-comparison dt { font-weight: 300; }
+.behind-comparison dd { font-weight: 400; }
+.behind-ending-note { max-width: 48rem; margin-inline: auto; text-align: center; }
+@media (max-width: 760px) {
+  .behind-rules-visual { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+  .behind-conditional::before { top: -2rem; left: 50%; height: 1.5rem; width: 0; border-top: 0; border-left: 1px solid var(--rule); }
+  .behind-memory-sequence > li:not(:last-child)::after { content: "↓"; top: auto; bottom: -1.65rem; right: 50%; }
+  .behind-comparison-grid { grid-template-columns: minmax(0, 1fr); }
+  .behind-memory-sequence { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .behind-memory-equation { flex-direction: column; gap: 0.6rem; }
+  .behind-module-title { font-size: 1.15rem; }
+}
+/* Alternating gameplay documentation; media can be replaced directly with images. */
+.gameplay-stages { list-style: none; margin-top: 3rem; display: grid; gap: 4.5rem; }
+.gameplay-stage { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); align-items: center; gap: 3rem; }
+.gameplay-stage-media { display: flex; align-items: center; justify-content: center; width: 100%; aspect-ratio: 16 / 9; padding: 1rem; background: #f7f6f5; border: 1px solid #e5dce0; color: #8f7781; text-align: center; font-size: 0.7rem; line-height: 1.7; object-fit: contain; }
+.gameplay-stage-copy { min-width: 0; max-width: 26rem; }
+.gameplay-stage-number { display: block; margin-bottom: 0.75rem; font-size: 0.7rem; opacity: 0.6; }
+.gameplay-stage-copy h3 { font-size: 1.6rem; line-height: 1.25; font-weight: 400; margin-bottom: 1.2rem; }
+.gameplay-stage-copy p { font-size: 0.95rem; line-height: 1.88; font-weight: 300; }
+.gameplay-stage:nth-child(even) { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+.gameplay-stage:nth-child(even) .gameplay-stage-media { grid-column: 2; grid-row: 1; }
+.gameplay-stage:nth-child(even) .gameplay-stage-copy { grid-column: 1; grid-row: 1; }
+@media (max-width: 760px) {
+  .gameplay-stages { gap: 3.5rem; }
+  .gameplay-stage, .gameplay-stage:nth-child(even) { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+  .gameplay-stage:nth-child(even) .gameplay-stage-media,
+  .gameplay-stage:nth-child(even) .gameplay-stage-copy { grid-column: auto; grid-row: auto; }
+  .gameplay-stage-copy h3 { font-size: 1.35rem; }
+}
+/* Research diagram and replaceable gameplay documentation. */
+.system-logic, .gameplay-examples { margin-top: 4rem; }
+.how-subtitle { font-size: 1.2rem; font-weight: 400; margin-bottom: 1.6rem; }
+.system-diagram { max-width: 1000px; margin-inline: auto; color: #a94370; text-align: center; }
+.system-label { font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1rem; }
+.system-loop { max-width: 620px; margin-inline: auto; }
+.system-steps { position: relative; list-style: none; }
+.system-steps li { position: relative; display: flex; flex-direction: column; justify-content: center; min-width: 0; padding: 1.5rem 0; }
+.system-steps li + li::before { content: "↓"; position: absolute; top: -0.65rem; left: 50%; transform: translateX(-50%); font-size: 1.1rem; line-height: 1.3; }
+/* Equal tracks anchor the single return path at Memory and the next Player Action. */
+.system-loop .system-steps { display: grid; grid-template-rows: repeat(4, 1fr); padding-inline: 3rem 1rem; }
+.system-loop .system-steps::before { content: ""; position: absolute; left: 0.5rem; width: 2rem; top: 12.5%; bottom: 12.5%; border: 1px solid currentColor; border-right: 0; }
+.system-loop .system-steps::after { content: ""; position: absolute; left: 2.1rem; top: 12.5%; width: 0.45rem; height: 0.45rem; border-top: 1px solid currentColor; border-right: 1px solid currentColor; transform: translateY(-50%) rotate(45deg); }
+.system-loop .system-steps li:last-child h4 { font-weight: 500; }
+.system-steps h4, .gameplay-example h4 { font-size: 0.95rem; font-weight: 400; }
+.system-steps p, .system-feedback, .system-branch, .gameplay-example figcaption { font-size: 0.85rem; font-weight: 300; line-height: 1.8; }
+.system-steps h4 { font-size: 1.3rem; line-height: 1.35; }
+.system-steps p { margin: 0.5rem auto 0; max-width: 26rem; opacity: 0.75; }
+.system-feedback { max-width: 28rem; margin: 0.4rem auto 0; opacity: 0.75; }
+.system-output { position: relative; max-width: 540px; margin: 0 auto; padding-top: 5rem; }
+.system-output::before { content: "↓"; position: absolute; left: 50%; top: 1.4rem; transform: translateX(-50%); font-size: 1.6rem; }
+.system-branch { margin: 0 auto 0.6rem; max-width: 25rem; opacity: 0.75; }
+.gameplay-example-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; margin-top: 2rem; }
+.gameplay-example { min-width: 0; }
+.gameplay-example h4 { margin-bottom: 1rem; }
+.gameplay-placeholder { display: flex; align-items: center; justify-content: center; width: 100%; aspect-ratio: 16 / 9; padding: 1rem; border: 1px solid #e5dce0; background: #f7f6f5; color: #8f7781; text-align: center; font-size: 0.65rem; line-height: 1.7; object-fit: contain; }
+.gameplay-example figcaption { margin-top: 1rem; }
+@media (max-width: 760px) {
+  .system-loop .system-steps { padding-inline: 2.5rem 0; }
+  .system-loop .system-steps::before { left: 0; width: 1.8rem; }
+  .system-loop .system-steps::after { left: 1.4rem; }
+  .system-steps h4 { font-size: 1.1rem; }
+  .gameplay-example-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+}
 :root {
   --pink: #FF3F7F;
   --rule: rgba(255, 63, 127, 0.14);
@@ -270,7 +389,22 @@ img {
 }
 
 .gallery--worlds {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4rem 2.5rem;
+  margin-top: 3rem;
+}
+
+.ending-world { min-width: 0; }
+.ending-world > img { width: 100%; height: auto; display: block; }
+.ending-world figcaption { margin-top: 1.2rem; }
+.ending-world h3 { font-size: 1.15rem; line-height: 1.4; font-weight: 400; }
+.ending-world figcaption p { max-width: 34rem; margin-top: 0.55rem; font-size: 0.85rem; line-height: 1.8; font-weight: 300; }
+.ending-closing { max-width: 980px; margin: 5rem auto 0; padding-block: 2rem; }
+.ending-closing .ending-closing-statement { font-size: 2.75rem; font-weight: 300; line-height: 1.25; }
+.ending-closing > p + p { max-width: 38rem; margin-top: 1.5rem; font-size: 0.95rem; font-weight: 300; line-height: 1.8; }
+@media (max-width: 639px) {
+  .gallery--worlds { gap: 3rem; }
+  .ending-closing .ending-closing-statement { font-size: 1.9rem; }
 }
 
 .gallery-img-wrap {
@@ -295,6 +429,8 @@ img {
 .ps--reflection {
   padding-top: calc(var(--section-gap) * 1.1);
 }
+
+.ps--reflection .ps-text { max-width: 700px; }
 
 .ps--reflection .ps-text p {
   font-size: clamp(0.9rem, 1.18vw, 1rem);
@@ -402,3 +538,10 @@ img {
     gap: 0.8rem;
   }
 }
+
+/* Authentic documentation: retain complete captures and offer full-size inspection. */
+.capture-link { display: block; min-width: 0; max-width: 100%; }
+.capture-link:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.landplay-capture { display: block; width: 100%; height: auto; max-width: 100%; object-fit: contain; }
+.gameplay-stage-media.capture-link { aspect-ratio: auto; padding: 0; border: 0; background: transparent; }
+.gameplay-stage-copy .capture-note { margin-top: 1rem; font-size: 0.8rem; line-height: 1.8; opacity: 0.75; }

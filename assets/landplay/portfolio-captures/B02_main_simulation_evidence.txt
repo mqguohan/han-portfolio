@@ -1,0 +1,269 @@
+- text: SELECTED
+- banner:
+  - heading "LANDPLAY" [level=1]
+  - paragraph: v0.7f — Base Land Selection Cards
+  - generic: Turn 10 / 30
+  - generic: "Base: Dry Basin"
+  - generic: Vivid
+  - strong: "68"
+  - generic: Toxic
+  - strong: "20"
+  - generic: Stable
+  - strong: "59"
+  - generic: Recovery
+  - strong: "100"
+  - text: No action selected —
+  - strong: choose one
+- button "Clear Selection"
+- button "End Simulation Now"
+- complementary:
+  - heading "Actors" [level=2]
+  - button "Basic Forces active":
+    - text: Basic Forces
+    - generic: active
+  - button "Agronomy Team active":
+    - text: Agronomy Team
+    - generic: active
+  - button "Government Agency locked" [disabled]:
+    - text: Government Agency
+    - generic: locked
+  - button "Genius Designer locked" [disabled]:
+    - text: Genius Designer
+    - generic: locked
+  - button "Industrial Investor locked" [disabled]:
+    - text: Industrial Investor
+    - generic: locked
+  - button "AI Research Lab locked" [disabled]:
+    - text: AI Research Lab
+    - generic: locked
+  - button "Local Community active":
+    - text: Local Community
+    - generic: active
+  - button "Ecological Coalition active":
+    - text: Ecological Coalition
+    - generic: active
+  - generic: "ACTIONS FROM: Ecological Coalition"
+  - button "Build Seed Bank Network"
+  - button "Create Pollinator Corridor"
+  - button "Launch Soil Remediation Program"
+  - button "Establish Wetland Stewardship"
+  - button "Coordinate Citizen Science Monitoring"
+  - button "Protect Ecological Core"
+- main:
+  - heading "Landscape Field" [level=2]
+  - generic: click a cell to inspect
+  - button "Reset View"
+  - generic: A1
+  - generic: ·
+  - generic: Dry
+  - generic: A2
+  - generic: Undefined
+  - generic: A3
+  - generic: Undefined
+  - generic: A4
+  - generic: ·
+  - generic: Dry
+  - generic: A5
+  - generic: Undefined
+  - generic: B1
+  - generic: ·
+  - generic: Dry
+  - generic: B2
+  - generic: ❀
+  - generic: Stable Bloom
+  - generic: B3
+  - generic: ❀
+  - generic: Stable Bloom
+  - generic: B4
+  - generic: ❛
+  - generic: Early Bloom
+  - generic: B5
+  - generic: ·
+  - generic: Dry
+  - generic "contaminated"
+  - generic: C1
+  - generic: ·
+  - generic: Dry
+  - generic: C2
+  - generic: Undefined
+  - generic: C3
+  - generic: ❀
+  - generic: Stable Bloom
+  - generic "extracted"
+  - generic: C4
+  - generic: ↻
+  - generic: Recovery Patch
+  - generic: C5
+  - generic: ·
+  - generic: Dry
+  - generic "contaminated"
+  - generic: D1
+  - generic: Undefined
+  - generic: D2
+  - generic: Undefined
+  - generic: D3
+  - generic: ↻
+  - generic: Recovery Patch
+  - generic: D4
+  - generic: ❛
+  - generic: Early Bloom
+  - generic: D5
+  - generic: ·
+  - generic: Dry
+  - generic: E1
+  - generic: ·
+  - generic: Dry
+  - generic: E2
+  - generic: Undefined
+  - generic: E3
+  - generic: ·
+  - generic: Dry
+  - generic: E4
+  - generic: Undefined
+  - generic: E5
+  - generic: Undefined
+- complementary:
+  - heading "Selected Cell" [level=2]
+  - generic: Cell C3
+  - generic: Dominant state
+  - generic: ❀ Stable Bloom
+  - generic: moisture
+  - generic: "51"
+  - generic: toxicity
+  - generic: "23"
+  - generic: organic Activity
+  - generic: "75"
+  - generic: stability
+  - generic: "71"
+  - generic: speculative Uncertainty
+  - generic: "25"
+  - generic: Extracted
+  - generic: Bloom memory
+  - generic: Recovered
+  - generic: Cultivated
+  - generic: Observed
+  - generic: Community action
+  - text: Recent history
+  - text: "T9: Build Seed Bank Network"
+  - text: "T8: Introduce Pioneer Plants"
+  - text: "T7: Add Light Rain"
+  - generic "Show full cell data"
+  - heading "Selected Action" [level=2]
+  - paragraph: Choose an actor, then choose an action.
+  - button "Apply Action" [disabled]
+  - generic "Full global metrics"
+- heading "Landscape Potential" [level=2]
+- generic: The system is moving toward a Resilient Recovery Field.
+- heading "Field Note" [level=2]
+- text: Turn 9 — Build Seed Bank Network
+- emphasis: "[Ecological · regional]"
+- text: Seed bank network built across 25 low-toxicity cells. Future plant success and biodiversity strongly improved.
+- strong: "Thresholds triggered:"
+- text: Early Bloom at (1,1); Early Bloom at (1,3); Recovery Patch at (2,3).
+- text: "Feedback: 25 protected/recovering cells regenerated; 1 extracted cells resisted collapse via recovery memory; biological cells supported 25 neighbors; bio-anchored cells reduced toxicity in 1 neighbors; 25 ecological anchors are reinforcing the grid (momentum ×1.25)."
+- text: "Random Event [Community]: Illegal Dumping at Night — Illegal dumping at night raises toxicity in 2 cells and leaves contamination memory."
+- generic: Target
+- text: Cell C3
+- generic: Direct effect
+- text: C3 bloom potential increased.
+- generic: Threshold / system effect
+- text: A1 recorded cultivated memory. A2 recorded cultivated memory. A3 recorded cultivated memory. A4 recorded cultivated memory.
+- generic: Random event
+- text: "Random Event [Community]: Illegal Dumping at Night — Illegal dumping at night raises toxicity in 2 cells and leaves contamination memory."
+- text: Turn 8 — Introduce Pioneer Plants
+- emphasis: "[Biological · local]"
+- text: Pioneer plants introduced at (2,2). Hardy growth raises organic activity and stability; recovery memory builds.
+- strong: "Thresholds triggered:"
+- text: Early Bloom at (1,2).
+- text: "Feedback: 1 protected/recovering cells regenerated; 1 extracted cells resisted collapse via recovery memory; biological cells supported 17 neighbors; 3 ecological anchors are reinforcing the grid (momentum ×1.20)."
+- text: "Random Event [Natural]: Migratory Birds Arrive — Migratory birds arrive, scattering seeds. Biodiversity and organic activity spread to nearby cells."
+- generic: Target
+- text: Cell C3
+- generic: Direct effect
+- text: C3 organic activity increased. C3 shifted from Early Bloom to Stable Bloom.
+- generic: Spread effect
+- text: B4, C2, D2, D3, D4 also shifted because pioneer growth started supporting nearby cells.
+- generic: Threshold / system effect
+- text: "A2 shifted through system feedback: organic activity increased. A3 shifted through system feedback: organic activity increased. A4 shifted through system feedback: organic activity increased. B1 shifted through system feedback: organic activity increased."
+- generic: Random event
+- text: "Random Event [Natural]: Migratory Birds Arrive — Migratory birds arrive, scattering seeds. Biodiversity and organic activity spread to nearby cells."
+- text: Turn 7 — Add Light Rain
+- emphasis: "[Climate · regional]"
+- text: Light rain applied to 9 cells. Moisture increased.
+- strong: "Thresholds triggered:"
+- text: Early Bloom at (2,2); Early Bloom at (3,3).
+- text: "Feedback: 1 protected/recovering cells regenerated; 1 extracted cells resisted collapse via recovery memory; biological cells supported 14 neighbors."
+- generic: Target
+- text: Cell C3
+- generic: Direct effect
+- text: "C3 moisture increased. C3 shifted from Undefined to Early Bloom. C3 recorded new memory: bloom, recovered."
+- generic: Spread effect
+- text: B2, B4, D3 also shifted because nearby terrain absorbed residual moisture.
+- generic: Threshold / system effect
+- text: "B3 changed to Early Bloom after accumulated conditions crossed a threshold. C2 changed to Undefined after accumulated conditions crossed a threshold. C4 changed to Wet after accumulated conditions crossed a threshold. C5 shifted through system feedback: organic activity increased."
+- text: Turn 6 — Add Light Rain
+- emphasis: "[Climate · regional]"
+- text: Light rain applied to 9 cells. Moisture increased.
+- text: "Feedback: 1 protected/recovering cells regenerated; 1 extracted cells resisted collapse via recovery memory; biological cells supported 8 neighbors."
+- generic: Target
+- text: Cell C3
+- generic: Direct effect
+- text: C3 moisture increased. C3 shifted from Dry to Undefined.
+- generic: Spread effect
+- text: B4, C2, D2 also shifted because nearby terrain absorbed residual moisture.
+- generic: Threshold / system effect
+- text: B2 changed to Undefined after accumulated conditions crossed a threshold. B3 changed to Undefined after accumulated conditions crossed a threshold. C4 changed to Undefined after accumulated conditions crossed a threshold. D3 changed to Undefined after accumulated conditions crossed a threshold.
+- text: Turn 5 — Introduce Pioneer Plants
+- emphasis: "[Biological · local]"
+- text: Pioneer plants introduced at (2,2). Hardy growth raises organic activity and stability; recovery memory builds.
+- text: "Feedback: 1 protected/recovering cells regenerated; 1 extracted cells resisted collapse via recovery memory; biological cells supported 8 neighbors."
+- text: "New Actor Appears: Agronomy Team. The landscape shows signs of biological potential. Cultivation and recovery actions are now available."
+- text: "New Actor Appears: Ecological Coalition. Quiet restoration work has accumulated into a larger ecological force. Long-term recovery actions are now available."
+- generic: Target
+- text: Cell C3
+- generic: Direct effect
+- text: C3 organic activity increased.
+- generic: Spread effect
+- text: B2, B3, B4, C2, C4, D2 and 2 more cells also shifted because pioneer growth started supporting nearby cells.
+- text: Turn 4 — Introduce Pioneer Plants
+- emphasis: "[Biological · local]"
+- text: Pioneer plants introduced at (2,2). Hardy growth raises organic activity and stability; recovery memory builds.
+- text: "Feedback: 1 protected/recovering cells regenerated; 1 extracted cells resisted collapse via recovery memory; biological cells supported 8 neighbors."
+- generic: Target
+- text: Cell C3
+- generic: Direct effect
+- text: C3 organic activity increased.
+- generic: Spread effect
+- text: B2, B3, B4, C2, C4, D2 and 2 more cells also shifted because pioneer growth started supporting nearby cells.
+- text: Turn 3 — Introduce Pioneer Plants
+- emphasis: "[Biological · local]"
+- text: Pioneer plants introduced at (2,2). Hardy growth raises organic activity and stability; recovery memory builds.
+- text: "Feedback: 1 protected/recovering cells regenerated; 1 extracted cells resisted collapse via recovery memory; biological cells supported 8 neighbors."
+- generic: Target
+- text: Cell C3
+- generic: Direct effect
+- text: "C3 organic activity increased. C3 shifted from Extractive to Dry. C3 recorded new memory: cultivated."
+- generic: Spread effect
+- text: B2, B3, B4, C2, C4, D2 and 2 more cells also shifted because pioneer growth started supporting nearby cells.
+- text: Turn 2 — Survey Missing Data
+- emphasis: "[Observational · local]"
+- text: Missing data surveyed in 9 cells. Uncertainty reduced. Observation memory stored.
+- text: "Random Event [Community]: Community Volunteers Remove Waste — Community volunteers remove waste from 9 accessible cells. Toxicity drops slightly."
+- text: "New Actor Appears: Local Community. The landscape has become publicly visible, contested, or ecologically meaningful. Community actions are now available."
+- generic: Target
+- text: Cell C3
+- generic: Direct effect
+- text: "C3 speculative uncertainty decreased. C3 recorded new memory: observed, community action."
+- generic: Threshold / system effect
+- text: B2 recorded observed, community action memory. B3 recorded observed, community action memory. B4 recorded observed, community action memory. C2 recorded observed, community action memory.
+- generic: Random event
+- text: "Random Event [Community]: Community Volunteers Remove Waste — Community volunteers remove waste from 9 accessible cells. Toxicity drops slightly."
+- text: Turn 1 — Extract Surface Material
+- emphasis: "[Industrial · local]"
+- text: Surface material extracted at (2,2). Mineral exposure raised, stability lowered. Extraction memory stored.
+- generic: Target
+- text: Cell C3
+- generic: Direct effect
+- text: "C3 mineral exposure increased. C3 shifted from Dry to Extractive. C3 recorded new memory: extracted."
+- text: Simulation Started — Dry Basin
+- text: Landplay is active. You begin with basic forces only. Introduce actions to the grid. Watch how conditions accumulate, thresholds trigger, and new actors emerge.

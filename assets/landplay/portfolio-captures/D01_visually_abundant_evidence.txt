@@ -1,0 +1,240 @@
+- text: SELECTED
+- banner:
+  - heading "LANDPLAY" [level=1]
+  - paragraph: v0.7f — Base Land Selection Cards
+  - generic: Turn 4 / 30
+  - generic: "Base: Industrial Edge"
+  - generic: Vivid
+  - strong: "91"
+  - generic: Toxic
+  - strong: "51"
+  - generic: Stable
+  - strong: "48"
+  - generic: Recovery
+  - strong: "100"
+  - text: No action selected —
+  - strong: choose one
+- button "Clear Selection"
+- button "End Simulation Now"
+- complementary:
+  - heading "Actors" [level=2]
+  - button "Basic Forces active":
+    - text: Basic Forces
+    - generic: active
+  - button "Agronomy Team active":
+    - text: Agronomy Team
+    - generic: active
+  - button "Government Agency active":
+    - text: Government Agency
+    - generic: active
+  - button "Genius Designer active":
+    - text: Genius Designer
+    - generic: active
+  - button "Industrial Investor active":
+    - text: Industrial Investor
+    - generic: active
+  - button "AI Research Lab locked" [disabled]:
+    - text: AI Research Lab
+    - generic: locked
+  - button "Local Community active":
+    - text: Local Community
+    - generic: active
+  - button "Ecological Coalition active":
+    - text: Ecological Coalition
+    - generic: active
+  - generic: "ACTIONS FROM: Agronomy Team"
+  - button "Test Soil Condition"
+  - button "Add Nutrient Strategy"
+  - button "Stabilize Bloom"
+  - button "Introduce Salt-Tolerant Plants"
+  - button "Restore Wetland Cells"
+  - button "Build Microbial Cultivation Zone"
+  - button "Support Ecological Recovery"
+- main:
+  - heading "Landscape Field" [level=2]
+  - generic: click a cell to inspect
+  - button "Reset View" [active]
+  - generic: A1
+  - generic: ▲
+  - generic: Oxidized Stain
+  - generic: A2
+  - generic: ❀
+  - generic: Stable Bloom
+  - generic "infrastructure"
+  - generic: A3
+  - generic: Undefined
+  - generic: A4
+  - generic: ❛
+  - generic: Early Bloom
+  - generic "infrastructure"
+  - generic: A5
+  - generic: ❛
+  - generic: Early Bloom
+  - generic: B1
+  - generic: ▲
+  - generic: Oxidized Stain
+  - generic "contaminated"
+  - generic: B2
+  - generic: ❛
+  - generic: Early Bloom
+  - generic "infrastructure"
+  - generic: B3
+  - generic: ❛
+  - generic: Early Bloom
+  - generic: B4
+  - generic: ▲
+  - generic: Oxidized Stain
+  - generic: B5
+  - generic: Undefined
+  - generic: C1
+  - generic: ❛
+  - generic: Early Bloom
+  - generic: C2
+  - generic: ▲
+  - generic: Oxidized Stain
+  - generic "contaminated"
+  - generic: C3
+  - generic: ❛
+  - generic: Early Bloom
+  - generic "contaminated"
+  - generic "infrastructure"
+  - generic: C4
+  - generic: ≈
+  - generic: Wet
+  - generic "contaminated"
+  - generic: C5
+  - generic: Undefined
+  - generic "contaminated"
+  - generic: D1
+  - generic: Undefined
+  - generic: D2
+  - generic: ❛
+  - generic: Early Bloom
+  - generic "contaminated"
+  - generic: D3
+  - generic: ☣
+  - generic: Toxic Runoff
+  - generic "contaminated"
+  - generic: D4
+  - generic: ☣
+  - generic: Toxic Runoff
+  - generic "contaminated"
+  - generic "infrastructure"
+  - generic: D5
+  - generic: Undefined
+  - generic "contaminated"
+  - generic: E1
+  - generic: Undefined
+  - generic: E2
+  - generic: Undefined
+  - generic "contaminated"
+  - generic: E3
+  - generic: ▲
+  - generic: Oxidized Stain
+  - generic "contaminated"
+  - generic: E4
+  - generic: Undefined
+  - generic: E5
+  - generic: ▲
+  - generic: Oxidized Stain
+  - generic "infrastructure"
+- complementary:
+  - heading "Selected Cell" [level=2]
+  - generic: Cell C3
+  - generic: Dominant state
+  - generic: ❛ Early Bloom
+  - generic: moisture
+  - generic: "67"
+  - generic: toxicity
+  - generic: "64"
+  - generic: organic Activity
+  - generic: "42"
+  - generic: stability
+  - generic: "59"
+  - generic: speculative Uncertainty
+  - generic: "44"
+  - generic: Contaminated
+  - generic: Bloom memory
+  - generic: Infrastructure
+  - text: Recent history
+  - text: "T3: Support Ecological Recovery"
+  - text: "T2: Add Light Rain"
+  - text: "T1: Seed Microbial Growth"
+  - generic "Show full cell data"
+  - heading "Selected Action" [level=2]
+  - paragraph: Choose an actor, then choose an action.
+  - button "Apply Action" [disabled]
+  - generic "Full global metrics"
+  - generic: Vividness
+  - generic: "91"
+  - generic: Toxicity
+  - generic: "51"
+  - generic: Stability
+  - generic: "48"
+  - generic: Artificiality
+  - generic: "61"
+  - generic: Biodiversity
+  - generic: "89"
+  - generic: Speculation
+  - generic: "20"
+  - generic: Ecological Recovery
+  - generic: "100"
+  - generic: Extraction Pressure
+  - generic: "33"
+  - generic: Public Visibility
+  - generic: "0"
+  - generic: Hidden Risk
+  - generic: "59"
+  - generic: Bloom Potential
+  - generic: "43"
+  - generic: Legibility
+  - generic: "0"
+- heading "Landscape Potential" [level=2]
+- generic: Ecological memory is accumulating across the grid.
+- heading "Field Note" [level=2]
+- text: Turn 3 — Support Ecological Recovery
+- emphasis: "[Agronomy · regional]"
+- text: Ecological recovery supported in 20 low-toxicity cells. Organic activity and recovery memory rise (eco momentum ×1.08).
+- strong: "Thresholds triggered:"
+- text: Early Bloom at (0,1); Early Bloom at (0,4); Early Bloom at (1,2); Early Bloom at (3,1).
+- text: "Feedback: toxic runoff spread into 13 wet cells; 20 protected/recovering cells regenerated; biological cells supported 23 neighbors; bio-anchored cells reduced toxicity in 25 neighbors; 15 ecological anchors are reinforcing the grid (momentum ×1.10)."
+- text: "New Actor Appears: Local Community. The landscape has become publicly visible, contested, or ecologically meaningful. Community actions are now available."
+- text: "New Actor Appears: Ecological Coalition. Quiet restoration work has accumulated into a larger ecological force. Long-term recovery actions are now available."
+- generic: Target
+- text: Cell C3
+- generic: Direct effect
+- text: C3 organic activity increased.
+- generic: Spread effect
+- text: C4, D3, D4 also shifted because recovery work strengthened adjacent ecological memory.
+- generic: Threshold / system effect
+- text: A1 recorded recovered memory. A2 changed to Stable Bloom after accumulated conditions crossed a threshold. A3 recorded recovered memory. A4 changed to Early Bloom after accumulated conditions crossed a threshold.
+- text: Turn 2 — Add Light Rain
+- emphasis: "[Climate · regional]"
+- text: Light rain applied to 9 cells. Moisture increased.
+- text: "Feedback: toxic runoff spread into 13 wet cells; biological cells supported 5 neighbors; bio-anchored cells reduced toxicity in 5 neighbors."
+- generic: Target
+- text: Cell C3
+- generic: Direct effect
+- text: C3 moisture increased.
+- generic: Spread effect
+- text: B2, B3, B4, C2, D3, D4 also shifted because nearby terrain absorbed residual moisture.
+- generic: Threshold / system effect
+- text: "B1 shifted through system feedback: toxicity decreased. C1 shifted through system feedback: organic activity increased. C4 changed to Wet after accumulated conditions crossed a threshold. C5 shifted through system feedback: toxicity increased."
+- text: Turn 1 — Seed Microbial Growth
+- emphasis: "[Biological · local]"
+- text: Microbial growth seeded at (2,2). Organic activity increased.
+- strong: "Thresholds triggered:"
+- text: Infrastructure Control at (0,1); Infrastructure Control at (0,3); Infrastructure Control at (1,1); Early Bloom at (2,0); Early Bloom at (2,2); Infrastructure Control at (2,2); Infrastructure Control at (3,3); Infrastructure Control at (4,4).
+- text: "Feedback: toxic runoff spread into 13 wet cells; biological cells supported 5 neighbors; bio-anchored cells reduced toxicity in 5 neighbors."
+- text: "New Actor Appears: Agronomy Team. The landscape shows signs of biological potential. Cultivation and recovery actions are now available."
+- text: "New Actor Appears: Government Agency. The landscape has become unstable, contaminated, or administratively significant. Zoning and regulatory actions are now available."
+- text: "New Actor Appears: Genius Designer. The landscape has developed visual, speculative, or symbolic intensity. Design intervention actions are now available."
+- text: "New Actor Appears: Industrial Investor. The landscape shows extractive or mineral potential. Industrial expansion actions are now available."
+- generic: Target
+- text: Cell C3
+- generic: Direct effect
+- text: "C3 organic activity increased. C3 shifted from Controlled to Early Bloom. C3 recorded new memory: contaminated, bloom, infrastructure."
+- generic: Threshold / system effect
+- text: A2 recorded infrastructure memory. A4 recorded infrastructure memory. B1 recorded contaminated memory. B2 recorded infrastructure memory.
+- text: Simulation Started — Industrial Edge
+- text: Landplay is active. You begin with basic forces only. Introduce actions to the grid. Watch how conditions accumulate, thresholds trigger, and new actors emerge.

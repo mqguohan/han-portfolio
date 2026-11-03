@@ -1,0 +1,74 @@
+- text: SELECTED
+- generic: Final Landscape Reading
+- generic: Resilient Recovery Field
+- heading "Summary" [level=4]
+- paragraph: This landscape became a Resilient Recovery Field. It did not develop the most dramatic visual intensity, but repeated restoration, soil care, wetland support, and local memory created a stable ecological trajectory. Several cells still carry traces of past disturbance, but the system now has enough biodiversity and recovery memory to resist collapse.
+- heading "Ending World" [level=4]
+- paragraph: This ending has a connected Gaussian / Spark world prototype.
+- link "Enter Ending World":
+  - /url: ./ending-worlds/ending_world_viewer.html?ending=resilient_recovery_field
+- heading "Dominant forces" [level=4]
+- generic: Biological bloom
+- generic: Ecological recovery
+- generic: Community action
+- heading "Actors unlocked" [level=4]
+- generic: Agronomy Team
+- generic: Local Community
+- generic: Ecological Coalition
+- heading "Important memories" [level=4]
+- generic: TURN 01 · EXTRACT SURFACE MATERIAL
+- paragraph: A processing facility operator opened Cell C3 after mineral yield was prioritized over site stability. Exposed material remained visible as a scar in the local field.
+- generic: TURN 07 · BLOOM EMERGENCE
+- paragraph: The landscape record indicates that a predictive landscape system supported biological activity around Cell C3 until bloom appeared. The growth moved into nearby cells, making ecological change visible in the field.
+- generic: TURN 09 · TOXIC SPREAD
+- paragraph: Records suggest that a private mineral consortium released runoff near Cell B5 during continued industrial use of wet ground. Contamination moved into nearby cells and left a toxic trace in the basin.
+- generic: TURN 09 · ECOLOGICAL RECOVERY
+- paragraph: Traces in the field suggest that local ecological monitors began working around Cell B2 after local conditions stabilized enough for biological activity to return. Recovery moved into nearby cells into previously disturbed ground.
+- heading "Ecological condition" [level=4]
+- generic: Biodiversity
+- generic "Biodiversity 100 out of 100"
+- generic: "100"
+- generic: Ecological recovery
+- generic "Ecological recovery 100 out of 100"
+- generic: "100"
+- generic: Stability
+- generic "Stability 59 out of 100"
+- generic: "59"
+- generic: Toxicity
+- generic "Toxicity 20 out of 100"
+- generic: "20"
+- generic: Hidden risk
+- generic "Hidden risk 14 out of 100"
+- generic: "14"
+- paragraph: Biodiversity 100, ecological recovery 100, toxicity 20, stability 59. The system can largely sustain and repair itself.
+- heading "Risks & unresolved tensions" [level=4]
+- paragraph: No major unresolved tensions remain — a relatively settled outcome.
+- text: The result is
+- strong: recovering, with accumulated memory of previous damage
+- text: .
+- emphasis: "Why this matters: this is a good ending that did not rely on spectacle. Quiet, repeated, careful forces — restoration, protection, cultivation, and local memory — accumulated into a landscape that can hold itself together. Resilience, not vividness, is the achievement here."
+- heading "Final Landscape Report" [level=4]
+- paragraph: A generated dossier assembled from final metrics, dominant states, actors, and landscape memory.
+- generic: Landscape type
+- generic: Resilient Recovery Field
+- generic: Dominant forces
+- generic: Biological bloom, Ecological recovery, Community action
+- generic: Actors unlocked
+- generic: agronomy Team, local Community, ecological Coalition
+- generic: Important memories
+- generic: TURN 01 · EXTRACT SURFACE MATERIAL
+- paragraph: A processing facility operator opened Cell C3 after mineral yield was prioritized over site stability. Exposed material remained visible as a scar in the local field.
+- generic: TURN 07 · BLOOM EMERGENCE
+- paragraph: The landscape record indicates that a predictive landscape system supported biological activity around Cell C3 until bloom appeared. The growth moved into nearby cells, making ecological change visible in the field.
+- generic: TURN 09 · TOXIC SPREAD
+- paragraph: Records suggest that a private mineral consortium released runoff near Cell B5 during continued industrial use of wet ground. Contamination moved into nearby cells and left a toxic trace in the basin.
+- generic: TURN 09 · ECOLOGICAL RECOVERY
+- paragraph: Traces in the field suggest that local ecological monitors began working around Cell B2 after local conditions stabilized enough for biological activity to return. Recovery moved into nearby cells into previously disturbed ground.
+- generic: Risks
+- generic: No major unresolved tensions remain — a relatively settled outcome.
+- textbox: "FINAL LANDSCAPE REPORT Landscape Type: Resilient Recovery Field Ending Key: resilient_recovery_field Summary: This landscape became a Resilient Recovery Field. It did not develop the most dramatic visual intensity, but repeated restoration, soil care, wetland support, and local memory created a stable ecological trajectory. Several cells still carry traces of past disturbance, but the system now has enough biodiversity and recovery memory to resist collapse. Dominant Forces: Biological bloom, Ecological recovery, Community action Actors Unlocked: agronomy Team, local Community, ecological Coalition Important Memories: TURN 01 · EXTRACT SURFACE MATERIAL A processing facility operator opened Cell C3 after mineral yield was prioritized over site stability. Exposed material remained visible as a scar in the local field. TURN 07 · BLOOM EMERGENCE The landscape record indicates that a predictive landscape system supported biological activity around Cell C3 until bloom appeared. The growth moved into nearby cells, making ecological change visible in the field. TURN 09 · TOXIC SPREAD Records suggest that a private mineral consortium released runoff near Cell B5 during continued industrial use of wet ground. Contamination moved into nearby cells and left a toxic trace in the basin. TURN 09 · ECOLOGICAL RECOVERY Traces in the field suggest that local ecological monitors began working around Cell B2 after local conditions stabilized enough for biological activity to return. Recovery moved into nearby cells into previously disturbed ground. Ecological Condition: Biodiversity 100, ecological recovery 100, toxicity 20, stability 59. The system can largely sustain and repair itself. Risks / Unresolved Tensions: No major unresolved tensions remain — a relatively settled outcome. Final Verdict: The result is recovering, with accumulated memory of previous damage. Why this matters: this is a good ending that did not rely on spectacle. Quiet, repeated, careful forces — restoration, protection, cultivation, and local memory — accumulated into a landscape that can hold itself together. Resilience, not vividness, is the achievement here."
+- button "Copy Report"
+- heading "MJ / World Lab Ready Prompt" [level=4]
+- paragraph: Export-ready image / world generation prompt only. The report above carries the system diagnosis.
+- textbox: "Resilient Recovery Field, a quiet repair landscape with durable recovery patches, protected ecological cores, low spectacle, and strong resilience. Create an immersive landscape world with strong spatial depth, foreground texture, middle-ground terrain systems, and distant background atmosphere. Base land: Dry Basin. Dominant states: 9 dry cells, 9 undefined cells, 3 stable bloom cells, 2 early bloom cells, 2 recovery patch cells. Landscape memory: 25 cells remember cultivated, 9 cells remember observed, 9 cells remember community action, 6 cells remember recovered, 5 cells remember supported bloom, 2 cells remember contaminated, 1 cells remember extracted. Metrics: Vividness 68 (medium); Biodiversity 100 (high); Ecological Recovery 100 (high); Toxicity 20 (low); Stability 59 (medium); Hidden Risk 14 (low); Extraction Pressure 33 (low); Speculation 22 (low); Artificiality 15 (low); Public Visibility 72 (high); Legibility 16 (low); Bloom Potential 54 (medium). Terrain: modest green recovery patches, stabilized soil, protected growth zones, old scars softened by gradual repair; keep toxicity visually low, with cleaner water and less chemical darkness; add varied growth textures, multiple plant densities, and ecological complexity; show protected recovery patches, repaired soil, and durable ecological cores; make the landscape legible as a public image without adding text or signage. Atmosphere and color: clear but fragile morning light, layered middle-ground corridors, synthetic ecology palette, no text, no UI, no people, no logo, no flat diagram, no top-down satellite view, no square platform, no collage."
+- button "Copy Prompt"

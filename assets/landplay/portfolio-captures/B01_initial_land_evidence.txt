@@ -1,0 +1,22 @@
+- generic: Initial Land Sample
+- heading "Choose Initial Land" [level=1]
+- paragraph: Select a field to receive the engine's forces.
+- list "Initial land choices":
+  - button "SELECTED Dry Basin landscape sample Dry Basin LOW MOISTURE · MEDIUM SALINITY · MINERAL POTENTIAL Select Field" [pressed]:
+    - text: SELECTED
+    - img "Dry Basin landscape sample"
+    - heading "Dry Basin" [level=3]
+    - paragraph: LOW MOISTURE · MEDIUM SALINITY · MINERAL POTENTIAL
+    - generic: Select Field
+  - button "Industrial Edge landscape sample Industrial Edge RUNOFF · EXTRACTION · INFRASTRUCTURE · CONTROL Select Field":
+    - img "Industrial Edge landscape sample"
+    - heading "Industrial Edge" [level=3]
+    - paragraph: RUNOFF · EXTRACTION · INFRASTRUCTURE · CONTROL
+    - generic: Select Field
+  - button "Unmapped Field landscape sample Unmapped Field MISSING DATA · AMBIGUOUS BOUNDARIES · SPECULATIVE POTENTIAL Select Field":
+    - img "Unmapped Field landscape sample"
+    - heading "Unmapped Field" [level=3]
+    - paragraph: MISSING DATA · AMBIGUOUS BOUNDARIES · SPECULATIVE POTENTIAL
+    - generic: Select Field
+- generic: "Selected: Dry Basin"
+- button "→ ENTER LANDSCAPE"

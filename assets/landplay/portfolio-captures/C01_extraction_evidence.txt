@@ -1,0 +1,166 @@
+- text: SELECTED
+- banner:
+  - heading "LANDPLAY" [level=1]
+  - paragraph: v0.7f — Base Land Selection Cards
+  - generic: Turn 2 / 30
+  - generic: "Base: Dry Basin"
+  - generic: Vivid
+  - strong: "21"
+  - generic: Toxic
+  - strong: "21"
+  - generic: Stable
+  - strong: "55"
+  - generic: Recovery
+  - strong: "5"
+  - text: No action selected —
+  - strong: choose one
+- button "Clear Selection"
+- button "End Simulation Now"
+- complementary:
+  - heading "Actors" [level=2]
+  - button "Basic Forces active":
+    - text: Basic Forces
+    - generic: active
+  - button "Agronomy Team locked" [disabled]:
+    - text: Agronomy Team
+    - generic: locked
+  - button "Government Agency locked" [disabled]:
+    - text: Government Agency
+    - generic: locked
+  - button "Genius Designer locked" [disabled]:
+    - text: Genius Designer
+    - generic: locked
+  - button "Industrial Investor locked" [disabled]:
+    - text: Industrial Investor
+    - generic: locked
+  - button "AI Research Lab locked" [disabled]:
+    - text: AI Research Lab
+    - generic: locked
+  - button "Local Community locked" [disabled]:
+    - text: Local Community
+    - generic: locked
+  - button "Ecological Coalition locked" [disabled]:
+    - text: Ecological Coalition
+    - generic: locked
+  - generic: "ACTIONS FROM: Basic Forces"
+  - button "Add Light Rain"
+  - button "Increase Sun Exposure"
+  - button "Drain Surface Water"
+  - button "Increase Salinity"
+  - button "Expose Oxidized Minerals"
+  - button "Seed Microbial Growth"
+  - button "Add Algae Culture"
+  - button "Add Nutrient Pulse"
+  - button "Introduce Pioneer Plants"
+  - button "Release Industrial Runoff"
+  - button "Extract Surface Material"
+  - button "Activate AI Terrain Inference"
+  - button "Survey Missing Data"
+- main:
+  - heading "Landscape Field" [level=2]
+  - generic: click a cell to inspect
+  - button "Reset View"
+  - generic: A1
+  - generic: ·
+  - generic: Dry
+  - generic: A2
+  - generic: Undefined
+  - generic: A3
+  - generic: Undefined
+  - generic: A4
+  - generic: ·
+  - generic: Dry
+  - generic: A5
+  - generic: Undefined
+  - generic: B1
+  - generic: ·
+  - generic: Dry
+  - generic: B2
+  - generic: ·
+  - generic: Dry
+  - generic: B3
+  - generic: ·
+  - generic: Dry
+  - generic: B4
+  - generic: Undefined
+  - generic: B5
+  - generic: ·
+  - generic: Dry
+  - generic: C1
+  - generic: ·
+  - generic: Dry
+  - generic: C2
+  - generic: ·
+  - generic: Dry
+  - generic: C3
+  - generic: ⛏
+  - generic: Extractive
+  - generic "extracted"
+  - generic: Extractive
+  - generic: C4
+  - generic: ·
+  - generic: Dry
+  - generic: C5
+  - generic: ·
+  - generic: Dry
+  - generic: D1
+  - generic: Undefined
+  - generic: D2
+  - generic: ·
+  - generic: Dry
+  - generic: D3
+  - generic: ·
+  - generic: Dry
+  - generic: D4
+  - generic: ·
+  - generic: Dry
+  - generic: D5
+  - generic: ·
+  - generic: Dry
+  - generic: E1
+  - generic: ·
+  - generic: Dry
+  - generic: E2
+  - generic: Undefined
+  - generic: E3
+  - generic: ·
+  - generic: Dry
+  - generic: E4
+  - generic: Undefined
+  - generic: E5
+  - generic: Undefined
+- complementary:
+  - heading "Selected Cell" [level=2]
+  - generic: Cell C3
+  - generic: Dominant state
+  - generic: ⛏ Extractive
+  - generic: moisture
+  - generic: "27"
+  - generic: toxicity
+  - generic: "27"
+  - generic: organic Activity
+  - generic: "0"
+  - generic: stability
+  - generic: "43"
+  - generic: speculative Uncertainty
+  - generic: "40"
+  - generic: Extracted
+  - text: Recent history
+  - text: "T1: Extract Surface Material"
+  - generic "Show full cell data"
+  - heading "Selected Action" [level=2]
+  - paragraph: Choose an actor, then choose an action.
+  - button "Apply Action" [disabled]
+  - generic "Full global metrics"
+- heading "Landscape Potential" [level=2]
+- generic: The landscape is still forming. Forces are active but no dominant tendency has emerged yet.
+- heading "Field Note" [level=2]
+- text: Turn 1 — Extract Surface Material
+- emphasis: "[Industrial · local]"
+- text: Surface material extracted at (2,2). Mineral exposure raised, stability lowered. Extraction memory stored.
+- generic: Target
+- text: Cell C3
+- generic: Direct effect
+- text: "C3 mineral exposure increased. C3 shifted from Dry to Extractive. C3 recorded new memory: extracted."
+- text: Simulation Started — Dry Basin
+- text: Landplay is active. You begin with basic forces only. Introduce actions to the grid. Watch how conditions accumulate, thresholds trigger, and new actors emerge.
